@@ -14,7 +14,7 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
     'eslint:recommended',
-    "plugin:import/react",
+    'plugin:import/react',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:react/recommended',
@@ -43,6 +43,7 @@ module.exports = {
     'react/self-closing-comp': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react/button-has-type': 'off',
+    'quotes': [2, 'single'],
   },
   overrides: [
     {
@@ -66,11 +67,11 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      "node": {
-        "paths": ["src"],
-        "extensions": [
-          ".js",
-          ".jsx"
+      'node': {
+        'paths': ['src'],
+        'extensions': [
+          '.js',
+          '.jsx'
         ]
       },
       alias: {

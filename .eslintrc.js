@@ -9,7 +9,6 @@ module.exports = {
     'react',
     'react-hooks',
     'import',
-    // 'import-resolver-alias',
   ],
   extends: [
     'airbnb',

@@ -48,6 +48,13 @@ import { PiMedalMilitary } from 'react-icons/pi'
 import { IoKeyOutline } from 'react-icons/io5'
 import './App.css'
 
+const HostInfo = () => {
+  const [hostName, setHostName] = useState('')
+  setHostName((currentHostName) => {
+    return `${currentHostName}님`
+  })
+}
+
 function App() {
   return (
     <div className="flex ml-3 max-w-lg">
@@ -63,7 +70,7 @@ function App() {
             </div>
             <div className="host-profile flex flex-col ml-10 justify-center">
               <div className="text-base font-bold">
-                <h3>호스트: a님 </h3>
+                <h3>호스트: {hostName}님 </h3>
               </div>
               <div className="text-sm ">
                 <div>호스트 경력 n년 </div>

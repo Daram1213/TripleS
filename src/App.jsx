@@ -9,13 +9,6 @@ import DetailPage from './pages/DetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchDetailPage from './pages/search/SearchDetailPage'
 
-const HostInfo = () => {
-  const [hostName, setHostName] = useState('')
-  setHostName((currentHostName) => {
-    return `${currentHostName}님`
-  })
-}
-
 function App() {
   const theme = createTheme()
 

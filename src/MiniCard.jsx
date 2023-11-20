@@ -9,7 +9,7 @@ const MiniCard = () => {
         <p className="text-base">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been thes standard dummy text ever since the
-          1500s
+          1500
         </p>
         <button className="rounded-md bg-blue-600 px-5 py-2 text-white shadow-xl transition-all duration-300 hover:bg-blue-700">
           Button

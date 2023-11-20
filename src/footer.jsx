@@ -1,4 +1,5 @@
 import React from "react";
+//css
 import "./footer.css";
 
 // icon

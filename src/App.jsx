@@ -1,13 +1,12 @@
 import React from 'react'
 import './App.css'
 import MiniCard from './MiniCard'
-import Test from './Test'
 
 function App() {
   return (
-    <>
-      <Test />
-    </>
+    <div className="ml-10">
+      <MiniCard />
+    </div>
   )
 }
 

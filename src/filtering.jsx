@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
@@ -62,6 +62,20 @@ export default function Filtering() {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
+  const [checkInDate, setCheckInDate] = useState(null) //eslint-disable-line no-unused-vars
+
+  const [checkOutDate, setCheckOutDate] = useState(null) //eslint-disable-line no-unused-vars
+
+  // const handleCheckInChange = (date) => {
+  //   //eslint-disable-line no-unused-vars
+  //   setCheckInDate(date)
+  // }
+
+  // const handleCheckOutChange = (date) => {
+  //   //eslint-disable-line no-unused-vars
+  //   setCheckOutDate(date)
+  // }
 
   return (
     <div className="p-20">
@@ -139,28 +153,30 @@ export default function Filtering() {
             </div>
 
             {/* 체크인 · 체크아웃 */}
-            <div className="ml-2 border-t border-b border-l border-grey rounded-t rounded-l w-200">
+            <div className="ml-2 border-t border-b border-l border-grey rounded-l w-200">
               <div className="flex text-grey-700 p-3">
                 <span className="text-xs">체크인</span>
               </div>
               <div>
                 <input
+                  type="text"
                   className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                   placeholder="12월 24일 (일)"
                 />
               </div>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center border-t border-b">
               <span className="text-xs">1박</span>
             </div>
 
-            <div className="ml-2 border-t border-b border-r border-grey rounded-t rounded-r w-200">
+            <div className="border-t border-b border-r border-grey rounded-r w-200">
               <div className="flex text-grey-700 p-3">
                 <span className="text-xs">체크아웃</span>
               </div>
               <div>
                 <input
+                  type="text"
                   className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                   placeholder="12월 25일 (월)"
                 />
@@ -255,18 +271,18 @@ export default function Filtering() {
           <div className="flex">
             <div>
               <input
-                className="border-t border-b border-l border-grey rounded-t rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
+                className="border-t border-b border-l border-grey rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="출발지"
               />
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center border-t border-b">
               <IoAirplane className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
             </div>
 
             <div>
               <input
-                className="ml-2 border-t border-b border-r border-grey rounded-t rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
+                className="border-t border-b border-r border-grey rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="도착지"
               />
             </div>
@@ -323,7 +339,7 @@ export default function Filtering() {
 
           {/* 출발지 */}
           <div className="flex">
-            <div className="border-t border-b border-l border-grey rounded-t rounded-l w-200">
+            <div className="border-t border-b border-l border-grey rounded-l w-200">
               <div className="flex text-grey-700 p-3">
                 <span className="text-xs">출발지</span>
               </div>
@@ -335,11 +351,11 @@ export default function Filtering() {
               </div>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center border-t border-b">
               <IoMdTrain className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
             </div>
 
-            <div className="ml-2 border-t border-b border-r border-grey w-200">
+            <div className="border-t border-b border-r border-grey w-200">
               <div className="flex text-grey-700 p-3">
                 <span className="text-xs">도착지</span>
               </div>
@@ -427,7 +443,7 @@ export default function Filtering() {
               </div>
             </div>
 
-            <div className="ml-2 border-t border-b border-r border-grey w-1/5">
+            <div className="border-t border-b border-r border-grey w-1/5">
               <div className="flex text-grey-700 p-3">
                 <span className="invisible">아</span>
               </div>
@@ -452,7 +468,7 @@ export default function Filtering() {
               </div>
             </div>
 
-            <div className="ml-2 border-t border-b border-r border-grey w-1/5">
+            <div className="border-t border-b border-r border-grey w-1/5">
               <div className="flex text-grey-700 p-3">
                 <span className="invisible">아</span>
               </div>
@@ -559,11 +575,11 @@ export default function Filtering() {
               </div>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center border-t border-b">
               <IoAirplane className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
             </div>
 
-            <div className="ml-2 border-t border-b border-r border-grey w-1/4 rounded-r">
+            <div className="border-t border-b border-r border-grey w-1/4 rounded-r">
               <div className="flex text-grey-700 p-3">
                 <span className="text-xs">도착지</span>
               </div>

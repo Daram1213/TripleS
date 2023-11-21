@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../input.css'
+import '../../index.css'
 import SearchIcon from '@mui/icons-material/Search'
 import navCategories from '../../assets/dummyData/dummyData'
 

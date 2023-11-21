@@ -1,5 +1,5 @@
+/* eslint-disable import/no-unresolved */
 import React from 'react'
-import '../../index.css'
 import SearchIcon from '@mui/icons-material/Search'
 import navCategories from '../../assets/dummyData/dummyData'
 

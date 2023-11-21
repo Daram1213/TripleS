@@ -44,10 +44,10 @@ function App() {
 =======
 import { useState } from 'react'
 import './App.css'
-import HostInfo from './ui/components/HostInfo'
-import Item1 from './ui/components/Item1'
-import Item2 from './ui/components/Item2'
-import Item3 from './ui/components/Item3'
+import HostInfo from './components/host_info/HostInfo'
+import Item1 from './components/host_info/Item1'
+import Item2 from './components/host_info/Item2'
+import Item3 from './components/host_info/Item3'
 
 function App() {
   const hostData = {

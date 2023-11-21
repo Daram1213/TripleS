@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './index.css'
 import HostInfo from './components/host_info/HostInfo'
 import Item1 from './components/host_info/Item1'
 import Item2 from './components/host_info/Item2'

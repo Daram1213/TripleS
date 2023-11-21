@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{html,css,js,jsx,ts,tsx}'],
+export default {
+  content: ['./src/**/*.{html,js,jsx,css}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'custom-bg':
+          'url("https://pages.trip.com/images/home-background/head-banner-bg-new-1920.webp")',
+      },
+    },
   },
   plugins: [],
 }

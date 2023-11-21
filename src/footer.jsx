@@ -1,24 +1,25 @@
-import React from "react";
-//css
-import "./footer.css";
+import React from 'react'
+import { Link } from 'react-router-dom'
+// css
+import './index.css'
 
 // icon
-import { FaFacebookF } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { SiNaver } from "react-icons/si";
-import { FaYoutube } from "react-icons/fa";
+import { FaFacebookF } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
+import { SiNaver } from 'react-icons/si'
+import { FaYoutube } from 'react-icons/fa'
 
-//icon-img
-import pay1 from "./icon-img/pay1.png";
-import pay2 from "./icon-img/pay2.png";
-import pay3 from "./icon-img/pay3.png";
-import pay4 from "./icon-img/pay4.png";
-import affiliate1 from "./icon-img/affiliate1.png";
-import affiliate2 from "./icon-img/affiliate2.png";
-import second1 from "./icon-img/second1.png";
-import second2 from "./icon-img/second2.png";
+// icon-img
+import pay1 from './icon-img/pay1.png'
+import pay2 from './icon-img/pay2.png'
+import pay3 from './icon-img/pay3.png'
+import pay4 from './icon-img/pay4.png'
+import affiliate1 from './icon-img/affiliate1.png'
+import affiliate2 from './icon-img/affiliate2.png'
+import second1 from './icon-img/second1.png'
+import second2 from './icon-img/second2.png'
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className="flex justify-center border-t border-gray-300">
       <div className="max-w-7xl w-full pt-8 pb-12 text-blue-950">
@@ -28,24 +29,24 @@ const Footer = () => {
             <div className="flex flex-col pr-3.5">
               {/* 고객문의 */}
               <div className="font-semibold mt-5 mb-5">고객 문의</div>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 고객센터
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 서비스 보장제
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 웹사이트 피드백
-              </a>
+              </Link>
               <div className="flex mt-8">
                 <div className="bg-gray-600 text-white text-xs p-2 rounded-full mr-4 flex justify-center items-center">
                   <i className="fa">
@@ -72,88 +73,88 @@ const Footer = () => {
             <div className="flex flex-col pr-3.5">
               {/* 회사소개 */}
               <div className="font-semibold mt-5 mb-5">회사소개</div>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 트립닷컴 소개
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 뉴스룸
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 채용
-              </a>
+              </Link>
               <a
-                href="#"
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 이용약관
               </a>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 개인정보 처리방침
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 트립닷컴 그룹 정보
-              </a>
+              </Link>
             </div>
             <div className="flex flex-col pr-3.5">
               {/* 기타 서비스 */}
               <div className="font-semibold mt-5 mb-5">기타 서비스</div>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 IR
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 트릿닷컴 리워드
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 트릿닷컴 파트너제휴 플랫폼
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 호텔 등록
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 모든 호텔
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 액티비티 상품 제휴
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/"
                 className="no-underline pb-3.5 pt-1 text-base hover:text-blue-500 hover:underline"
               >
                 보안
-              </a>
+              </Link>
             </div>
             <div className="flex flex-col pr-3.5">
               {/* 결제 방법 */}
@@ -216,14 +217,14 @@ const Footer = () => {
             사이트 운영자: Trip.com Travel Singapore Pte. Ltd. (라이선스 번호
             02943, 대표 오이치통)
             <br />
-            1 Harbourfront Ave, #03-12/13, Keppel Bay Tower, Singapore(098632)
+            1 Harbourfront Ave, /03-12/13, Keppel Bay Tower, Singapore(098632)
             <br />
             고객센터: 한국 1666 0060 해외 +82 2 6917 8777
           </div>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

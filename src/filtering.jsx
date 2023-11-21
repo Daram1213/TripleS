@@ -5,23 +5,26 @@ import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
-//css
-import './filtering.css'
+// css
+import './index.css'
 
-//icon
+// icon
 import { FaHotel } from 'react-icons/fa6'
 import { PiAirplaneTiltFill } from 'react-icons/pi'
-import { IoMdTrain } from 'react-icons/io'
+import {
+  IoMdTrain,
+  IoIosInformationCircle,
+  IoMdStarOutline,
+  IoMdPerson,
+} from 'react-icons/io'
 import { FaCar } from 'react-icons/fa'
-import { IoTicket } from 'react-icons/io5'
-import { MdFlightTakeoff } from 'react-icons/md'
-import { IoIosInformationCircle } from 'react-icons/io'
-import { IoSearch } from 'react-icons/io5'
-import { IoMdStarOutline } from 'react-icons/io'
-import { IoMdPerson } from 'react-icons/io'
-import { IoAirplane } from 'react-icons/io5'
-import { IoRemoveOutline } from 'react-icons/io5'
-import { MdAirlineSeatReclineNormal } from 'react-icons/md'
+import {
+  IoTicket,
+  IoSearch,
+  IoAirplane,
+  IoRemoveOutline,
+} from 'react-icons/io5'
+import { MdFlightTakeoff, MdAirlineSeatReclineNormal } from 'react-icons/md'
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props
@@ -36,7 +39,7 @@ function CustomTabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={'div'}>{children}</Typography>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -63,9 +66,9 @@ export default function Filtering() {
     setValue(newValue)
   }
 
-  const [checkInDate, setCheckInDate] = useState(null) //eslint-disable-line no-unused-vars
+  const [checkInDate, setCheckInDate] = useState(null) // eslint-disable-line no-unused-vars
 
-  const [checkOutDate, setCheckOutDate] = useState(null) //eslint-disable-line no-unused-vars
+  const [checkOutDate, setCheckOutDate] = useState(null) // eslint-disable-line no-unused-vars
 
   // const handleCheckInChange = (date) => {
   //   //eslint-disable-line no-unused-vars
@@ -244,26 +247,27 @@ export default function Filtering() {
           </div>
         </CustomTabPanel>
 
+        {/* 여기부터는 항공권, 기차표, 렌터카·공항픽업, 투어&티켓, 항공 + 호텔 버튼은 UI측면으로 보여지게 할지 고민  코드가 너무 길어보임 */}
         {/* 항공권 */}
         <CustomTabPanel value={value} index={1}>
           <div className="flex mb-5 text-blue-900">
             <div className="flex w-3/5">
               <div className="flex items-center mr-5 text-sm">
                 <PiAirplaneTiltFill />
-                <label>왕복</label>
+                왕복
               </div>
               <div className="flex items-center mr-5 text-sm">
                 <IoMdPerson />
-                <label>성인 1명</label>
+                성인 1명
               </div>
               <div className="flex items-center mr-5 text-sm">
                 <MdAirlineSeatReclineNormal />
-                <label>일반석</label>
+                일반석
               </div>
             </div>
             <div className="flex items-center mr-5 text-sm w-2/5 justify-end">
-              <input type="checkBox"></input>
-              <label className="ml-2">항공 + 호텔</label>
+              <input type="checkBox" />
+              <p className="ml-2">항공 + 호텔</p>
             </div>
           </div>
 
@@ -321,19 +325,19 @@ export default function Filtering() {
           <div className="flex mb-5 text-blue-900">
             <div className="flex items-center">
               <input type="checkBox" className="mr-2" />
-              <label className="mr-5 text-sm">중국</label>
+              <span className="mr-5 text-sm">중국</span>
             </div>
             <div className="flex items-center">
               <input type="checkBox" className="mr-2" />
-              <label className="mr-5 text-sm">영국</label>
+              <span className="mr-5 text-sm">영국</span>
             </div>
             <div className="flex items-center">
               <input type="checkBox" className="mr-2" />
-              <label className="mr-5 text-sm">국내</label>
+              <span className="mr-5 text-sm">국내</span>
             </div>
             <div className="flex items-center">
               <input type="checkBox" className="mr-2" />
-              <label className="mr-5 text-sm">유럽</label>
+              <span className="mr-5 text-sm">유럽</span>
             </div>
           </div>
 
@@ -395,20 +399,8 @@ export default function Filtering() {
 
             {/* 검색 버튼 */}
             <div>
-              <button
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  color: 'white',
-                  background: '#3264ff',
-                  width: 'auto',
-                  height: '90px',
-                  fontSize: '30px',
-                  borderRadius: '0 2px 2px 0',
-                  padding: '15px',
-                }}
-              >
+              {/* eslint-disable-next-line */}
+              <button className="flex justify-center items-center text-white bg-blue-600 w-auto h-full text-3xl rounded-r-lg p-2">
                 <IoSearch />
               </button>
             </div>
@@ -482,6 +474,7 @@ export default function Filtering() {
 
             {/* 검색 버튼 */}
             <div className="w-1/5">
+              {/* eslint-disable-next-line */}
               <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-3xl p-15">
                 <IoSearch />
               </button>
@@ -534,6 +527,7 @@ export default function Filtering() {
 
             {/* 검색 버튼 */}
             <div>
+              {/* eslint-disable-next-line */}
               <button className="flex items-center justify-center text-white bg-blue-600 w-auto h-full text-3xl p-5">
                 <IoSearch />
               </button>
@@ -547,11 +541,11 @@ export default function Filtering() {
             <div className="flex w-3/5">
               <div className="flex items-center mr-5 text-sm">
                 <PiAirplaneTiltFill />
-                <label>왕복</label>
+                <span>왕복</span>
               </div>
               <div className="flex items-center mr-5 text-sm">
                 <IoMdPerson />
-                <label>성인 1명 | 객실 1개</label>
+                <span>성인 1명 | 객실 1개</span>
               </div>
             </div>
           </div>
@@ -559,6 +553,7 @@ export default function Filtering() {
           {/* 출발지 */}
           <div className="flex">
             <div>
+              {/* eslint-disable-next-line */}
               <button className="flex items-center justify-center text-white bg-blue-600 w-10 h-full rounded-l p-2">
                 <PiAirplaneTiltFill className="text-xs" />
               </button>
@@ -624,6 +619,7 @@ export default function Filtering() {
           {/* 2번째 도착지 */}
           <div className="flex mt-3">
             <div>
+              {/* eslint-disable-next-line */}
               <button className="flex items-center justify-center text-white bg-blue-600 w-10 h-full rounded-l p-2">
                 <FaHotel className="text-xs" />
               </button>

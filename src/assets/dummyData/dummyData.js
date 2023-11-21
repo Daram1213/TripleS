@@ -12,7 +12,7 @@ const navCategories = [
   {
     categoryCode: '3',
     title: '투어&티켓',
-    categoryName: 'things-to-do',
+    categoryName: 'tour-and-tickets',
   },
   {
     categoryCode: '4',

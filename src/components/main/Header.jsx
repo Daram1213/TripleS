@@ -36,7 +36,6 @@ function Header() {
                     key={category.categoryCode}
                     className="main-hd-nav-item inline-block float-none relative pr-8"
                   >
-                    {' '}
                     <a
                       className="main-hd-nav-link text-white relative text-base inline-block h-5 pr-1 pb-1"
                       href="/{category.link}"

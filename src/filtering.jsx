@@ -81,7 +81,7 @@ export default function Filtering() {
   // }
 
   return (
-    <div className="p-20">
+    <div className="flex justify-center p-10">
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
@@ -251,7 +251,7 @@ export default function Filtering() {
         {/* 항공권 */}
         <CustomTabPanel value={value} index={1}>
           <div className="flex mb-5 text-blue-900">
-            <div className="flex w-3/5">
+            <div className="flex w-3/12">
               <div className="flex items-center mr-5 text-sm">
                 <PiAirplaneTiltFill />
                 왕복
@@ -273,7 +273,7 @@ export default function Filtering() {
 
           {/* 출발지 - 도착지 */}
           <div className="flex">
-            <div>
+            <div className="w-3/12">
               <input
                 className="border-t border-b border-l border-grey rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="출발지"
@@ -284,7 +284,7 @@ export default function Filtering() {
               <IoAirplane className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
             </div>
 
-            <div>
+            <div className="w-3/12">
               <input
                 className="border-t border-b border-r border-grey rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="도착지"
@@ -292,7 +292,7 @@ export default function Filtering() {
             </div>
 
             {/*  */}
-            <div>
+            <div className="w-3/12">
               <input
                 className="ml-4 border-t border-b border-l border-grey rounded-t rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="11월 21일 (화)"
@@ -303,7 +303,7 @@ export default function Filtering() {
               <IoRemoveOutline />
             </div>
 
-            <div>
+            <div className="w-3/12">
               <input
                 className="ml-2 border-t border-b border-r border-grey rounded-t rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
                 placeholder="11월 24일 (금)"

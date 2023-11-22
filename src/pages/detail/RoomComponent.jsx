@@ -1,7 +1,6 @@
 // RoomComponent.js
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Chip } from '@mui/material'
 
 const RoomComponent = () => {
   // 더미 데이터
@@ -23,6 +22,22 @@ const RoomComponent = () => {
     ],
   }
 
+  const roomDummyData = {
+    roomId: 101, // 방 ID
+    roomType: '5f8d04b5c29e3228a4b8b482', // 객실 유형 ID (예시로 MongoDB ObjectId 사용)
+    roomNumber: 102, // 방번호
+    floor: 1, // 방이 위치한 층수
+
+    roomBooking: {
+      status: true, // 예약 여부
+      checkInDate: '2023-11-25', // 체크인 날짜
+      checkOutDate: '2023-11-28', // 체크아웃 날짜
+      adults: 2, // 성인 수
+      children: 1, // 어린이 수
+      bookingStatus: 'confirmed', // 예약 상태
+    },
+  }
+
   return (
     <Box className="max-w-sm rounded overflow-hidden shadow-lg mb-6">
       <Box className="px-6 py-4">
@@ -35,9 +50,14 @@ const RoomComponent = () => {
             Capacity: {roomTypeData.capacity}
           </Typography>
           <Typography variant="body2">
-            Size: {roomTypeData.size} sqft, Floor: {roomTypeData.floor}
+            Size: {roomTypeData.size}, Floor: {roomDummyData.floor}
           </Typography>
           <Typography variant="body2">1박 ${roomTypeData.price}</Typography>
+          <Chip
+            label={roomDummyData.roomBooking.status ? '예약 가능' : '예약 불가'}
+            color={roomDummyData.roomBooking.status ? 'success' : 'error'}
+            variant="outlined"
+          />
         </Box>
       </Box>
       {/* <Box className="px-6 pt-4 pb-2">

@@ -1,13 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 const DetailHeader = () => {
-  // const navigate = useNavigate(); // 필요한 경우 주석 해제
+  const navigate = useNavigate() // 필요한 경우 주석 해제
 
   const handleBack = () => {
-    // navigate(-1); // 필요한 경우 주석 해제
+    navigate('/') // 필요한 경우 주석 해제
   }
 
   return (

@@ -73,7 +73,7 @@ const CalendarComponent = ({ setReservations }) => {
           onChange={handleDateChange}
           onMonthChange={handleMonthChange}
         />
-      </div>
+      </Box>
     </LocalizationProvider>
   )
 }

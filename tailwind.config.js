@@ -9,15 +9,17 @@ export default {
           "url('https://pages.trip.com/images/home-background/head-banner-bg-new-1920.webp')",
       },
       borderRadius: {
-        lg: '32px',
+        lg: '4rem',
       },
       margin: {
-        '-50px': '-50px',
-        '-5px': '-5px',
+        '40rem': '40rem',
+        '-1rem': '-1rem',
       },
       width: {
-        '1160px': '1160px',
         'calc(25%-12px)': 'calc(25%-12px)',
+      },
+      inset: {
+        '-5rem': '-5rem',
       },
     },
   },

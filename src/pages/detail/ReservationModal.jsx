@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import { Box, Typography } from '@mui/material'
+import CloseIcon from '../../assets/svg/CloseIcon'
 
 const ReservationModal = ({ closeModal, reservations }) => {
   // 더미 데이터
@@ -95,20 +96,7 @@ const ReservationModal = ({ closeModal, reservations }) => {
             onClick={closeModal}
             className="absolute top-0 right-0 mt-4 mr-4 text-gray-400 hover:text-gray-600"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <CloseIcon />
           </button>
         </Box>
       </Box>

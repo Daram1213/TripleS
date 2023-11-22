@@ -37,9 +37,11 @@ const LodgingComponent = ({ lodgingData }) => {
         {lodgingData.name}
       </h1>
       <h2 className="text-2xl text-gray-600 mb-2">
-        {lodgingData.theme} - {lodgingData.types.join(', ')}
+        {lodgingData.theme} - {lodgingData.types}
       </h2>
-      <p className="text-lg text-gray-500 mb-4">{lodgingData.address}</p>
+      <Typography className="text-lg text-gray-500 mb-4">
+        {`${lodgingData.address.city}, ${lodgingData.address.district}, ${lodgingData.address.county}, ${lodgingData.address.detail}`}
+      </Typography>
 
       <Box className="relative w-full mb-8" data-carousel="slide">
         {/* Carousel wrapper */}
@@ -113,9 +115,6 @@ const LodgingComponent = ({ lodgingData }) => {
           </Grid>
         ))}
       </Grid>
-      {/* <MapComponent latitude={lodging.map.latitude} longitude={lodging.map.longitude} /> */}
-      {/* <OptionComponent options={lodging.option} /> */}
-      {/* 리뷰 섹션 구현 */}
     </Box>
   )
 }

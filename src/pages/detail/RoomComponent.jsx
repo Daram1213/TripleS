@@ -19,16 +19,6 @@ const RoomComponent = ({ room }) => {
         </Box>
       </Box>
       <Box className="px-6 pt-4 pb-2">
-        {room.amenities.map((amenity, index) => (
-          <Box
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            key={index}
-          >
-            {amenity}
-          </Box>
-        ))}
-      </Box>
-      <Box className="px-6 pt-4 pb-2">
         {room.status ? (
           <Box className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
             예약 가능

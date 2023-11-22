@@ -4,9 +4,9 @@ import SideBar from './SideBar'
 function MiniCard() {
   return (
     // container
-    <div className="container flex justify-center">
+    <div className="container flex justify-center sm:min-w-full">
       {/* sidebar+grid items */}
-      <div className="max-w-[calc(100vw - 64px)] flex w-[1350px] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
+      <div className="flex w-[1350px] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
         {/* sidebar */}
         <SideBar />
         {/* grid items */}
@@ -15,7 +15,7 @@ function MiniCard() {
             <div className="my-5">
               <h2 className="text-2xl font-bold text-gray-900">여행지</h2>
             </div>
-            <div className="grid w-full max-w-6xl  sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3">
               <div className="h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100">
                 <div className="h-[116px] w-[116px] overflow-hidden">
                   <img

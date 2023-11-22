@@ -8,7 +8,7 @@ import NavigationBar from './NavigationBar'
 
 function Header() {
   return (
-    <Box className="main-hd-container bg-custom-bg relative w-screen h-96 bg-cover bg-no-repeat bg-center">
+    <Box className="main-hd-container bg-custom-bg relative w-screen h-96 bg-cover bg-no-repeat bg-center mb-[-50px]">
       <Box className="main-hd-and-navbar relative overflow-hidden px-8">
         <Box className="main-hd-inner max-x-9xl relative">
           <Box className="main-hd-flex-icon relative h-16 clear-both">

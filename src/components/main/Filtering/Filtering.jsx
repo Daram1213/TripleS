@@ -17,6 +17,8 @@ import PickUp from './PickUp'
 import Tour from './Tour'
 import AirHotel from './AirHotel'
 
+import 'tailwindcss/tailwind.css'
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props
 

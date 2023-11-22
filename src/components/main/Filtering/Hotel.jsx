@@ -25,9 +25,8 @@ function Hotel() {
           </Box>
           <Box>
             <input
-              type="text"
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="12월 24일 (일)"
             />
           </Box>
         </Box>
@@ -42,9 +41,8 @@ function Hotel() {
           </Box>
           <Box>
             <input
-              type="text"
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="12월 25일 (월)"
             />
           </Box>
         </Box>

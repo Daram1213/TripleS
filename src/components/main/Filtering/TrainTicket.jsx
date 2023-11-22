@@ -81,8 +81,8 @@ function TrainTicket() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 19일 (일)"
             />
           </Box>
         </Box>

@@ -25,8 +25,8 @@ function PickUp() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 21일 (화)"
             />
           </Box>
         </Box>
@@ -37,8 +37,8 @@ function PickUp() {
           </Box>
           <Box>
             <input
+              type="time"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="| 10:00"
             />
           </Box>
         </Box>
@@ -50,8 +50,8 @@ function PickUp() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 24일 (금)"
             />
           </Box>
         </Box>
@@ -62,8 +62,8 @@ function PickUp() {
           </Box>
           <Box>
             <input
+              type="time"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="| 10:00"
             />
           </Box>
         </Box>

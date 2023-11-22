@@ -51,8 +51,8 @@ function AirlineTicket() {
         {/*  */}
         <Box className="w-3/12">
           <input
+            type="date"
             className="ml-4 border-t border-b border-l border-grey rounded-t rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-            placeholder="11월 21일 (화)"
           />
         </Box>
 
@@ -62,8 +62,8 @@ function AirlineTicket() {
 
         <Box className="w-3/12">
           <input
+            type="date"
             className="ml-2 border-t border-b border-r border-grey rounded-t rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-            placeholder="11월 24일 (금)"
           />
         </Box>
 

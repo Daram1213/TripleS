@@ -63,8 +63,8 @@ function AirHotel() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 24일 (일)"
             />
           </Box>
         </Box>
@@ -79,8 +79,8 @@ function AirHotel() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 25일 (월)"
             />
           </Box>
         </Box>
@@ -113,15 +113,15 @@ function AirHotel() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 24일 (일)"
             />
           </Box>
         </Box>
 
         <Box className="flex items-center border-t border-b border-gre w-8">
           <Typography className="text-xs flex items-center text-center">
-            3박
+            박
           </Typography>
         </Box>
 
@@ -131,8 +131,8 @@ function AirHotel() {
           </Box>
           <Box>
             <input
+              type="date"
               className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-              placeholder="11월 25일 (월)"
             />
           </Box>
         </Box>

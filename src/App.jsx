@@ -1,7 +1,10 @@
-// App.js
+import { Outlet } from 'react-router'
 import React, { useState } from 'react'
-import Outlet from './Outlet'
-import DetailHeader from './components/detail/DetailHeader'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import MainPage from './pages/MainPage'
+import DetailPage from './pages/DetailPage'
+import SearchPage from './pages/SearchPage'
+import SearchDetailPage from './pages/SearchDetailPage'
 
 const App = () => {
   // 더미 데이터
@@ -83,14 +86,20 @@ const App = () => {
   ])
 
   return (
-    <div className="App">
-      <DetailHeader />
-      <Outlet
-        lodgingData={lodgingData}
-        reservations={reservations}
-        setReservations={setReservations}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Outlet />} />
+        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/detail"
+          element={
+            <DetailPage lodgingData={lodgingData} reservations={reservations} />
+          }
+        />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search-detail" element={<SearchDetailPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

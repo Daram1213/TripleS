@@ -21,15 +21,8 @@ export const SERVICE = [
   { name: '보안', link: '#' },
 ]
 export const PAYMENT = [
-  { image: '../../components/FooterImg/pay1.png' },
-  { image: '../../components/FooterImg/pay2.png' },
-  { image: '../../components/FooterImg/pay3.png' },
-  { image: '../../components/FooterImg/pay4.png' },
-]
-
-export const Icons = [
-  { name: 'logo-facebook', link: '#' },
-  { name: 'logo-instagram', link: '#' },
-  { name: 'logo-google', link: '#' },
-  { name: 'logo-youtube', link: '#' },
+  { image: '/src/assets/FooterImg/pay1.png' },
+  { image: '/src/assets/FooterImg/pay2.png' },
+  { image: '/src/assets/FooterImg/pay3.png' },
+  { image: '/src/assets/FooterImg/pay4.png' },
 ]

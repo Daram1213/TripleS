@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-
-// css
-import './index.css'
+import { Tabs, Tab, Typography, Box } from '@mui/material'
 
 // icon
 import { FaHotel } from 'react-icons/fa6'
@@ -30,7 +24,7 @@ function CustomTabPanel(props) {
   const { children, value, index, ...other } = props
 
   return (
-    <div
+    <Box
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -42,7 +36,7 @@ function CustomTabPanel(props) {
           <Typography component="div">{children}</Typography>
         </Box>
       )}
-    </div>
+    </Box>
   )
 }
 
@@ -81,7 +75,7 @@ export default function Filtering() {
   // }
 
   return (
-    <div className="flex justify-center p-10">
+    <Box className="flex justify-center p-10">
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
@@ -675,6 +669,6 @@ export default function Filtering() {
           </div>
         </CustomTabPanel>
       </Box>
-    </div>
+    </Box>
   )
 }

@@ -13,7 +13,11 @@ function ItemFooter({ Links, title }) {
             href={link.link}
           >
             {link.image && (
-              <img src={link.image} alt={link.name} className="mr-2 w-8 h-8" />
+              <img
+                src={link.image}
+                alt={link.name}
+                className="w-12 h-15 border border-solid border-blue-900 rounded-md mt-3"
+              />
             )}
             {link.name}
           </a>

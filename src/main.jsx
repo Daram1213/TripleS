@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import Header from './components/main/Header'
 import './index.css'
 import Footer from './components/main/Footer'
-import Filtering from './filtering'
+import Filtering from './components/main/Filtering'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

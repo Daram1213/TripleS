@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/main/Header'
 import './index.css'
 import App from './App.jsx'
@@ -11,7 +12,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
     <Header />
+
     <Filtering />
-    <Footer />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Footer />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 )

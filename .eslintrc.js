@@ -43,6 +43,13 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/button-has-type': 'off',
     quotes: [2, 'single'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        labelAttributes: ['htmlFor'],
+      },
+    ],
   },
   overrides: [
     {

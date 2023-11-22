@@ -13,9 +13,11 @@ export default {
       },
       margin: {
         '-50px': '-50px',
+        '-5px': '-5px',
       },
       width: {
         '1160px': '1160px',
+        'calc(25%-12px)': 'calc(25%-12px)',
       },
     },
   },

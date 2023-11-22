@@ -67,6 +67,21 @@ const CalendarComponent = ({ setReservations }) => {
           onMonthChange={handleMonthChange}
         />
       </Box>
+      <div style={{ marginBottom: '70px' }}>
+        <DateCalendar
+          value={
+            selecting
+              ? startDate
+                ? dayjs(startDate)
+                : null
+              : endDate
+                ? dayjs(endDate)
+                : null
+          }
+          onChange={handleDateChange}
+          onMonthChange={handleMonthChange}
+        />
+      </div>
     </LocalizationProvider>
   )
 }

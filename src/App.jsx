@@ -66,6 +66,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/detail" element={<DetailPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search-detail" element={<SearchDetailPage />} />
       </Routes>

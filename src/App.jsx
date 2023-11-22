@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import DetailPage from './pages/DetailPage'

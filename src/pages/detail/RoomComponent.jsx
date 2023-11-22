@@ -12,8 +12,8 @@ const RoomComponent = () => {
     capacity: 2, // 수용 가능 인원
     size: 35, // 방의 크기 (예: 평방미터)
     image: [
-      'https://example.com/images/room1.jpg', // 객실 사진 URL
-      'https://example.com/images/room2.jpg',
+      'srcassetsdetail\room1.JPG', // 객실 사진 URL
+      'srcassetsdetail\room2.JPG',
     ],
     amenities: [
       'Free WiFi', // 제공되는 편의 시설
@@ -44,7 +44,7 @@ const RoomComponent = () => {
         <Box className="font-bold text-xl mb-2">{roomTypeData.name}</Box>
         <Box className="text-gray-700 text-base">
           <Typography color="text.secondary">
-            {roomTypeData.type} - {roomTypeData.bedType}
+            {roomTypeData.types} - {roomTypeData.bedType}
           </Typography>
           <Typography variant="body2">
             Capacity: {roomTypeData.capacity}

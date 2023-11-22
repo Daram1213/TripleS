@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { Box } from '@mui/material'
 import fetchTour from '../../fetch/search/fetchTour'
 import useIntersect from '../../components/search/useIntersect'
 import TourItem from '../../components/search/TourItem'
@@ -32,16 +33,16 @@ function TourList() {
   )
 
   return (
-    <div className="container flex justify-center">
-      <div className="max-w-[calc(100vw - 64px)] flex w-[1350px] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
+    <Box className="container flex justify-center">
+      <Box className="max-w-[calc(100vw - 64px)] flex w-[1350px] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
         {/* sidebar에 useParams로 가져온 search를 props로 전달 */}
         <SideBar search={search}/>
-        <div className="flex flex-auto flex-col px-4">
-          <div className="content-container hotel-container flex-auto px-4">
-            <div className="my-5">
+        <Box className="flex flex-auto flex-col px-4">
+          <Box className="content-container hotel-container flex-auto px-4">
+            <Box className="my-5">
               <h2 className="text-2xl font-bold text-gray-900">여행지</h2>
-            </div>
-            <div className="grid w-full max-w-6xl  sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3">
+            </Box>
+            <Box className="grid w-full max-w-6xl  sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3">
               {!tourList.length ? (
                 <h1>여행지 정보가 없습니다.</h1>
               ) : (
@@ -49,16 +50,16 @@ function TourList() {
                   <TourItem key={tourSpot.id} tourSpot={tourSpot} />
                 ))
               )}
-            </div>
-            {results.isLoading && <div>Loading...</div>}
-            <div
+            </Box>
+            {results.isLoading && <Box>Loading...</Box>}
+            <Box
               ref={intersectRef}
               style={{ height: '20px', background: 'transparent' }}
             />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 export default TourList

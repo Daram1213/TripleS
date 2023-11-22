@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 function SideBar({ search }) {
@@ -8,9 +9,9 @@ function SideBar({ search }) {
         tabIndex={-1}
         className="min-w-90 flex h-12 items-center rounded-lg border border-solid border-gray-400 py-2 pl-6 text-start active:bg-blue-600 active:text-gray-50"
       >
-        <span className="w-[200px] text-lg font-medium leading-5">
+        <Typography className="w-[200px] text-lg font-medium leading-5">
           전체 (12,6372)
-        </span>
+        </Typography>
       </button>
       <Link to={`/hotelList/${search}`}>
         <button
@@ -18,9 +19,9 @@ function SideBar({ search }) {
           tabIndex={-1}
           className="min-w-90 flex h-12 items-center rounded-lg border border-solid border-gray-400 py-2 pl-6 text-start active:bg-blue-600 active:text-gray-50"
         >
-          <span className="w-[200px] text-lg font-medium leading-5">
+          <Typography className="w-[200px] text-lg font-medium leading-5">
             호텔 (12,6372)
-          </span>
+          </Typography>
         </button>
       </Link>
       <Link to={`/tourList/${search}`}>
@@ -29,9 +30,9 @@ function SideBar({ search }) {
           tabIndex={-1}
           className="min-w-90 flex h-12 items-center rounded-lg border border-solid border-gray-400 py-2 pl-6 text-start active:bg-blue-600 active:text-gray-50"
         >
-          <span className="w-[200px] text-lg font-medium leading-5">
+          <Typography className="w-[200px] text-lg font-medium leading-5">
             여행지 (12,6372)
-          </span>
+          </Typography>
         </button>
       </Link>
     </nav>

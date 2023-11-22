@@ -1,7 +1,8 @@
 import React from 'react'
+import SearchCard from '../components/search/SearchCard'
 
-const SearchPage = () => {
-  return <div>검색 페이지</div>
+function SearchPage() {
+  return <div><SearchCard /></div>
 }
 
 export default SearchPage

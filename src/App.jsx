@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './index.css'
-import HostInfo from './components/host_info/HostInfo'
-import Item1 from './components/host_info/Item1'
-import Item2 from './components/host_info/Item2'
-import Item3 from './components/host_info/Item3'
+import HostInfo from './pages/host_info/HostInfo'
+import Item1 from './pages/host_info/Item1'
+import Item2 from './pages/host_info/Item2'
+import Item3 from './pages/host_info/Item3'
 
 function App() {
   const hostData = {

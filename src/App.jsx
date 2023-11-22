@@ -93,7 +93,11 @@ const App = () => {
         <Route
           path="/detail"
           element={
-            <DetailPage lodgingData={lodgingData} reservations={reservations} />
+            <DetailPage
+              lodgingData={lodgingData}
+              reservations={reservations}
+              setReservations={setReservations}
+            />
           }
         />
         <Route path="/search" element={<SearchPage />} />

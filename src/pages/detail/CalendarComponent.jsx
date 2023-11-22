@@ -52,19 +52,21 @@ const CalendarComponent = ({ setReservations }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DateCalendar
-        value={
-          selecting
-            ? startDate
-              ? dayjs(startDate)
-              : null
-            : endDate
-              ? dayjs(endDate)
-              : null
-        }
-        onChange={handleDateChange}
-        onMonthChange={handleMonthChange}
-      />
+      <div style={{ marginBottom: '70px' }}>
+        <DateCalendar
+          value={
+            selecting
+              ? startDate
+                ? dayjs(startDate)
+                : null
+              : endDate
+                ? dayjs(endDate)
+                : null
+          }
+          onChange={handleDateChange}
+          onMonthChange={handleMonthChange}
+        />
+      </div>
     </LocalizationProvider>
   )
 }

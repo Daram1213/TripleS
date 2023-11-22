@@ -3,6 +3,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 import dayjs from 'dayjs' // Dayjs를 임포트합니다
+import { Box } from '@mui/system'
 
 const CalendarComponent = ({ setReservations }) => {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
@@ -54,19 +55,18 @@ const CalendarComponent = ({ setReservations }) => {
   }
 
   const handleMonthChange = (date) => {
-    console.log('handleMonthChange 함수 작동')
     setCurrentMonth(date)
   }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div style={{ marginBottom: '70px' }}>
+      <Box style={{ marginBottom: '70px' }}>
         <DateCalendar
           value={calendarValue}
           onChange={handleDateChange}
           onMonthChange={handleMonthChange}
         />
-      </div>
+      </Box>
     </LocalizationProvider>
   )
 }

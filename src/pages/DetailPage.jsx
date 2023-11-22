@@ -5,7 +5,7 @@ import CalendarComponent from './detail/CalendarComponent'
 import DetailFooter from './detail/DetailFooter'
 import ReservationModal from './detail/ReservationModal'
 
-const DetailPage = ({ lodgingData, reservations, setReservations }) => {
+function DetailPage({ lodgingData, reservations, setReservations }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleOpenModal = () => {

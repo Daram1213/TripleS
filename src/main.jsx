@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './components/main/Header'
+import Header from './pages/main/Header'
 import App from './App.jsx'
 import './index.css'
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
@@ -22,6 +22,14 @@ const CalendarComponent = ({ setReservations }) => {
       updateReservations()
     }
   }, [startDate, endDate])
+
+  const calendarValue = useMemo(() => {
+    if (selecting) {
+      return startDate ? dayjs(startDate) : null
+    } else {
+      return endDate ? dayjs(endDate) : null
+    }
+  }, [selecting, startDate, endDate]) // 의존성 배열에 selecting, startDate, endDate 추가
 
   const handleDateChange = (newValue) => {
     const formattedDate = newValue ? newValue.format('YYYY-MM-DD') : ''
@@ -54,15 +62,7 @@ const CalendarComponent = ({ setReservations }) => {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div style={{ marginBottom: '70px' }}>
         <DateCalendar
-          value={
-            selecting
-              ? startDate
-                ? dayjs(startDate)
-                : null
-              : endDate
-                ? dayjs(endDate)
-                : null
-          }
+          value={calendarValue}
           onChange={handleDateChange}
           onMonthChange={handleMonthChange}
         />

@@ -11,11 +11,11 @@ function Item3({ title, contents }) {
             <IoKeyOutline size="40" color="" />
           </Box>
           <Box className=" flex flex-col ml-10 justify-center">
-            <Typography className="text-base font-bold">
-              <h3 className="item3-title">{title}</h3>
+            <Typography className="item3-title font-bold text-sm">
+              {title}
             </Typography>
-            <Typography className="text-sm">
-              <Box className="item3-contents">{contents}</Box>
+            <Typography className="item3-contents text-sm">
+              {contents}
             </Typography>
           </Box>
         </Box>

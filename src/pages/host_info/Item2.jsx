@@ -1,25 +1,26 @@
 import React from 'react'
+import { Box, Container, Typography } from '@mui/material'
 import { PiMedalMilitary } from 'react-icons/pi'
 
 function Item2({ title, contents }) {
   return (
-    <div className="item2">
-      <div className="item2 flex flex-row mb-2 mt-2">
-        <div className="item2-container flex">
-          <div className="item2-icon m-2">
+    <Box className="item2">
+      <Box className="item2 flex flex-row mb-2 mt-2">
+        <Box className="item2-container flex">
+          <Box className="item2-icon m-2">
             <PiMedalMilitary size="40" color="" />
-          </div>
-          <div className=" flex flex-col ml-10 justify-center">
-            <div className="text-base font-bold">
+          </Box>
+          <Box className=" flex flex-col ml-10 justify-center">
+            <Typography className="text-base font-bold">
               <h3 className="item2-title">{title}</h3>
-            </div>
-            <div className="text-sm">
-              <div className="item2-contents">{contents}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Typography>
+            <Typography className="text-sm">
+              <Box className="item2-contents">{contents}</Box>
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

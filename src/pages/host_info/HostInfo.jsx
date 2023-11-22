@@ -14,12 +14,8 @@ function HostInfo({ name, year, imageUrl }) {
           />
         </Box>
         <Box className="host-profile flex flex-col ml-10 justify-center">
-          <Typography className="text-base font-bold">
-            <h3>호스트: {name}님 </h3>
-          </Typography>
-          <Typography className="text-sm ">
-            <Box>호스트 경력 {year}년 </Box>
-          </Typography>
+          <Box sx={{ fontWeight: 500, fontSize: 22 }}>호스트: {name}님</Box>
+          <Typography className="text-xs">호스트 경력 {year}년</Typography>
         </Box>
       </Box>
     </Box>

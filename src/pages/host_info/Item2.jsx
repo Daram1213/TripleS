@@ -11,11 +11,11 @@ function Item2({ title, contents }) {
             <PiMedalMilitary size="40" color="" />
           </Box>
           <Box className=" flex flex-col ml-10 justify-center">
-            <Typography className="text-base font-bold">
-              <h3 className="item2-title">{title}</h3>
+            <Typography className="item2-title font-bold text-sm">
+              {title}
             </Typography>
-            <Typography className="text-sm">
-              <Box className="item2-contents">{contents}</Box>
+            <Typography className="item2-contents text-sm">
+              {contents}
             </Typography>
           </Box>
         </Box>

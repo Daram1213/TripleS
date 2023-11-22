@@ -20,7 +20,7 @@ const App = () => {
       district: 'District Name',
       detail: 'Detailed address here',
     },
-    rooms: ['roomId1', 'roomId2'],
+    rooms: ['roomId1', 'roomId2', 'roomId3'],
     option: [
       {
         category: 'Amenities',
@@ -66,7 +66,6 @@ const App = () => {
             />
           }
         />
-        <Route path="/detail" element={<DetailPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search-detail" element={<SearchDetailPage />} />
       </Routes>

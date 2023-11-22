@@ -1,9 +1,7 @@
 // App.js
 import React, { useState } from 'react'
-import LodgingComponent from './components/detail/LodgingComponent'
+import Outlet from './Outlet'
 import DetailHeader from './components/detail/DetailHeader'
-import CalendarComponent from './components/detail/CalendarComponent'
-import DetailFooter from './components/detail/DetailFooter'
 
 const App = () => {
   // 더미 데이터
@@ -87,9 +85,11 @@ const App = () => {
   return (
     <div className="App">
       <DetailHeader />
-      <LodgingComponent lodging={lodgingData} />
-      <CalendarComponent setReservations={setReservations} />
-      <DetailFooter lodging={lodgingData} reservations={reservations} />
+      <Outlet
+        lodgingData={lodgingData}
+        reservations={reservations}
+        setReservations={setReservations}
+      />
     </div>
   )
 }

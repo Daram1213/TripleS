@@ -46,8 +46,8 @@ const CalendarComponent = ({ setReservations }) => {
 
   const updateReservations = () => {
     setReservations((prevReservations) =>
-      prevReservations.map((reservation) =>
-        reservation.userId === '12345'
+      prevReservations.map((reservation, index) =>
+        index === 0 // 첫 번째 예약을 업데이트
           ? { ...reservation, checkInDate: startDate, checkOutDate: endDate }
           : reservation,
       ),

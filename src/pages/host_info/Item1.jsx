@@ -11,11 +11,11 @@ function Item1({ title, contents }) {
             <FaDoorClosed size="40" color="" />
           </Box>
           <Box className=" flex flex-col ml-10 justify-center">
-            <Typography className="text-base font-bold">
-              <h3 className="item1-title">{title}</h3>
+            <Typography className="item1-title font-bold text-sm">
+              {title}
             </Typography>
-            <Typography className="text-sm">
-              <Box className="item1-contents">{contents}</Box>
+            <Typography className="item1-contents text-sm">
+              {contents}
             </Typography>
           </Box>
         </Box>

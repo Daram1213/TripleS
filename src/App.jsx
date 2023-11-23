@@ -25,6 +25,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         <BrowserRouter>
+<<<<<<<
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route element={<Outlet />}>
@@ -42,7 +43,6 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
-
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

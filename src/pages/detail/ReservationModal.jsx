@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 import CloseIcon from '../../assets/svg/CloseIcon'
 
-const ReservationModal = ({ closeModal, reservations }) => {
+const ReservationModal = ({ lodgingData, closeModal, reservations }) => {
   // 더미 데이터
   const roomTypeData = {
     name: 'Deluxe Sea View', // 객실 이름
@@ -23,10 +23,19 @@ const ReservationModal = ({ closeModal, reservations }) => {
     ],
   }
 
+  const roomBookingData = {
+    status: true,
+    checkInDate: '2023-12-01',
+    checkOutDate: '2023-12-05',
+    adults: 2,
+    children: 1,
+    bookingStatus: 'confirmed',
+  }
+
   const checkInDate = dayjs(reservations[0].checkInDate)
   const checkOutDate = dayjs(reservations[0].checkOutDate)
   const totalNights = checkOutDate.diff(checkInDate, 'day')
-  const pricePerNight = roomTypeData.price // Assume this is already a number
+  const pricePerNight = roomTypeData.price
   const totalPrice = pricePerNight * totalNights
 
   const [isReserved, setIsReserved] = useState(false)
@@ -47,35 +56,64 @@ const ReservationModal = ({ closeModal, reservations }) => {
 
   return (
     <Box className="fixed inset-0 bg-black bg-opacity-50 overflow-y-hidden h-full w-full flex justify-center items-center z-50">
-      <Box className="bg-white p-4 md:p-8 rounded-lg shadow-2xl max-w-md mx-auto">
+      <Box
+        className="bg-white p-4 md:p-8 rounded-lg shadow-2xl max-w-md mx-auto"
+        style={{ borderRadius: 10 }}
+      >
         <Box className="text-center space-y-4">
-          <Typography className="text-3xl font-bold text-gray-900">
-            ₩{pricePerNight} /박
+          <Typography
+            variant="h6"
+            className="font-bold text-gray-900"
+            style={{ fontWeight: 'bold' }}
+          >
+            예약 요청
           </Typography>
-          <Typography className="text-lg text-gray-500">
-            총 {totalNights}박
-          </Typography>
+
+          <Box className="flex items-center">
+            <img
+              src={lodgingData.image[0]}
+              alt="객실 이미지"
+              className="max-w-full mx-auto rounded-lg"
+              style={{ maxWidth: '30%', height: 'auto', borderRadius: 10 }}
+            />
+            <Typography className="text-3xl font-bold text-gray-900 ml-4">
+              {lodgingData.name}, {lodgingData.address}
+            </Typography>
+          </Box>
           <Box className="space-y-2">
             <Box>
-              <Typography className="text-gray-500">체크인</Typography>
+              <Typography
+                className="text-gray-800"
+                style={{ fontWeight: 'bold' }}
+              >
+                날짜
+              </Typography>
               <Typography className="text-gray-800">
-                {checkInDate.format('YYYY.MM.DD')}
+                {checkInDate.format('YYYY.MM.DD')}~
+                {checkOutDate.format('YYYY.MM.DD')}
               </Typography>
             </Box>
             <Box>
-              <Typography className="text-gray-500">체크아웃</Typography>
+              <Typography
+                className="text-gray-800"
+                style={{ fontWeight: 'bold' }}
+              >
+                인원
+              </Typography>
               <Typography className="text-gray-800">
-                {checkOutDate.format('YYYY.MM.DD')}
+                성인 {roomBookingData.adults} / 아이{roomBookingData.children}
               </Typography>
             </Box>
           </Box>
           {!isReserved ? (
-            <button
+            <Button
               onClick={handleReservation}
-              className="w-full bg-pink-600 text-white py-2 px-4 rounded-full transition duration-300 ease-in-out hover:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300"
+              variant="contained"
+              color="primary"
+              className="w-full rounded-full transition duration-300 ease-in-out hover:bg-pink-700"
             >
               예약하기
-            </button>
+            </Button>
           ) : (
             <Box className="text-lg text-green-700 bg-green-100 py-2 px-4 rounded-md border border-green-200">
               예약되었습니다!

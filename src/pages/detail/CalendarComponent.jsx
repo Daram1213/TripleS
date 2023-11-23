@@ -2,10 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
-import dayjs from 'dayjs' // Dayjs를 임포트합니다
-import { Box } from '@mui/material'
+import dayjs from 'dayjs'
+import { Grid, Box } from '@mui/material'
 
-const CalendarComponent = ({ setReservations }) => {
+const CalendarComponent = ({ lodgingData, setReservations }) => {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
@@ -45,7 +45,7 @@ const CalendarComponent = ({ setReservations }) => {
   const updateReservations = () => {
     setReservations((prevReservations) =>
       prevReservations.map((reservation, index) =>
-        index === 0 // 첫 번째 예약을 업데이트
+        index === 0
           ? { ...reservation, checkInDate: startDate, checkOutDate: endDate }
           : reservation,
       ),
@@ -56,16 +56,54 @@ const CalendarComponent = ({ setReservations }) => {
     setCurrentMonth(date)
   }
 
+  function calculateNights(startDate, endDate) {
+    const start = new Date(startDate)
+    const end = new Date(endDate)
+
+    const timeDifference = end - start
+
+    const nights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24))
+
+    return nights
+  }
+
+  const nights = calculateNights(startDate, endDate)
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Box style={{ marginBottom: '70px' }}>
+    <>
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Grid
+          sx={{
+            width: '480px',
+          }}
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Box className="font-bold text-xl mb-2">
+            {startDate && endDate
+              ? `${lodgingData.address}에서 ${nights}박`
+              : '숙박 일정을 선택하세요'}
+          </Box>
+        </Grid>
+      </Box>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           value={calendarValue}
           onChange={handleDateChange}
           onMonthChange={handleMonthChange}
         />
-      </Box>
-    </LocalizationProvider>
+      </LocalizationProvider>
+    </>
   )
 }
 

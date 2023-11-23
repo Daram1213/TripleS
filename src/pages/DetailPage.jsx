@@ -14,16 +14,11 @@ function DetailPage() {
     types: 'hotel',
     theme: 'Ocean View',
     name: 'Sea Breeze Resort',
-    address: {
-      city: 'Yeongcheon',
-      county: 'Gyeongsangbuk-do',
-      district: 'District Name',
-      detail: 'Detailed address here',
-    },
+    address: 'Yeongcheon, Gyeongsangbuk-do',
     rooms: ['roomId1', 'roomId2'],
     map: {
-      latitude: 37.7749, // 숙소의 위도
-      longitude: -122.4194, // 숙소의 경도
+      latitude: 33.450701, // 숙소의 위도
+      longitude: 126.570667, // 숙소의 경도
     },
     option: [
       {
@@ -72,7 +67,10 @@ function DetailPage() {
     <>
       <DetailHeader />
       <LodgingComponent lodgingData={lodgingData} />
-      <CalendarComponent setReservations={setReservations} />
+      <CalendarComponent
+        lodgingData={lodgingData}
+        setReservations={setReservations}
+      />
       <Kakao lodgingData={lodgingData} />
       <DetailFooter
         lodgingData={lodgingData}

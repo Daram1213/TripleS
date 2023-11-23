@@ -38,6 +38,8 @@ const RoomComponent = () => {
     },
   }
 
+  const colorPalette = ['#6495ED', '#6A5ACD', '#6B8E23', '#C0C0C0', '#BDB76B'] // 색상 팔레트
+
   return (
     <Box className="max-w-sm rounded overflow-hidden shadow-lg mb-6">
       <Box className="px-6 py-4">
@@ -58,6 +60,19 @@ const RoomComponent = () => {
             color={roomDummyData.roomBooking.status ? 'success' : 'error'}
             variant="outlined"
           />
+          <Box className="mt-2">
+            {roomTypeData.amenities.map((amenity, index) => (
+              <Chip
+                key={index}
+                label={amenity}
+                className="mr-2 mb-2"
+                style={{
+                  backgroundColor: colorPalette[index % colorPalette.length],
+                  color: 'white', // 흰색 글자
+                }}
+              />
+            ))}
+          </Box>
         </Box>
       </Box>
       <img src={roomTypeData.image[0]} alt="Room" className="w-full" />

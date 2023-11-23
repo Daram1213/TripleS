@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Typography, Grid, Box } from '@mui/material'
+import {
+  Typography,
+  Grid,
+  Box,
+  Chip,
+  Link,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material'
 import RoomComponent from './RoomComponent'
 import LeftArrowIcon from '../../assets/svg/LeftArrowIcon'
 import RightArrowIcon from '../../assets/svg/RightArrowIcon'
@@ -31,6 +41,18 @@ const LodgingComponent = ({ lodgingData }) => {
     )
   }
 
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleOpenModal = () => {
+    setOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
+
+  const colorPalette = ['#6495ED', '#6A5ACD', '#6B8E23', '#C0C0C0', '#BDB76B'] // 색상 팔레트
+
   return (
     <Box className="mt-8 container mx-auto px-4">
       <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-2">
@@ -40,12 +62,28 @@ const LodgingComponent = ({ lodgingData }) => {
         {lodgingData.theme} - {lodgingData.types}
       </h2>
       <Typography className="text-lg text-gray-500 mb-4">
-        {`${lodgingData.address.city}, ${lodgingData.address.district}, ${lodgingData.address.county}, ${lodgingData.address.detail}`}
+        {`${lodgingData.address}`}
       </Typography>
+      <Box className="mb-4">
+        {lodgingData.option.map((item, index) => (
+          <Chip
+            key={index}
+            label={item.details}
+            className="mr-2 mb-2"
+            style={{
+              backgroundColor: colorPalette[index % colorPalette.length],
+              color: 'white',
+            }}
+          />
+        ))}
+      </Box>
 
       <Box className="relative w-full mb-8" data-carousel="slide">
         {/* Carousel wrapper */}
-        <Box className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <Box
+          className="relative h-56 overflow-hidden rounded-lg md:h-96"
+          style={{ borderRadius: 10 }}
+        >
           {lodgingData.image.map((imgSrc, index) => (
             <Box
               key={index}
@@ -65,22 +103,22 @@ const LodgingComponent = ({ lodgingData }) => {
         {/* Slider indicators */}
         <Box className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
           {lodgingData.image.map((_, index) => (
-            <button
+            <Link
               key={index}
-              type="button"
+              type="Link"
               className={`w-3 h-3 rounded-full ${
                 index === activeIndex ? 'bg-blue-500' : 'bg-white'
               }`}
               aria-current={index === activeIndex ? 'true' : 'false'}
               aria-label={`Slide ${index + 1}`}
               onClick={() => goToSlide(index)}
-            ></button>
+            ></Link>
           ))}
         </Box>
 
         {/* <!-- Slider controls --> */}
-        <button
-          type="button"
+        <Link
+          type="Link"
           className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           data-carousel-prev
           onClick={goToPrevSlide}
@@ -90,9 +128,9 @@ const LodgingComponent = ({ lodgingData }) => {
 
             <Box className="sr-only">Previous</Box>
           </Box>
-        </button>
-        <button
-          type="button"
+        </Link>
+        <Link
+          type="Link"
           className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
           data-carousel-next
           onClick={goToNextSlide}
@@ -102,12 +140,34 @@ const LodgingComponent = ({ lodgingData }) => {
 
             <Box className="sr-only">Next</Box>
           </Box>
-        </button>
+        </Link>
       </Box>
 
       <Typography variant="body1" paragraph>
         {lodgingData.description}
       </Typography>
+      <Link
+        variant="outlined"
+        color="primary"
+        onClick={handleOpenModal}
+        underline="always"
+      >
+        더보기
+      </Link>
+
+      <Dialog open={openModal} onClose={handleCloseModal}>
+        <DialogTitle>
+          <Box className="font-bold text-xl mb-2">숙소 설명</Box>
+        </DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">{lodgingData.description}</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Link onClick={handleCloseModal} color="primary">
+            닫기
+          </Link>
+        </DialogActions>
+      </Dialog>
       <Grid container spacing={2}>
         {lodgingData.rooms.map((index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>

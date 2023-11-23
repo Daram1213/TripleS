@@ -109,9 +109,9 @@ const LodgingComponent = ({ lodgingData }) => {
         {lodgingData.description}
       </Typography>
       <Grid container spacing={2}>
-        {lodgingData.rooms.map((room, index) => (
+        {lodgingData.rooms.map((index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <RoomComponent room={room} />
+            <RoomComponent />
           </Grid>
         ))}
       </Grid>

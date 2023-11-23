@@ -1,12 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import { Box, Typography } from '@mui/material'
+import CloseIcon from '../../assets/svg/CloseIcon'
 
-const ReservationModal = ({ closeModal, lodgingData, reservations }) => {
+const ReservationModal = ({ closeModal, reservations }) => {
+  // 더미 데이터
+  const roomTypeData = {
+    name: 'Deluxe Sea View', // 객실 이름
+    types: 'Deluxe', // 유형
+    bedType: 'King Size', // 침대 유형
+    price: 200000, // 1박 요금
+    capacity: 2, // 수용 가능 인원
+    size: 35, // 방의 크기 (예: 평방미터)
+    image: [
+      'https://example.com/images/room1.jpg', // 객실 사진 URL
+      'https://example.com/images/room2.jpg',
+    ],
+    amenities: [
+      'Free WiFi', // 제공되는 편의 시설
+      'Air Conditioning',
+      'Mini Bar',
+    ],
+  }
+
   const checkInDate = dayjs(reservations[0].checkInDate)
   const checkOutDate = dayjs(reservations[0].checkOutDate)
   const totalNights = checkOutDate.diff(checkInDate, 'day')
-  const pricePerNight = lodgingData.rooms[0].price // Assume this is already a number
+  const pricePerNight = roomTypeData.price // Assume this is already a number
   const totalPrice = pricePerNight * totalNights
 
   const [isReserved, setIsReserved] = useState(false)
@@ -30,7 +50,7 @@ const ReservationModal = ({ closeModal, lodgingData, reservations }) => {
       <Box className="bg-white p-4 md:p-8 rounded-lg shadow-2xl max-w-md mx-auto">
         <Box className="text-center space-y-4">
           <Typography className="text-3xl font-bold text-gray-900">
-            ₩{pricePerNight.toLocaleString()} /박
+            ₩{pricePerNight} /박
           </Typography>
           <Typography className="text-lg text-gray-500">
             총 {totalNights}박
@@ -76,20 +96,7 @@ const ReservationModal = ({ closeModal, lodgingData, reservations }) => {
             onClick={closeModal}
             className="absolute top-0 right-0 mt-4 mr-4 text-gray-400 hover:text-gray-600"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <CloseIcon />
           </button>
         </Box>
       </Box>

@@ -24,7 +24,7 @@ function SearchTourList() {
     queryFn: fetchSearchTour,
   })
 
-  const attractionData = attractionRes?.data?.attractions
+  const attractionData = attractionRes?.data?.attraction
 
   useEffect(() => {
     if (!attractionRes.isLoading && attractionData) {

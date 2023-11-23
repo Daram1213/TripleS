@@ -12,8 +12,8 @@ const RoomComponent = () => {
     capacity: 2, // 수용 가능 인원
     size: 35, // 방의 크기 (예: 평방미터)
     image: [
-      'src/assets/detail/room1.JPG', // 객실 사진 URL
-      'src/assets/detail/room2.JPG',
+      '/src/assets/detail/room1.JPG', // 객실 사진 URL
+      '/src/assets/detail/room2.JPG',
     ],
     amenities: [
       'Free WiFi', // 제공되는 편의 시설
@@ -40,7 +40,6 @@ const RoomComponent = () => {
 
   const colorPalette = ['#6495ED', '#6A5ACD', '#6B8E23', '#C0C0C0', '#BDB76B'] // 색상 팔레트
 
-function RoomComponent({ room }) {
   return (
     <Box className="max-w-sm rounded overflow-hidden shadow-lg mb-6">
       <Box className="px-6 py-4">

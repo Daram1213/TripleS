@@ -6,7 +6,6 @@ import dayjs from 'dayjs'
 import { Grid, Box } from '@mui/material'
 
 const CalendarComponent = ({ lodgingData, setReservations }) => {
-function CalendarComponent({ setReservations }) {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
@@ -28,8 +27,6 @@ function CalendarComponent({ setReservations }) {
       return startDate ? dayjs(startDate) : null
     }
   }, [selecting, startDate, endDate])
-    return endDate ? dayjs(endDate) : null
-  }, [selecting, startDate, endDate]) 
 
   const handleDateChange = (newValue) => {
     const formattedDate = newValue ? newValue.format('YYYY-MM-DD') : ''

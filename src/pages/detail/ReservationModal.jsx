@@ -23,20 +23,10 @@ const ReservationModal = ({ lodgingData, closeModal, reservations }) => {
     ],
   }
 
-  const roomBookingData = {
-    status: true,
-    checkInDate: '2023-12-01',
-    checkOutDate: '2023-12-05',
-    adults: 2,
-    children: 1,
-    bookingStatus: 'confirmed',
-  }
-
-function ReservationModal({ closeModal, lodgingData, reservations }) {
   const checkInDate = dayjs(reservations[0].checkInDate)
   const checkOutDate = dayjs(reservations[0].checkOutDate)
   const totalNights = checkOutDate.diff(checkInDate, 'day')
-  const pricePerNight = roomTypeData.price
+  const pricePerNight = roomTypeData.price // Assume this is already a number
   const totalPrice = pricePerNight * totalNights
 
   const [isReserved, setIsReserved] = useState(false)
@@ -62,12 +52,8 @@ function ReservationModal({ closeModal, lodgingData, reservations }) {
         style={{ borderRadius: 10 }}
       >
         <Box className="text-center space-y-4">
-          <Typography
-            variant="h6"
-            className="font-bold text-gray-900"
-            style={{ fontWeight: 'bold' }}
-          >
-            예약 요청
+          <Typography className="text-3xl font-bold text-gray-900">
+            ₩{pricePerNight.toLocaleString()} /박
           </Typography>
 
           <Box className="flex items-center">
@@ -102,7 +88,7 @@ function ReservationModal({ closeModal, lodgingData, reservations }) {
                 인원
               </Typography>
               <Typography className="text-gray-800">
-                성인 {roomBookingData.adults} / 아이{roomBookingData.children}
+                성인 {reservations.adults} / 아이{reservations.children}
               </Typography>
             </Box>
           </Box>

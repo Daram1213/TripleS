@@ -31,12 +31,12 @@ function DetailPage() {
       },
     ],
     image: [
-      'src/assets/detail/loadging.JPG',
-      'src/assets/detail/loadging2.JPG',
-      'src/assets/detail/loadging3.JPG',
-      'src/assets/detail/loadging4.JPG',
-      'src/assets/detail/loadging5.JPG',
-      'src/assets/detail/loadging6.JPG',
+      '/src/assets/detail/loadging.JPG',
+      '/src/assets/detail/loadging2.JPG',
+      '/src/assets/detail/loadging3.JPG',
+      '/src/assets/detail/loadging4.JPG',
+      '/src/assets/detail/loadging5.JPG',
+      '/src/assets/detail/loadging6.JPG',
     ],
     mainImage: 'src/assets/detail/loadging.JPG',
     description:

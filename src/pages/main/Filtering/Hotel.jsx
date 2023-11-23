@@ -5,7 +5,7 @@ import { IoSearch } from 'react-icons/io5'
 function Hotel() {
   return (
     <Box className="flex mt-2">
-      <Box className="border-t border-b border-l border-r border-grey rounded-b rounded-r w-300">
+      <Box className="border-t border-b border-l border-r border-grey rounded-b rounded-r w-7/12">
         <Box className="flex text-grey-700 p-3">
           <Typography className="text-xs">여행지</Typography>
         </Box>
@@ -18,7 +18,7 @@ function Hotel() {
       </Box>
 
       {/* 체크인 · 체크아웃 */}
-      <Box className="ml-2 border-t border-b border-l border-grey rounded-l w-200">
+      <Box className="ml-2 border-t border-b border-l border-grey rounded-l w-7/12">
         <Box className="flex text-grey-700 p-3">
           <Typography className="text-xs">체크인</Typography>
         </Box>
@@ -34,7 +34,7 @@ function Hotel() {
         <Typography className="text-xs">1박</Typography>
       </Box>
 
-      <Box className="border-t border-b border-r border-grey rounded-r w-200">
+      <Box className="border-t border-b border-r border-grey rounded-r w-7/12">
         <Box className="flex text-grey-700 p-3">
           <Typography className="text-xs">체크아웃</Typography>
         </Box>
@@ -46,7 +46,7 @@ function Hotel() {
         </Box>
       </Box>
 
-      <Box className="ml-2 border-t border-b border-l border-r border-grey rounded-b rounded-r w-300">
+      <Box className="ml-2 border-t border-b border-l border-r border-grey rounded-l w-7/12">
         <Box className="flex text-grey-700 p-3">
           <Typography className="text-xs">객실당 인원 수</Typography>
         </Box>
@@ -59,10 +59,15 @@ function Hotel() {
       </Box>
 
       {/* 검색 버튼 */}
-      <Box className="flex justify-center items-center ml-2">
-        <button className="flex justify-center items-center text-white bg-blue-600 w-full h-full text-2xl rounded-t rounded-b rounded-l p-3">
-          <IoSearch />
-          검색
+      <Box>
+        <button
+          id="searchButton"
+          className="flex justify-center items-center text-white bg-blue-600 w-6/12 h-full text-3xl rounded-r-lg p-3"
+        >
+          <Box className="flex items-center p-3">
+            <Typography className="hidden">검색</Typography>
+            <IoSearch />
+          </Box>
         </button>
       </Box>
     </Box>

@@ -1,16 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from '@mui/material'
 
 function ItemFooter({ Links, title }) {
   return (
     <ul>
       <h1 className="mb-3 font-extrabold">{title}</h1>
       {Links.map((link) => (
-        <li key={link.name || link.image}>
-          <a
-            className="text-blue-950 hover:text-blue-600 hover:underline
-            text-sm cursor-pointer leading-6"
+        <li className="mb-3" key={link.name || link.image}>
+          <Link
+            style={{
+              color: '#172554',
+              textDecoration: 'none',
+              fontSize: '0.875rem',
+              lineHeight: '1.5',
+            }}
+            className="cursor-pointer"
             href={link.link}
+            onMouseOver={(e) => {
+              e.currentTarget.style.color = '#2563eb'
+              e.currentTarget.style.textDecoration = 'underline'
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.color = '#172554'
+              e.currentTarget.style.textDecoration = 'none'
+            }}
           >
             {link.image && (
               <img
@@ -20,7 +34,7 @@ function ItemFooter({ Links, title }) {
               />
             )}
             {link.name}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

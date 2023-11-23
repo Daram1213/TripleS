@@ -4,6 +4,8 @@ import LodgingComponent from './detail/LodgingComponent'
 import CalendarComponent from './detail/CalendarComponent'
 import DetailFooter from './detail/DetailFooter'
 import ReservationModal from './detail/ReservationModal'
+import { Box } from '@mui/material'
+import Kakao from './detail/Kakao'
 
 function DetailPage() {
   const lodgingData = {
@@ -19,7 +21,15 @@ function DetailPage() {
       detail: 'Detailed address here',
     },
     rooms: ['roomId1', 'roomId2'],
+    map: {
+      latitude: 37.7749, // 숙소의 위도
+      longitude: -122.4194, // 숙소의 경도
+    },
     option: [
+      {
+        category: 'Amenities',
+        details: 'Free WiFi, Pool, Spa',
+      },
       {
         category: 'Amenities',
         details: 'Free WiFi, Pool, Spa',
@@ -63,6 +73,7 @@ function DetailPage() {
       <DetailHeader />
       <LodgingComponent lodgingData={lodgingData} />
       <CalendarComponent setReservations={setReservations} />
+      <Kakao lodgingData={lodgingData} />
       <DetailFooter
         lodgingData={lodgingData}
         reservations={reservations}

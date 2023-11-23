@@ -14,7 +14,7 @@ import second2 from '../../assets/FooterImg/second2.png'
 
 function Footer() {
   return (
-    <footer className="text-blue-950">
+    <Box className="text-blue-950">
       <Box className="flex justify-center border-t text-sm gap-24 sm:px-8 px-5 py-16">
         <FooterItem Links={CUSTOMER} title="고객문의" />
         <FooterItem Links={COMPANY} title="회사소개" />
@@ -48,7 +48,7 @@ function Footer() {
           고객센터: 한국 02 1234 해외 +82 1234 1234
         </Box>
       </Box>
-    </footer>
+    </Box>
   )
 }
 

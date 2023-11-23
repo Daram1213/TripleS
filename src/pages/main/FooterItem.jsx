@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@mui/material'
+import { Link, Typography } from '@mui/material'
 
 function ItemFooter({ Links, title }) {
   return (
     <ul>
-      <h1 className="mb-3 font-extrabold">{title}</h1>
+      <Typography style={{ marginBottom: '1rem', fontWeight: 'bold' }}>
+        {title}
+      </Typography>
+
       {Links.map((link) => (
         <li className="mb-3" key={link.name || link.image}>
           <Link

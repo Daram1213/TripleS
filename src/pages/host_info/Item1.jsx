@@ -8,7 +8,7 @@ function Item1({ title, contents }) {
       <Box className="item1 flex flex-row mb-2 mt-2">
         <Box className="item1-container flex">
           <Box className="item1-icon m-2">
-            <FaDoorClosed size="40" color="" />
+            <FaDoorClosed size="40" />
           </Box>
           <Box className=" flex flex-col ml-10 justify-center">
             <Typography className="item1-title font-bold text-sm">

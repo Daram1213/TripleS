@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { Outlet } from 'react-router'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material'
+import { createTheme } from '@mui/material/styles'
+import MainPage from './pages/MainPage'
+import DetailPage from './pages/DetailPage'
+import SearchPage from './pages/SearchPage'
+import SearchDetailPage from './pages/SearchDetailPage'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const theme = createTheme()
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((_) => _ + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Outlet />}>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/detail" element={<DetailPage />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/search-detail" element={<SearchDetailPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CssBaseline>
+    </ThemeProvider>
   )
 }
 

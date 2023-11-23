@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../pages/main/Header'
+import Header from './main/Header'
 
-const MainPage = () => {
+function MainPage() {
   return <Header />
 }
 

@@ -8,8 +8,8 @@ const Kakao = ({ lodgingData }) => {
     const container = document.getElementById('map')
     const options = {
       center: new kakao.maps.LatLng(
-        lodgingData.map.latitude,
-        lodgingData.map.longitude,
+        lodgingData.lodging.map.latitude,
+        lodgingData.lodging.map.longitude,
       ),
       level: 3,
     }

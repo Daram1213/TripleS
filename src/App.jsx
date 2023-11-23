@@ -29,9 +29,20 @@ function App() {
             <Routes>
               <Route element={<Outlet />}>
                 <Route path="/" element={<MainPage />} />
-                <Route path="/detail" element={<DetailPage />} />
-                <Route path="/hotel-detail/:id" element={<DetailPage />} />
-                <Route path="/search" element={<SearchPage />} />
+
+                {/* 통합검색, 호텔리스트, 여행지리스트 */}
+                <Route path="/searchList/:keyword" element={<SearchPage />}>
+                  <Route path=":id" element={<DetailPage />} />
+                </Route>
+                {/* <Route path="/hotelSearchList/:keyword" element={<HotelSearchList />}>
+                  <Route path=":id" element={<DetailPage />} />
+                </Route>
+                <Route path="/tourSearchList/:keyword" element={<TourSearchList />}>
+                  <Route path=":id" element={<DetailPage />} />
+                </Route> */}
+
+                {/* <Route path="/detail" element={<DetailPage />} /> */}
+
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

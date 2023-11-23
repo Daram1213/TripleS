@@ -43,6 +43,10 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
+<<<<<<< refs/remotes/origin/main
+=======
+
+>>>>>>> fix: fix css, routing, feat: update sidebar style that clicked
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

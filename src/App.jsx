@@ -25,11 +25,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         <BrowserRouter>
+<<<<<<< refs/remotes/origin/main
 <<<<<<<
+=======
+>>>>>>> feat: create search main page, card UI, sidebar
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route element={<Outlet />}>
                 <Route path="/" element={<MainPage />} />
+<<<<<<< refs/remotes/origin/main
 
                 {/* 통합검색, 호텔리스트, 여행지리스트 */}
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
@@ -47,6 +51,11 @@ function App() {
 =======
 
 >>>>>>> fix: fix css, routing, feat: update sidebar style that clicked
+=======
+                <Route path="/detail" element={<DetailPage />} />
+                <Route path="/hotel-detail/:id" element={<DetailPage />} />
+                <Route path="/search" element={<SearchPage />} />
+>>>>>>> feat: create search main page, card UI, sidebar
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

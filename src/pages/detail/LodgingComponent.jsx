@@ -113,7 +113,6 @@ function LodgingComponent({ lodgingData }) {
               aria-label={`Slide ${index + 1}`}
               onClick={() => goToSlide(index)}
             ></Link>
-            />
           ))}
         </Box>
 

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import React from 'react'
 
-const DetailFooter = ({ reservations, openModal }) => {
+const DetailFooter = ({ lodgingData, reservations, openModal }) => {
   // 더미 데이터
   const roomTypeData = {
     name: 'Deluxe Sea View', // 객실 이름
@@ -21,20 +21,13 @@ const DetailFooter = ({ reservations, openModal }) => {
     ],
   }
 
-function DetailFooter({ lodgingData, reservations, openModal }) {
   return (
     <Box>
       <footer className="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-        <Box className="flex flex-col md:flex-row text-sm  dark:text-gray-400">
-          <Box style={{ whiteSpace: 'nowrap' }}>
-            <Box className="font-bold text-xl mb-2">
-              ₩{roomTypeData.price} /박
-            </Box>
-          </Box>
-          <Box className="md:ml-4" style={{ whiteSpace: 'nowrap' }}>
-            <Box className="text-xl mb-2">
-              {reservations[0].checkInDate} ~ {reservations[0].checkOutDate}
-            </Box>
+        <Box className="flex flex-col md:flex-row text-sm text-gray-500 dark:text-gray-400">
+          <Box>₩{roomTypeData.price} /박</Box>
+          <Box className="md:ml-4">
+            {reservations[0].checkInDate} ~ {reservations[0].checkOutDate}
           </Box>
         </Box>
 

@@ -1,5 +1,6 @@
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 <<<<<<<
 import { Box } from '@mui/material'
 import { Outlet } from 'react-router'
@@ -25,10 +26,15 @@ import { Outlet } from 'react-router'
 =======
 import React from 'react'
 >>>>>>> feat: create search main page, card UI, sidebar
+=======
+import { Box } from '@mui/material'
+import { Outlet } from 'react-router'
+>>>>>>> fix: fix css, routing, feat: update sidebar style that clicked
 import SearchCard from '../../components/search/SearchCard'
 
 function SearchPage() {
   return (
+<<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
     <Box>
       <SearchCard />
@@ -39,6 +45,12 @@ function SearchPage() {
       <SearchCard />
     </div>
 >>>>>>> feat: create search main page, card UI, sidebar
+=======
+    <Box>
+      <SearchCard />
+      <Outlet />
+    </Box>
+>>>>>>> fix: fix css, routing, feat: update sidebar style that clicked
   )
 }
 

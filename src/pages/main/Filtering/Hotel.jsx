@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography, Box } from '@mui/material'
-// import { IoIosInformationCircle, IoMdStarOutline } from 'react-icons/io'
 import { IoSearch } from 'react-icons/io5'
 import RoomCount from './FilteringFuc/RoomCount'
 import Destination from './FilteringFuc/Destination'
@@ -8,7 +7,7 @@ import CheckInOut from './FilteringFuc/CheckInOut'
 
 function Hotel() {
   return (
-    <Box style={{ display: 'flex', flexDirection: 'row' }}>
+    <Box style={{ display: 'flex' }}>
       <Box className="w-8/12 h-fit">
         <Destination />
       </Box>

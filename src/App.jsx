@@ -34,14 +34,7 @@ function App() {
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
                   <Route path=":id" element={<DetailPage />} />
                 </Route>
-                {/* <Route path="/hotelSearchList/:keyword" element={<HotelSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route>
-                <Route path="/tourSearchList/:keyword" element={<TourSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route> */}
 
-                {/* <Route path="/detail" element={<DetailPage />} /> */}
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

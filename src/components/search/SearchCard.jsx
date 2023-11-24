@@ -131,20 +131,19 @@ function SearchCard() {
         <SideBar keyword={keyword} />
         <Box className="flex flex-auto flex-col px-4">
           <Box className="flex-auto px-4">
-            <Box className="my-5">
-              <Typography
-                className="text-gray-900"
-                style={{
-                  display: 'inline',
-                  fontWeight: 600,
-                  fontSize: '1.5rem',
-                }}
-                variant="body1"
-                component="span"
-              >
-                호텔
-              </Typography>
-            </Box>
+            <Typography
+              className="text-gray-900 my-5"
+              style={{
+                display: 'inline',
+                fontWeight: 600,
+                fontSize: '1.5rem',
+              }}
+              variant="body1"
+              component="span"
+            >
+              호텔
+            </Typography>
+
             <Box className="grid w-full max-w-6xl  sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 xl:grid-cols-3">
               {hotels.length ? (
                 hotels.map((hotel) => (
@@ -174,20 +173,19 @@ function SearchCard() {
             </Box>
           </Box>
           <Box className="tour-container flex-auto px-4">
-            <Box className="my-5">
-              <Typography
-                className="text-gray-900"
-                style={{
-                  display: 'inline',
-                  fontWeight: 600,
-                  fontSize: '1.5rem',
-                }}
-                variant="body1"
-                component="span"
-              >
-                여행지
-              </Typography>
-            </Box>
+            <Typography
+              className="text-gray-900 my-5"
+              style={{
+                display: 'inline',
+                fontWeight: 600,
+                fontSize: '1.5rem',
+              }}
+              variant="body1"
+              component="span"
+            >
+              여행지
+            </Typography>
+
             <Box className="grid w-full max-w-6xl sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 lg:grid-cols-3">
               {tours.length ? (
                 tours.map((tour) => <TourItem key={tour.id} tour={tour} />)

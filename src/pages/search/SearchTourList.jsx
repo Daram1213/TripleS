@@ -9,11 +9,16 @@ import SideBar from '../../components/search/SideBar'
 
 function SearchTourList() {
   const [page, setPage] = useState(1)
-  const items = 1
+  const items = 10
   const [attractions, setAttractions] = useState([])
-
-  // useParams로 검색 정보 가져오기 -> useQuery에 검색어, page 전달
   const { keyword } = useParams()
+
+  useEffect(
+    () => () => {
+      setAttractions([])
+    },
+    [],
+  )
 
   const attractionRes = useQuery({
     queryKey: ['attractions', keyword, items],
@@ -34,7 +39,8 @@ function SearchTourList() {
   const [intersectRef] = useIntersect(
     async (entry, observer) => {
       observer.unobserve(entry.target)
-      if (!attractionRes.isLoading) setPage((prevPage) => prevPage + 1)
+      if (!attractionRes.isLoading && attractionData.length === items)
+        setPage((prevPage) => prevPage + 1)
       observer.observe(entry.target)
     },
     { threshold: 0.5 },

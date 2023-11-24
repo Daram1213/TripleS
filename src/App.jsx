@@ -49,13 +49,8 @@ function App() {
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
                   <Route path=":id" element={<DetailPage />} />
                 </Route>
-                {/* <Route path="/hotelSearchList/:keyword" element={<HotelSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route>
-                <Route path="/tourSearchList/:keyword" element={<TourSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route> */}
 
+<<<<<<< refs/remotes/origin/main
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
@@ -83,6 +78,8 @@ function App() {
 >>>>>>> chore: rebase main fix conflict2
 =======
 >>>>>>> chore: commit before rebase main
+=======
+>>>>>>> fix: fix querySelector from sidebar, etc
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

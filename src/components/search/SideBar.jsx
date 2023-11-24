@@ -1,8 +1,12 @@
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 import { useEffect, useState } from 'react'
 =======
 import { useEffect } from 'react'
 >>>>>>> chore: rebase main fix conflict2
+=======
+import { useEffect, useState } from 'react'
+>>>>>>> fix: fix querySelector from sidebar, etc
 import { useLocation, Link } from 'react-router-dom'
 import { Typography } from '@mui/material'
 import { Button } from '@mui/base'

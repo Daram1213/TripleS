@@ -36,6 +36,7 @@ function App() {
                 </Route>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -46,6 +47,8 @@ function App() {
 >>>>>>> 3058b8a (chore: commit before rebase main)
 =======
 >>>>>>> 4d62bc9 (fix: fix querySelector from sidebar, etc)
+=======
+>>>>>>> 4d62bc9806d9e6c148fe922bb9c51a6682686f48
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

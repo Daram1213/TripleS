@@ -42,6 +42,10 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

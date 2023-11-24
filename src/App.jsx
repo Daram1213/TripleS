@@ -29,7 +29,6 @@ function App() {
             <Routes>
               <Route element={<Outlet />}>
                 <Route path="/" element={<MainPage />} />
-<<<<<<< HEAD
 
                 {/* 통합검색, 호텔리스트, 여행지리스트 */}
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
@@ -43,12 +42,6 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
-
-=======
-                <Route path="/detail" element={<DetailPage />} />
-                <Route path="/hotel-detail/:id" element={<DetailPage />} />
-                <Route path="/search" element={<SearchPage />} />
->>>>>>> 4c37ac8 (feat: create search main page, card UI, sidebar)
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

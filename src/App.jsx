@@ -60,6 +60,7 @@ function App() {
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 =======
 
 <<<<<<< refs/remotes/origin/main
@@ -80,6 +81,8 @@ function App() {
 >>>>>>> rebase main2
 =======
 >>>>>>> chore: rebase main fix conflict2
+=======
+>>>>>>> chore: commit before rebase main
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

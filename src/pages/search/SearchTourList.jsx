@@ -19,9 +19,8 @@ function SearchTourList() {
     },
     [],
   )
-
   const attractionRes = useQuery({
-    queryKey: ['attractions', keyword, items],
+    queryKey: ['attractions', keyword, items, page],
     queryFn: fetchSearchTour,
   })
 

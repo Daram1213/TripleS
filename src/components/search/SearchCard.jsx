@@ -81,7 +81,7 @@ function SearchCard() {
               )}
             </Box>
             <Box className="flex items-end justify-end">
-              <Link to={`/hotelSearchList/${keyword}`}>
+              <Link to={`/searchHotelList/${keyword}`}>
                 <Typography variant="body1" className="text-lg text-gray-500">
                   더보기
                 </Typography>
@@ -126,7 +126,7 @@ function SearchCard() {
               )}
             </Box>
             <Box className="flex items-end justify-end">
-              <Link to={`/tourSearchList/${keyword}`}>
+              <Link to={`/searchTourList/${keyword}`}>
                 <Typography variant="body1" className="text-lg text-gray-500">
                   더보기
                 </Typography>

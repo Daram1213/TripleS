@@ -7,8 +7,8 @@ import { IoMdPerson } from 'react-icons/io'
 function AirlineTicket() {
   return (
     <>
-      <Box className="flex mb-5 text-blue-900">
-        <Box className="flex w-3/12">
+      <Box className="flex mb-5 text-blue-900 justify-start">
+        <Box className="flex w-full">
           <Box className="flex items-center mr-5 text-sm">
             <PiAirplaneTiltFill />
             왕복
@@ -68,8 +68,8 @@ function AirlineTicket() {
         </Box>
 
         {/* 검색 버튼 */}
-        <Box className="flex justify-center items-center ml-5">
-          <button className="flex items-center text-white bg-blue-600 w-full h-11 text-xl rounded-t rounded-b rounded-l p-6">
+        <Box className="flex justify-center items-center ml-5 w-3/12">
+          <button className="flex justify-center items-center text-white bg-blue-600 w-full h-11 text-xl rounded-t rounded-b rounded-l">
             <IoSearch />
             검색
           </button>

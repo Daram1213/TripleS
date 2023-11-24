@@ -5,7 +5,7 @@ import { IoSearch } from 'react-icons/io5'
 function PickUp() {
   return (
     <>
-      <Box className="border-t border-b border-l border-r border-grey w-200">
+      <Box className="border-t border-b border-l border-r rounded-t rounded-l border-grey w-200">
         <Box className="flex text-grey-700 p-3">
           <Typography className="text-xs">인수장소</Typography>
         </Box>
@@ -19,7 +19,7 @@ function PickUp() {
 
       {/* 인수일시 */}
       <Box className="flex">
-        <Box className="border-t border-b border-l border-grey w-1/5">
+        <Box className="border-t border-b border-l border-grey w-1/5 rounded-l">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">인수일시</Typography>
           </Box>
@@ -71,7 +71,7 @@ function PickUp() {
         {/* 검색 버튼 */}
         <Box className="w-1/5">
           {/* eslint-disable-next-line */}
-          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-3xl p-15">
+          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-3xl p-15 rounded-b">
             <IoSearch />
           </button>
         </Box>

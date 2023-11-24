@@ -43,9 +43,12 @@ function App() {
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
+=======
+>>>>>>> 3058b8a (chore: commit before rebase main)
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

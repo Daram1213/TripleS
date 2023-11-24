@@ -9,9 +9,16 @@ import SideBar from '../../components/search/SideBar'
 
 function SearchHotelList() {
   const [page, setPage] = useState(1)
-  const items = 1
+  const items = 10
   const [hotels, setHotels] = useState([])
   const { keyword } = useParams()
+
+  useEffect(
+    () => () => {
+      setHotels([])
+    },
+    [],
+  )
 
   const hotelRes = useQuery({
     queryKey: ['hotels', keyword, items],
@@ -19,9 +26,10 @@ function SearchHotelList() {
   })
 
   const hotelData = hotelRes?.data?.lodgings
-
+  console.log(hotelData)
+  console.log(hotels)
   useEffect(() => {
-    if (!hotelRes.isLoading && hotelData) {
+    if (!hotelRes.isLoading && hotelData && hotelData.length > 0) {
       setHotels((prevHotels) => [...prevHotels, ...hotelData])
     }
   }, [hotelData, hotelRes.isLoading])
@@ -29,7 +37,8 @@ function SearchHotelList() {
   const [intersectRef] = useIntersect(
     async (entry, observer) => {
       observer.unobserve(entry.target)
-      if (!hotelRes.isLoading) setPage((prevPage) => prevPage + 1)
+      if (!hotelRes.isLoading && hotelData.length === items)
+        setPage((prevPage) => prevPage + 1)
       observer.observe(entry.target)
     },
     { threshold: 0.5 },

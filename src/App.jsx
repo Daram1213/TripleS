@@ -36,11 +36,14 @@ function App() {
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 =======
 >>>>>>> fix: fix css, routing, feat: update sidebar style that clicked
 =======
 <<<<<<< HEAD
 >>>>>>> rebase main2
+=======
+>>>>>>> chore: rebase main fix conflict2
 
                 {/* 통합검색, 호텔리스트, 여행지리스트 */}
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
@@ -54,6 +57,7 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
+<<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 =======
@@ -74,6 +78,8 @@ function App() {
 =======
 >>>>>>> 4c37ac8 (feat: create search main page, card UI, sidebar)
 >>>>>>> rebase main2
+=======
+>>>>>>> chore: rebase main fix conflict2
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

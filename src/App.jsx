@@ -8,11 +8,8 @@ import MainPage from './pages/MainPage'
 import DetailPage from './pages/DetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchDetailPage from './pages/search/SearchDetailPage'
-<<<<<<< HEAD
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
-=======
->>>>>>> bf2b05785dbf23a54960f32071aa48b6326477d5
 
 function App() {
   const theme = createTheme()
@@ -38,7 +35,6 @@ function App() {
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
                   <Route path=":id" element={<DetailPage />} />
                 </Route>
-<<<<<<< HEAD
                 <Route
                   path="/searchHotelList/:keyword"
                   element={<SearchHotelList />}
@@ -51,8 +47,6 @@ function App() {
                 >
                   <Route path=":id" element={<DetailPage />} />
                 </Route>
-=======
->>>>>>> bf2b05785dbf23a54960f32071aa48b6326477d5
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

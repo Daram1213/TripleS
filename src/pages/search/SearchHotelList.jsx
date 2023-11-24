@@ -21,13 +21,12 @@ function SearchHotelList() {
   )
 
   const hotelRes = useQuery({
-    queryKey: ['hotels', keyword, items],
+    queryKey: ['hotels', keyword, items, page],
     queryFn: fetchSearchHotel,
   })
 
   const hotelData = hotelRes?.data?.lodgings
-  console.log(hotelData)
-  console.log(hotels)
+
   useEffect(() => {
     if (!hotelRes.isLoading && hotelData && hotelData.length > 0) {
       setHotels((prevHotels) => [...prevHotels, ...hotelData])

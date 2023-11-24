@@ -1,7 +1,7 @@
-import React from 'react'
+import { Box } from '@mui/material'
 
-const SearchDetailPage = () => {
-  return <div>검색 더보기 페이지</div>
+function SearchDetailPage() {
+  return <Box>검색 더보기 페이지</Box>
 }
 
 export default SearchDetailPage

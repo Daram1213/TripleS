@@ -42,10 +42,6 @@ function App() {
                 </Route> */}
 
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
-<<<<<<< HEAD
-=======
-
->>>>>>> d9fa50f392615f6b5457b35c29bd3d720b290b67
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

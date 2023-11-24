@@ -7,8 +7,8 @@ function MainPage() {
   return (
     <>
       <Header />
-      <Footer />
       <HomeBody />
+      <Footer />
     </>
   )
 }

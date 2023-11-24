@@ -256,9 +256,7 @@ function SearchCard() {
                 <h1>호텔 정보가 없습니다.</h1>
               ) : (
                 hotels.map((hotel) => (
-                  <Link to={`/hotel-detail/${hotel.id}`} key={hotel.id}>
-                    <HotelItem key={hotel.id} hotel={hotel} />
-                  </Link>
+                  <HotelItem key={hotel.id} hotel={hotel} />
                 ))
               )}
             </Box>

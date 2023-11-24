@@ -71,7 +71,7 @@ function PickUp() {
         {/* 검색 버튼 */}
         <Box className="w-1/5">
           {/* eslint-disable-next-line */}
-          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-3xl p-15 rounded-b">
+          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-3xl p-15 rounded-b transition duration-300 ease-in-out hover:bg-opacity-70">
             <IoSearch />
           </button>
         </Box>

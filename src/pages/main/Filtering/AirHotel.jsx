@@ -139,7 +139,7 @@ function AirHotel() {
 
         {/* 검색 버튼 */}
         <Box className="flex justify-center items-center ml-2 w-2/12">
-          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-xl rounded-r rounded-l p-5">
+          <button className="flex items-center justify-center text-white bg-blue-600 w-full h-full text-xl rounded-r rounded-l p-5 transition duration-300 ease-in-out hover:bg-opacity-70">
             <IoSearch />
             검색
           </button>

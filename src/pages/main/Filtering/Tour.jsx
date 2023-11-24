@@ -33,7 +33,7 @@ function Tour() {
       {/* 검색 버튼 */}
       <Box>
         {/* eslint-disable-next-line */}
-        <button className="flex items-center justify-center text-white bg-blue-600 w-auto h-full text-3xl p-2 rounded-r-lg">
+        <button className="flex items-center justify-center text-white bg-blue-600 w-auto h-full text-3xl p-2 rounded-r-lg transition duration-300 ease-in-out hover:bg-opacity-70">
           <IoSearch />
         </button>
       </Box>

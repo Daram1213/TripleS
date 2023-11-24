@@ -58,9 +58,9 @@ export default function Filtering() {
   }
 
   return (
-    <Box className="flex mx-auto p-10 bg-white w-3/5 h-2/5 rounded-tl-lg rounded-l-lg rounded-r-lg rounded-b-lg">
+    <Box className="flex mx-auto p-10 bg-white w-4/5 h-auto rounded-tl-lg rounded-l-lg rounded-r-lg rounded-b-lg">
       <Box className="w-full">
-        <Box sx={{ borderBottom: 1, borderColor: 'Boxider' }}>
+        <Box sx={{ borderColor: 'Boxider' }}>
           <Tabs
             value={value}
             onChange={handleChange}

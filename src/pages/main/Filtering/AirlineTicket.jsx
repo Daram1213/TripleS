@@ -69,7 +69,7 @@ function AirlineTicket() {
 
         {/* 검색 버튼 */}
         <Box className="flex justify-center items-center ml-5 w-3/12">
-          <button className="flex justify-center items-center text-white bg-blue-600 w-full h-11 text-xl rounded-t rounded-b rounded-l">
+          <button className="flex justify-center items-center text-white bg-blue-600 w-full h-11 text-xl rounded-t rounded-b rounded-l transition duration-300 ease-in-out hover:bg-opacity-70">
             <IoSearch />
             검색
           </button>

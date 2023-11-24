@@ -103,7 +103,7 @@ function TrainTicket() {
         {/* 검색 버튼 */}
         <Box>
           {/* eslint-disable-next-line */}
-          <button className="flex justify-center items-center text-white bg-blue-600 w-auto h-full text-3xl rounded-r-lg p-2">
+          <button className="flex justify-center items-center text-white bg-blue-600 w-auto h-full text-3xl rounded-r-lg p-2 transition duration-300 ease-in-out hover:bg-opacity-70">
             <IoSearch />
           </button>
         </Box>

@@ -34,13 +34,8 @@ function App() {
                 <Route path="/searchList/:keyword" element={<SearchPage />}>
                   <Route path=":id" element={<DetailPage />} />
                 </Route>
-                {/* <Route path="/hotelSearchList/:keyword" element={<HotelSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route>
-                <Route path="/tourSearchList/:keyword" element={<TourSearchList />}>
-                  <Route path=":id" element={<DetailPage />} />
-                </Route> */}
 
+<<<<<<< HEAD
                 {/* <Route path="/detail" element={<DetailPage />} /> */}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -49,6 +44,8 @@ function App() {
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 =======
 >>>>>>> 3058b8a (chore: commit before rebase main)
+=======
+>>>>>>> 4d62bc9 (fix: fix querySelector from sidebar, etc)
                 <Route path="/search-detail" element={<SearchDetailPage />} />
               </Route>
             </Routes>

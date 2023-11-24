@@ -1,4 +1,5 @@
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 import { useParams, Link } from 'react-router-dom'
 =======
 <<<<<<< HEAD
@@ -12,11 +13,15 @@ import { Link } from 'react-router-dom'
 import { useParams, Link } from 'react-router-dom'
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 >>>>>>> chore: rebase main fix conflict2
+=======
+import { useParams, Link } from 'react-router-dom'
+>>>>>>> chore: fix conflicts
 import { useQuery } from '@tanstack/react-query'
 import { Box, Typography } from '@mui/material'
 import SideBar from './SideBar'
 import HotelItem from './HotelItem'
 import TourItem from './TourItem'
+<<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 // import fetchHotel from '../../fetch/search/fetchHotel'
 // import fetchTour from '../../fetch/search/fetchTour'
@@ -34,6 +39,10 @@ import fetchTour from '../../fetch/search/fetchTour'
 // import fetchTour from '../../fetch/search/fetchTour'
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 >>>>>>> chore: rebase main fix conflict2
+=======
+// import fetchHotel from '../../fetch/search/fetchHotel'
+// import fetchTour from '../../fetch/search/fetchTour'
+>>>>>>> chore: fix conflicts
 
 const hotels = [
   {
@@ -103,12 +112,15 @@ const hotels = [
 
 const tours = [
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 >>>>>>> chore: rebase main fix conflict2
+=======
+>>>>>>> chore: fix conflicts
   {
     id: '1',
     name: '롯데월드',
@@ -150,6 +162,7 @@ const tours = [
     reviewCount: '100',
   },
 <<<<<<< refs/remotes/origin/main
+<<<<<<< refs/remotes/origin/main
 =======
 <<<<<<< HEAD
 =======
@@ -161,10 +174,13 @@ const tours = [
 =======
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 >>>>>>> chore: rebase main fix conflict2
+=======
+>>>>>>> chore: fix conflicts
 ]
 
 function SearchCard() {
   // 검색어 useParams로 가져오기 e.g. 서울, 종로, 일본
+<<<<<<< refs/remotes/origin/main
 <<<<<<< refs/remotes/origin/main
 =======
 <<<<<<< HEAD
@@ -269,8 +285,9 @@ function SearchCard() {
 =======
   const { search } = useParams()
 =======
+=======
+>>>>>>> chore: fix conflicts
   const { keyword } = useParams()
->>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 
   // useQuery로 데이터 fetch comments는 테스트용
   // 종합 결과 페이지에서는 페이지 데이터 x로 1페이지만 불러옴
@@ -368,15 +385,13 @@ function SearchCard() {
                 <Typography variant="body1" className="text-lg text-gray-500">
                   더보기
                 </Typography>
-<<<<<<< HEAD
-              </Box>
-            </Link>
->>>>>>> 4c37ac8 (feat: create search main page, card UI, sidebar)
-=======
               </Link>
             </Box>
+<<<<<<< refs/remotes/origin/main
 >>>>>>> 2460db9 (fix: fix css, routing, feat: update sidebar style that clicked)
 >>>>>>> chore: rebase main fix conflict2
+=======
+>>>>>>> chore: fix conflicts
           </Box>
         </Box>
       </Box>

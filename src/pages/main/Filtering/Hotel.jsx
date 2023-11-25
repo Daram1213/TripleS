@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Box, Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { IoSearch } from 'react-icons/io5'
 import RoomCount from './FilteringFuc/RoomCount'
 import Destination from './FilteringFuc/Destination'
@@ -12,7 +12,6 @@ function Hotel() {
         <Destination />
       </Box>
 
-      {/* 체크인 · 체크아웃 */}
       <Box className="w-8/12 h-fit ml-2">
         <CheckInOut />
       </Box>
@@ -21,16 +20,12 @@ function Hotel() {
         <RoomCount />
       </Box>
 
-      {/* 검색 버튼 */}
-      <Box>
+      <Box className="flex justify-center items-center ml-2 w-2/12">
         <Button
-          id="searchButton"
-          className="flex justify-center items-center text-white bg-blue-600 w-6/12 h-full text-3xl rounded-r-lg p-3 transition duration-300 ease-in-out hover:bg-opacity-70"
+          variant="contained"
+          className="flex items-center justify-center text-white bg-blue-600 w-full h-10 text-lg rounded-r-lg rounded-l-lg p-2 transition duration-300 ease-in-out hover:bg-opacity-80"
         >
-          <Box className="flex items-center p-3">
-            <Typography className="hidden">검색</Typography>
-            <IoSearch />
-          </Box>
+          <IoSearch className="text-xl" />
         </Button>
       </Box>
     </Box>

@@ -13,8 +13,8 @@ export default function CheckInOut() {
 
   // 날짜 변경에 따른 몇 박 몇 일 계산
   useEffect(() => {
-    const nights = checkOutDate.diff(checkInDate, 'day')
-    setNightCount(nights)
+    const nights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day')
+    setNightCount(nights >= 0 ? nights : 0)
   }, [checkInDate, checkOutDate])
 
   return (
@@ -27,8 +27,8 @@ export default function CheckInOut() {
           'StaticDatePicker',
         ]}
       >
-        <Box display="flex" alignItems="center">
-          <Box flex="1">
+        <Box className="flex">
+          <Box>
             <DemoItem label="체크인">
               <DatePicker
                 value={checkInDate}
@@ -43,12 +43,12 @@ export default function CheckInOut() {
             </Typography>
           </Box>
 
-          <Box ml={2}>
+          <Box className="ml-2">
             <DemoItem label="체크아웃">
               <DatePicker
                 value={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
-                minDate={checkInDate.add(1, 'day')}
+                minDate={dayjs(checkInDate).add(1, 'day')}
               />
             </DemoItem>
           </Box>

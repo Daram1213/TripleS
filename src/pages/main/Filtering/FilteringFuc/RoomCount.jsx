@@ -13,15 +13,20 @@ import {
 import { ExpandLess, ExpandMore } from '@mui/icons-material'
 
 function MyHeader() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const [quantityRoom, setQuantityRoom] = useState(1)
   const [quantityAdult, setQuantityAdult] = useState(1)
   const [quantityChild, setQuantityChild] = useState(0)
-  // 객실
+
   const handleRoomClick = () => {
     setOpen(!open)
   }
 
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  // 객실당 인원 수
   const decreaseQuantityRoom = () => {
     if (quantityRoom > 1) {
       setQuantityRoom(quantityRoom - 1)
@@ -29,10 +34,11 @@ function MyHeader() {
   }
 
   const increaseQuantityRoom = () => {
-    setQuantityRoom(quantityRoom + 1)
+    if (quantityRoom < 100) {
+      setQuantityRoom(quantityRoom + 1)
+    }
   }
-
-  // 성인
+  // 어른
   const decreaseQuantityAdult = () => {
     if (quantityAdult > 1) {
       setQuantityAdult(quantityAdult - 1)
@@ -40,7 +46,9 @@ function MyHeader() {
   }
 
   const increaseQuantityAdult = () => {
-    setQuantityAdult(quantityAdult + 1)
+    if (quantityAdult < 100) {
+      setQuantityAdult(quantityAdult + 1)
+    }
   }
 
   // 어린이
@@ -51,7 +59,9 @@ function MyHeader() {
   }
 
   const increaseQuantityChild = () => {
-    setQuantityChild(quantityChild + 1)
+    if (quantityChild < 100) {
+      setQuantityChild(quantityChild + 1)
+    }
   }
 
   return (
@@ -72,34 +82,40 @@ function MyHeader() {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem className="pl-4">
-            <ListItemText primary="객실" />
-            <Button onClick={decreaseQuantityRoom}>-</Button>
-            <Typography>{quantityRoom}</Typography>
-            <Button onClick={increaseQuantityRoom}>+</Button>
-          </ListItem>
-        </List>
-        <List component="div" disablePadding>
-          <ListItem className="pl-4">
-            <ListItemText primary="성인" />
-            <Button onClick={decreaseQuantityAdult}>-</Button>
-            <Typography>{quantityAdult}</Typography>
-            <Button onClick={increaseQuantityAdult}>+</Button>
-          </ListItem>
-        </List>
-        <List component="div" disablePadding>
-          <ListItem className="pl-4">
-            <ListItemText primary="어린이" />
-            <Button onClick={decreaseQuantityChild}>-</Button>
-            <Typography>{quantityChild}</Typography>
-            <Button onClick={increaseQuantityChild}>+</Button>
-          </ListItem>
-        </List>
-        <Box className="flex justify-end mt-2">
-          <button className="text-white bg-blue-600 text-base rounded-t rounded-b rounded-l transition duration-300 ease-in-out hover:bg-opacity-70 p-1">
-            확인
-          </button>
+        <Box className="pl-4">
+          <List component="div" disablePadding>
+            <ListItem>
+              <ListItemText primary="객실" />
+              <Button onClick={decreaseQuantityRoom}>-</Button>
+              <Typography>{quantityRoom}</Typography>
+              <Button onClick={increaseQuantityRoom}>+</Button>
+            </ListItem>
+          </List>
+          <List component="div" disablePadding>
+            <ListItem>
+              <ListItemText primary="성인" />
+              <Button onClick={decreaseQuantityAdult}>-</Button>
+              <Typography>{quantityAdult}</Typography>
+              <Button onClick={increaseQuantityAdult}>+</Button>
+            </ListItem>
+          </List>
+          <List component="div" disablePadding>
+            <ListItem>
+              <ListItemText primary="어린이" />
+              <Button onClick={decreaseQuantityChild}>-</Button>
+              <Typography>{quantityChild}</Typography>
+              <Button onClick={increaseQuantityChild}>+</Button>
+            </ListItem>
+          </List>
+          <Box className="flex justify-end mt-2">
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              className="text-white bg-blue-600 text-base rounded-md transition duration-300 ease-in-out hover:bg-opacity-80 px-4 py-2"
+            >
+              확인
+            </Button>
+          </Box>
         </Box>
       </Collapse>
     </List>

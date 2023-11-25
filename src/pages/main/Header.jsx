@@ -6,6 +6,7 @@ import HeaderSearchBox from './HeaderSearchBox'
 import FunctionOptions from './FunctionOptions'
 import NavigationBar from './NavigationBar'
 import Filtering from './Filtering/Filtering'
+import FilteringApi from './Filtering/FilteringApi'
 
 function Header() {
   return (
@@ -15,6 +16,7 @@ function Header() {
         <HeaderSearchBox />
         <FunctionOptions />
         <NavigationBar />
+        <FilteringApi />
       </Box>
       <Filtering />
     </Box>

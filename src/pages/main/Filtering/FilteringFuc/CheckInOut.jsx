@@ -27,8 +27,8 @@ export default function CheckInOut() {
           'StaticDatePicker',
         ]}
       >
-        <Box className="flex">
-          <Box>
+        <Box display="flex" alignItems="center">
+          <Box flex="1">
             <DemoItem label="체크인">
               <DatePicker
                 value={checkInDate}
@@ -43,12 +43,12 @@ export default function CheckInOut() {
             </Typography>
           </Box>
 
-          <Box className="ml-2">
+          <Box ml={2}>
             <DemoItem label="체크아웃">
               <DatePicker
                 value={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
-                minDate={checkInDate.add(1, 'day')} // 체크인 날짜 이후의 날짜만 선택 가능하도록 설정
+                minDate={checkInDate.add(1, 'day')}
               />
             </DemoItem>
           </Box>

@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import { styled, lighten, darken } from '@mui/system'
 import { FormControl } from '@mui/base'
-import { InputLabel } from '@mui/material'
+import { InputLabel, List } from '@mui/material'
 
 const GroupHeader = styled('div')(({ theme }) => ({
   position: 'sticky',
@@ -146,24 +146,23 @@ const topContent = [
 ]
 
 export default function RenderGroup() {
-  const options = topContent.map((option) => {
-    const firstLetter = option.title[0].toUpperCase()
+  const options = topContent.map((item) => {
+    const firstLetter = item.title[0].toUpperCase()
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
-      ...option,
+      ...item,
     }
   })
 
   return (
     <Autocomplete
-      style={{ width: '100%' }}
+      style={{ width: '85%' }}
       id="grouped-demo"
       options={options.sort(
         (a, b) => -b.firstLetter.localeCompare(a.firstLetter),
       )}
       groupBy={(option) => option.firstLetter}
       getOptionLabel={(option) => option.title}
-      sx={{ width: 300 }}
       renderInput={(params) => (
         <FormControl>
           <InputLabel htmlFor="travel-destination">여행지</InputLabel>
@@ -175,10 +174,10 @@ export default function RenderGroup() {
         </FormControl>
       )}
       renderGroup={(params) => (
-        <li key={params.key}>
+        <List key={params.key}>
           <GroupHeader>{params.group}</GroupHeader>
           <GroupItems>{params.children}</GroupItems>
-        </li>
+        </List>
       )}
     />
   )

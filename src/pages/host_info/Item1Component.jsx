@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { FaDoorClosed } from 'react-icons/fa'
 
-function Item1({ title, contents }) {
+function Item1Component({ title, contents }) {
   return (
     <Box className="item1">
       <Box className="item1 flex flex-row mb-2 mt-2">
@@ -24,4 +24,4 @@ function Item1({ title, contents }) {
   )
 }
 
-export default Item1
+export default Item1Component

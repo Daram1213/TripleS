@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { IoKeyOutline } from 'react-icons/io5'
 
-function Item3({ title, contents }) {
+function Item3Component({ title, contents }) {
   return (
     <Box className="item3">
       <Box className="item3 flex flex-row mb-2 mt-2">
@@ -24,4 +24,4 @@ function Item3({ title, contents }) {
   )
 }
 
-export default Item3
+export default Item3Component

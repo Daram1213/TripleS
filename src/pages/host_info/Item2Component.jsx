@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { PiMedalMilitary } from 'react-icons/pi'
 
-function Item2({ title, contents }) {
+function Item2Component({ title, contents }) {
   return (
     <Box className="item2">
       <Box className="item2 flex flex-row mb-2 mt-2">
@@ -24,4 +24,4 @@ function Item2({ title, contents }) {
   )
 }
 
-export default Item2
+export default Item2Component

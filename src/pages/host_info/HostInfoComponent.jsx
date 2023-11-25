@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 
-function HostInfo({ name, year, imageUrl }) {
+function HostInfoComponent({ name, year, imageUrl }) {
   return (
     <Box className="flex flex-row mb-2 mt-2 w-5/6 border-t-2 ">
       <Box className="host-container flex">
@@ -22,4 +22,4 @@ function HostInfo({ name, year, imageUrl }) {
   )
 }
 
-export default HostInfo
+export default HostInfoComponent

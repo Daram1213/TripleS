@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 /* eslint-disable quotes */
-=======
->>>>>>> e363cb2 (host info UI completed)
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,jsx,css}'],
   theme: {
-<<<<<<< HEAD
     extend: {
       backgroundImage: {
         'custom-bg':
@@ -26,9 +22,6 @@ export default {
         '-5rem': '-5rem',
       },
     },
-=======
-    extend: {},
->>>>>>> e363cb2 (host info UI completed)
   },
   plugins: [],
 }

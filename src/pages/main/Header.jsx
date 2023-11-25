@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9c360837da8766d97cd8135baf6e973f4b600c95
 /* eslint-disable import/no-unresolved */
 import React from 'react'
 import Box from '@mui/material/Box'
@@ -25,6 +28,7 @@ function Header() {
 }
 
 export default Header
+<<<<<<< HEAD
 =======
 /* eslint-disable import/no-unresolved */
 import React from 'react'
@@ -84,3 +88,5 @@ function Header() {
 
 export default Header
 >>>>>>> 87282a9 (chore: amending forder tree from components to pages)
+=======
+>>>>>>> 9c360837da8766d97cd8135baf6e973f4b600c95

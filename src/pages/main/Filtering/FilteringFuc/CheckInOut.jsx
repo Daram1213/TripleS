@@ -4,7 +4,7 @@ import { DemoItem, DemoContainer } from '@mui/x-date-pickers/internals/demo'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { Box, Typography } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 
 export default function CheckInOut() {
   const initialCheckInDate = dayjs('2022-04-17')
@@ -36,6 +36,7 @@ export default function CheckInOut() {
               <DatePicker
                 value={checkInDate}
                 onChange={(date) => setCheckInDate(date)}
+                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
             </DemoItem>
           </Box>
@@ -52,6 +53,7 @@ export default function CheckInOut() {
                 value={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
                 minDate={dayjs(checkInDate).add(1, 'day')}
+                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
             </DemoItem>
           </Box>

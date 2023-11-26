@@ -26,7 +26,7 @@ export default function RenderGroup() {
 
   return (
     <Autocomplete
-      className="w-3/4"
+      className="w-3/4 mt-3"
       id="grouped-demo"
       options={travelList}
       groupBy={(option) => option.genre}

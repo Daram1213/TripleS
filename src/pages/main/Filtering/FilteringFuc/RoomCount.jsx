@@ -35,11 +35,7 @@ function MyHeader() {
 
   return (
     <>
-      <Button
-        style={{ display: 'flex', margin: 'auto' }}
-        className="w-3/12"
-        onClick={handleButtonClick}
-      >
+      <Button className="flex m-auto w-3/12" onClick={handleButtonClick}>
         객실당 인원수
       </Button>
       <Popover

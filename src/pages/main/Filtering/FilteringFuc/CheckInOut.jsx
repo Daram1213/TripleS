@@ -47,7 +47,7 @@ export default function CheckInOut() {
             </Typography>
           </Box>
 
-          <Box className="ml-2">
+          <Box ml={2}>
             <DemoItem label="체크아웃">
               <DatePicker
                 value={checkOutDate}

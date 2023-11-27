@@ -35,8 +35,8 @@ function MyHeader() {
 
   return (
     <>
-      <Button className="flex m-auto w-3/12" onClick={handleButtonClick}>
-        객실당 인원수
+      <Button className="flex m-auto w-full" onClick={handleButtonClick}>
+        {`객실 ${quantityRoom}개, 성인 ${quantityAdult}명, 어린이 ${quantityChild}명`}
       </Button>
       <Popover
         open={open}

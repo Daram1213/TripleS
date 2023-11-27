@@ -32,6 +32,7 @@ const ReservationModal = ({ lodgingData, closeModal, reservations }) => {
     bookingStatus: 'confirmed',
   }
 
+function ReservationModal({ closeModal, lodgingData, reservations }) {
   const checkInDate = dayjs(reservations[0].checkInDate)
   const checkOutDate = dayjs(reservations[0].checkOutDate)
   const totalNights = checkOutDate.diff(checkInDate, 'day')

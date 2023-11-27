@@ -14,7 +14,7 @@ import RoomComponent from './RoomComponent'
 import LeftArrowIcon from '../../assets/svg/LeftArrowIcon'
 import RightArrowIcon from '../../assets/svg/RightArrowIcon'
 
-const LodgingComponent = ({ lodgingData }) => {
+function LodgingComponent({ lodgingData }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
@@ -113,6 +113,7 @@ const LodgingComponent = ({ lodgingData }) => {
               aria-label={`Slide ${index + 1}`}
               onClick={() => goToSlide(index)}
             ></Link>
+            />
           ))}
         </Box>
 

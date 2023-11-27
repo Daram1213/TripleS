@@ -38,16 +38,13 @@ function App() {
                 <Route
                   path="/searchHotelList/:keyword"
                   element={<SearchHotelList />}
-                >
-                  <Route path=":id" element={<DetailPage />} />
-                </Route>
+                />
                 <Route
                   path="/searchTourList/:keyword"
                   element={<SearchTourList />}
-                >
-                  <Route path=":id" element={<DetailPage />} />
-                </Route>
+                />
                 <Route path="/search-detail" element={<SearchDetailPage />} />
+                <Route path="/detail/:detailId" element={<DetailPage />} />
               </Route>
             </Routes>
           </QueryClientProvider>

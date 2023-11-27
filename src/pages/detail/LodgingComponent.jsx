@@ -4,8 +4,9 @@ import RoomComponent from './RoomComponent'
 import LeftArrowIcon from '../../assets/svg/LeftArrowIcon'
 import RightArrowIcon from '../../assets/svg/RightArrowIcon'
 
-function LodgingComponent({ lodgingData }) {
+const LodgingComponent = ({ lodgingData }) => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [showDescription, setShowDescription] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +32,10 @@ function LodgingComponent({ lodgingData }) {
     )
   }
 
+  const toggleDescription = () => {
+    setShowDescription(!showDescription)
+  }
+
   return (
     <Box className="mt-8 container mx-auto px-4">
       <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-2">
@@ -42,10 +47,12 @@ function LodgingComponent({ lodgingData }) {
       <Typography className="text-lg text-gray-500 mb-4">
         {`${lodgingData.address.city}, ${lodgingData.address.district}, ${lodgingData.address.county}, ${lodgingData.address.detail}`}
       </Typography>
-
       <Box className="relative w-full mb-8" data-carousel="slide">
         {/* Carousel wrapper */}
-        <Box className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <Box
+          className="relative h-56 overflow-hidden md:h-96"
+          style={{ borderRadius: '10px' }} // 원하는 둥근 정도를 여기에 지정합니다.
+        >
           {lodgingData.image.map((imgSrc, index) => (
             <Box
               key={index}
@@ -74,7 +81,7 @@ function LodgingComponent({ lodgingData }) {
               aria-current={index === activeIndex ? 'true' : 'false'}
               aria-label={`Slide ${index + 1}`}
               onClick={() => goToSlide(index)}
-            />
+            ></button>
           ))}
         </Box>
 
@@ -104,14 +111,18 @@ function LodgingComponent({ lodgingData }) {
           </Box>
         </button>
       </Box>
-
       <Typography variant="body1" paragraph>
-        {lodgingData.description}
+        {showDescription
+          ? lodgingData.description
+          : lodgingData.description.slice(0, 100)}
       </Typography>
+      <a href="#" onClick={toggleDescription}>
+        {showDescription ? '간략히 보기' : '더보기'}
+      </a>{' '}
       <Grid container spacing={2}>
-        {lodgingData.rooms.map((room, index) => (
+        {lodgingData.rooms.map((index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <RoomComponent room={room} />
+            <RoomComponent />
           </Grid>
         ))}
       </Grid>

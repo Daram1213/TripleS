@@ -5,10 +5,10 @@ import Typography from '@mui/material/Typography'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 function DetailHeader() {
-  const navigate = useNavigate() // 필요한 경우 주석 해제
+  const navigate = useNavigate()
 
   const handleBack = () => {
-    navigate('/') // 필요한 경우 주석 해제
+    navigate('/')
   }
 
   return (

@@ -17,6 +17,8 @@ import RightArrowIcon from '../../assets/svg/RightArrowIcon'
 function LodgingComponent({ lodgingData }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
+  console.log(lodgingData)
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % lodgingData.image.length)

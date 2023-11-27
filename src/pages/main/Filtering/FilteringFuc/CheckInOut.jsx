@@ -4,17 +4,20 @@ import { DemoItem, DemoContainer } from '@mui/x-date-pickers/internals/demo'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { Box, Typography } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 
 export default function CheckInOut() {
-  const [checkInDate, setCheckInDate] = useState(dayjs('2022-04-17'))
-  const [checkOutDate, setCheckOutDate] = useState(dayjs('2022-04-17'))
-  const [nightCount, setNightCount] = useState(0)
+  const initialCheckInDate = dayjs('2022-04-17')
+  const initialCheckOutDate = dayjs('2022-04-18') // Set to the next day for 1 night
+
+  const [checkInDate, setCheckInDate] = useState(initialCheckInDate)
+  const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate)
+  const [nightCount, setNightCount] = useState(1)
 
   // 날짜 변경에 따른 몇 박 몇 일 계산
   useEffect(() => {
-    const nights = checkOutDate.diff(checkInDate, 'day')
-    setNightCount(nights)
+    const nights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day')
+    setNightCount(nights >= 0 ? nights : 0)
   }, [checkInDate, checkOutDate])
 
   return (
@@ -28,16 +31,17 @@ export default function CheckInOut() {
         ]}
       >
         <Box className="flex">
-          <Box>
+          <Box className="w-full">
             <DemoItem label="체크인">
               <DatePicker
                 value={checkInDate}
                 onChange={(date) => setCheckInDate(date)}
+                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
             </DemoItem>
           </Box>
 
-          <Box>
+          <Box className="flex mt-10 ml-2 whitespace-nowrap">
             <Typography className="text-xs">
               {nightCount} 박 {nightCount + 1} 일
             </Typography>
@@ -48,7 +52,8 @@ export default function CheckInOut() {
               <DatePicker
                 value={checkOutDate}
                 onChange={(date) => setCheckOutDate(date)}
-                minDate={checkInDate.add(1, 'day')} // 체크인 날짜 이후의 날짜만 선택 가능하도록 설정
+                minDate={dayjs(checkInDate).add(1, 'day')}
+                className="w-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
             </DemoItem>
           </Box>

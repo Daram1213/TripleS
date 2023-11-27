@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { IoSearch } from 'react-icons/io5'
-import FilteringApi from './FilteringApi' // Make sure to import your API function
-import Travel from './FilteringFuc/Destination' // Make sure to import your components
+import FilteringApi from './fetch/FilteringApi' // Make sure to import your API function
+import Travel from './FilteringFuc/Travel' // Make sure to import your components
 import CheckInOut from './FilteringFuc/CheckInOut'
 import RoomCount from './FilteringFuc/RoomCount'
 

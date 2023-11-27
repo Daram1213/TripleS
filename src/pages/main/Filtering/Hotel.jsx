@@ -1,38 +1,52 @@
-import React from 'react'
-import { Typography, Box } from '@mui/material'
-// import { IoIosInformationCircle, IoMdStarOutline } from 'react-icons/io'
+import React, { useState, useEffect } from 'react'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import { IoSearch } from 'react-icons/io5'
-import RoomCount from './FilteringFuc/RoomCount'
-import Destination from './FilteringFuc/Destination'
+import FilteringApi from './FilteringApi' // Make sure to import your API function
+import Travel from './FilteringFuc/Destination' // Make sure to import your components
 import CheckInOut from './FilteringFuc/CheckInOut'
+import RoomCount from './FilteringFuc/RoomCount'
 
 function Hotel() {
+  const [apiData, setAPIData] = useState(null)
+
+  const handleBtnClick = async () => {
+    try {
+      const data = await FilteringApi() // API 호출 함수 실행
+      setAPIData(data) // 받은 데이터 상태 업데이트
+      console.log('apiData:', data)
+    } catch (error) {
+      console.log('Destination 에러')
+    }
+  }
+
+  useEffect(() => {
+    console.log('A:', apiData)
+  }, [apiData])
+
   return (
-    <Box style={{ display: 'flex', flexDirection: 'row' }}>
-      <Box className="w-8/12 h-fit">
-        <Destination />
+    <Box className="flex">
+      <Box className="w-2/5 h-fit">
+        <Travel />
       </Box>
 
-      {/* 체크인 · 체크아웃 */}
-      <Box className="w-8/12 h-fit ml-2">
+      <Box className="w-2/5 h-fit ml-2 ml-[-55px]">
         <CheckInOut />
       </Box>
 
-      <Box className="ml-2 border-t border-b border-l border-r border-grey rounded-l w-7/12">
+      <Box className="margin-5 border rounded m-auto w-auto ml-4 mt-8">
         <RoomCount />
       </Box>
 
-      {/* 검색 버튼 */}
-      <Box>
-        <button
-          id="searchButton"
-          className="flex justify-center items-center text-white bg-blue-600 w-6/12 h-full text-3xl rounded-r-lg p-3 transition duration-300 ease-in-out hover:bg-opacity-70"
+      {/* 제출했을 때 호텔 목록 리스트로 넘겨지게 해야함 */}
+      <Box className="flex justify-center items-center ml-2 w-2/12 mt-7 mr-16">
+        <Button
+          onClick={handleBtnClick}
+          variant="contained"
+          className="flex items-center justify-center text-white bg-blue-600 w-fit h-16 text-lg rounded-r-lg rounded-l-lg p-2 transition duration-300 ease-in-out hover:bg-opacity-80"
         >
-          <Box className="flex items-center p-3">
-            <Typography className="hidden">검색</Typography>
-            <IoSearch />
-          </Box>
-        </button>
+          <IoSearch className="text-xl" />
+        </Button>
       </Box>
     </Box>
   )

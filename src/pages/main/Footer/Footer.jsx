@@ -7,10 +7,10 @@ import {
   COMPANY,
   SERVICE,
   PAYMENT,
-} from '../../assets/dummyData/dummyDataFooter'
+} from '../../../assets/dummyData/dummyDataFooter'
 
-import second1 from '../../assets/FooterImg/second1.png'
-import second2 from '../../assets/FooterImg/second2.png'
+import second1 from '../../../assets/FooterImg/second1.png'
+import second2 from '../../../assets/FooterImg/second2.png'
 
 function Footer() {
   return (

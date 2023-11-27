@@ -1,110 +1,90 @@
 import React, { useState } from 'react'
 import {
-  Box,
   Button,
+  Popover,
+  Typography,
+  Box,
   List,
   ListItem,
-  ListItemButton,
   ListItemText,
-  ListSubheader,
-  Typography,
-  Collapse,
 } from '@mui/material'
-import { ExpandLess, ExpandMore } from '@mui/icons-material'
 
 function MyHeader() {
   const [open, setOpen] = useState(false)
   const [quantityRoom, setQuantityRoom] = useState(1)
   const [quantityAdult, setQuantityAdult] = useState(1)
   const [quantityChild, setQuantityChild] = useState(0)
+  const [anchorEl, setAnchorEl] = useState(null)
 
-  const handleRoomClick = () => {
+  const handleButtonClick = (event) => {
     setOpen(!open)
+    setAnchorEl(event.currentTarget)
   }
 
   const handleClose = () => {
     setOpen(false)
   }
 
-  // 객실당 인원 수
-  const decreaseQuantityRoom = () => {
-    if (quantityRoom > 1) {
-      setQuantityRoom(quantityRoom - 1)
-    }
+  const decreaseQuantity = (setter) => {
+    setter((prev) => (prev > 1 ? prev - 1 : prev))
   }
 
-  const increaseQuantityRoom = () => {
-    if (quantityRoom < 100) {
-      setQuantityRoom(quantityRoom + 1)
-    }
-  }
-  // 어른
-  const decreaseQuantityAdult = () => {
-    if (quantityAdult > 1) {
-      setQuantityAdult(quantityAdult - 1)
-    }
-  }
-
-  const increaseQuantityAdult = () => {
-    if (quantityAdult < 100) {
-      setQuantityAdult(quantityAdult + 1)
-    }
-  }
-
-  // 어린이
-  const decreaseQuantityChild = () => {
-    if (quantityChild > 0) {
-      setQuantityChild(quantityChild - 1)
-    }
-  }
-
-  const increaseQuantityChild = () => {
-    if (quantityChild < 100) {
-      setQuantityChild(quantityChild + 1)
-    }
+  const increaseQuantity = (setter) => {
+    setter((prev) => (prev < 100 ? prev + 1 : prev))
   }
 
   return (
-    <List
-      sx={{ width: '100%', maxWidth: 360, bgColor: 'bg-gray-100' }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          객실당 인원 수
-        </ListSubheader>
-      }
-    >
-      <ListItemButton onClick={handleRoomClick}>
-        <ListItemText
-          primary={`객실 ${quantityRoom}개, 성인 ${quantityAdult}명, 어린이 ${quantityChild}명`}
-        />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <Box className="pl-4">
-          <List component="div" disablePadding>
+    <>
+      <Button onClick={handleButtonClick}>객실당 인원수</Button>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <Box>
+          <List>
+            <ListItem>
+              <ListItemText
+                primary={`객실 ${quantityRoom}개, 성인 ${quantityAdult}명, 어린이 ${quantityChild}명`}
+              />
+            </ListItem>
             <ListItem>
               <ListItemText primary="객실" />
-              <Button onClick={decreaseQuantityRoom}>-</Button>
+              <Button onClick={() => decreaseQuantity(setQuantityRoom)}>
+                -
+              </Button>
               <Typography>{quantityRoom}</Typography>
-              <Button onClick={increaseQuantityRoom}>+</Button>
+              <Button onClick={() => increaseQuantity(setQuantityRoom)}>
+                +
+              </Button>
             </ListItem>
-          </List>
-          <List component="div" disablePadding>
             <ListItem>
               <ListItemText primary="성인" />
-              <Button onClick={decreaseQuantityAdult}>-</Button>
+              <Button onClick={() => decreaseQuantity(setQuantityAdult)}>
+                -
+              </Button>
               <Typography>{quantityAdult}</Typography>
-              <Button onClick={increaseQuantityAdult}>+</Button>
+              <Button onClick={() => increaseQuantity(setQuantityAdult)}>
+                +
+              </Button>
             </ListItem>
-          </List>
-          <List component="div" disablePadding>
             <ListItem>
               <ListItemText primary="어린이" />
-              <Button onClick={decreaseQuantityChild}>-</Button>
+              <Button onClick={() => decreaseQuantity(setQuantityChild)}>
+                -
+              </Button>
               <Typography>{quantityChild}</Typography>
-              <Button onClick={increaseQuantityChild}>+</Button>
+              <Button onClick={() => increaseQuantity(setQuantityChild)}>
+                +
+              </Button>
             </ListItem>
           </List>
           <Box className="flex justify-end mt-2">
@@ -117,8 +97,8 @@ function MyHeader() {
             </Button>
           </Box>
         </Box>
-      </Collapse>
-    </List>
+      </Popover>
+    </>
   )
 }
 

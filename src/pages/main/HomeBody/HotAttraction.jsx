@@ -1,10 +1,11 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react'
 import { Box, Typography } from '@mui/material'
 import HotTab from './HotTab'
 import HotAttractionList from './HotAttractionList'
-import { fetchData } from '../../fetch/search'
+import { fetchData } from '../../../fetch/search.js'
 
 function HotAttraction() {
   const [selectedLocale, setSelectedLocale] = useState('서울')
@@ -15,6 +16,7 @@ function HotAttraction() {
     fetchData(selectedLocale, 'attraction', 1, 3)
       .then((data) => {
         setAttractionData(data)
+        console.log(data)
       })
       .catch((error) => console.error('Error fetching attraction data:', error))
   }, [selectedLocale])

@@ -1,43 +1,34 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 import { Box, Typography, Button } from '@mui/material'
-import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 
-function HotLodgingList({ data }) {
-  const lodgings = data && data.lodgings ? data.lodgings : []
+function HotAttractionList({ data }) {
+  const attractions = data && data.attraction ? data.attraction : []
 
   return (
     <Box className="hot-container mt-4 relative text-center flex">
-      {lodgings.map((lodging) => (
+      {attractions.map((attraction) => (
         <Box
-          key={lodging.lodgingId}
+          key={attraction.name}
           className="hot-hotel-item mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer bg-slate-50"
         >
           <Box className="rounded-md overflow-hidden">
             <img
               className="hot-hotel-img hover:scale-110 hover:transition"
-              src={lodging.mainImage}
-              alt={`Lodging ${lodging.lodgingId}`}
+              src={attraction.mainImage}
+              alt={`Attractions ${attraction.name}`}
             />
           </Box>
           <Box className="hot-hotel-content flex-1 p-4 flex flex-col">
             <Box className="hot-hotel-content-label w-full box-border">
               <Typography className="hot-hotel-name overflow-hidden mr-1 font-bold text-base text-left">
-                {lodging.name}
-                <Box className="hot-hotel-grade ml-1 pb-0.5 align-middle inline-block box-content">
-                  {[...Array(Math.floor(lodging.avgRating))].map((_, i) => (
-                    <StarRateRoundedIcon
-                      key={i}
-                      className="text-yellow-400 ml-[-5px]"
-                    />
-                  ))}
-                </Box>
+                {attraction.name}
               </Typography>
             </Box>
             <Box className="hot-hotel-content-review align-middle my-2 text-left">
               <Box className="hot-hotel-content-score bg-blue-800 rounded-xl rounded-tr-none text-white py-0.5 px-1.5 inline-block">
                 <Typography className="leading-4 flex">
-                  {lodging.avgRating}
+                  {attraction.avgRating}
                   <Typography
                     style={{
                       fontSize: '0.9rem',
@@ -59,49 +50,19 @@ function HotLodgingList({ data }) {
                   marginLeft: '0.5rem',
                 }}
               >
-                이용자 리뷰 {lodging.reviewCount}개
-              </Typography>
-            </Box>
-            <Box className="hot-hotel-content-tag">
-              <Typography
-                style={{ fontSize: '0.8rem' }}
-                className="tag-txt text-left"
-              >
-                무료 취소
-              </Typography>
-            </Box>
-            <Box className="hot-hotel-content-price text-right mt-auto">
-              <Typography
-                style={{
-                  color: '#8592a6',
-                  verticalAlign: 'middle',
-                }}
-                className="price-from inline-block"
-              >
-                최저가
-              </Typography>
-              <Typography
-                style={{
-                  color: '#of294d',
-                  fontSize: '1.2rem',
-                  fontWeight: '700',
-                  marginLeft: '0.25rem',
-                }}
-                className="price-content inline-block"
-              >
-                {lodging.minPrice.toLocaleString()}원
+                리뷰 {attraction.reviewCount}개
               </Typography>
             </Box>
           </Box>
         </Box>
       ))}
-      <Box className="hot-hotel-item mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer bg-[#071718]">
+      <Box className="hot-hotel-item-hi mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer">
         <img
-          className="hot-hotel-img h-80"
-          src="src/assets/img/hotelExample.jpeg"
-          alt="src/assets/img/hotelExample.jpeg"
+          className="hot-attraction-img h-80"
+          src="src/assets/img/jejuExample.jpeg"
+          alt="src/assets/img/jejuExample.jpeg"
         />
-        <Box className="world-hot-hotel-content border-[#071718] p-4 text-white relative text-left flex flex-col">
+        <Box className="world-hot-hotel-content bg-[#07080B] p-4 text-white relative text-left flex flex-col">
           <Typography
             style={{
               fontSize: '1.2rem',
@@ -109,7 +70,7 @@ function HotLodgingList({ data }) {
               marginBottom: '1rem',
             }}
           >
-            전 세계 초특가 호텔
+            인기 여행지
           </Typography>
           <Button
             style={{ width: '80%', margin: 'auto' }}
@@ -124,4 +85,4 @@ function HotLodgingList({ data }) {
   )
 }
 
-export default HotLodgingList
+export default HotAttractionList

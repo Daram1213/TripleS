@@ -8,17 +8,17 @@ import HotelItem from '../../components/search/HotelItem'
 import SideBar from '../../components/search/SideBar'
 
 function SearchHotelList() {
-  const [page, setPage] = useState(1)
-  const items = 10
-  const [hotels, setHotels] = useState([])
-  const { keyword } = useParams()
-
+  
   useEffect(
     () => () => {
       setHotels([])
     },
     [],
-  )
+    )
+    const [page, setPage] = useState(1)
+    const items = 10
+    const [hotels, setHotels] = useState([])
+    const { keyword } = useParams()
 
   const hotelRes = useQuery({
     queryKey: ['hotels', keyword, items, page],

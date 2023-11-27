@@ -3,12 +3,18 @@
 import { useState } from 'react'
 import { Box, Stack, Button } from '@mui/material'
 
+<<<<<<< HEAD
 function HotTab({ selectedLocale, subject }) {
   const HotLocales = {
     lodging: ['서울', '제주', '서귀포', '부산', '인천', '속초', '강릉', '경주'],
     attraction: ['서울', '오사카', '도쿄', '부산', '후쿠오카', '제주'],
   }
   const [selectedTab, setSelectedTab] = useState('서울')
+=======
+function HotTab({ data, selectedLocale }) {
+  const [selectedTab, setSelectedTab] = useState('서울')
+  const localesArray = Array.from(new Set(data.map((item) => item.locale)))
+>>>>>>> bf2b057 (Initial commit)
 
   const handleLocaleChange = (locale) => {
     setSelectedTab(locale)
@@ -17,7 +23,11 @@ function HotTab({ selectedLocale, subject }) {
   return (
     <Box className="recommend-tap-container mt-4">
       <Stack spacing={2} direction="row">
+<<<<<<< HEAD
         {HotLocales[subject].map((locale) => (
+=======
+        {localesArray.map((locale) => (
+>>>>>>> bf2b057 (Initial commit)
           <Button
             key={locale}
             variant={selectedTab === locale ? 'contained' : 'outlined'}

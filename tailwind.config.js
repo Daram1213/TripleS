@@ -11,9 +11,22 @@ export default {
       borderRadius: {
         lg: '4rem',
       },
+<<<<<<< HEAD
       width: {
         'calc(25%-12px)': 'calc(25%-12px)',
       },
+=======
+      margin: {
+        '40rem': '40rem',
+        '-1rem': '-1rem',
+      },
+      width: {
+        'calc(25%-12px)': 'calc(25%-12px)',
+      },
+      inset: {
+        '-5rem': '-5rem',
+      },
+>>>>>>> bf2b057 (Initial commit)
     },
   },
   plugins: [],

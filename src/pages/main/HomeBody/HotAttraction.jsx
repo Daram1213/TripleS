@@ -16,7 +16,6 @@ function HotAttraction() {
     fetchData(selectedLocale, 'attraction', 1, 3)
       .then((data) => {
         setAttractionData(data)
-        console.log(data)
       })
       .catch((error) => console.error('Error fetching attraction data:', error))
   }, [selectedLocale])

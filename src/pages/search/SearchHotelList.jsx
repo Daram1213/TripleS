@@ -31,7 +31,6 @@ function SearchHotelList() {
   })
 
   const hotelData = hotelRes?.data?.lodging
-
   useEffect(() => {
     if (!hotelRes.isLoading && hotelData && hotelData.length > 0) {
       setHotels((prevHotels) => [...prevHotels, ...hotelData])

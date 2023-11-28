@@ -3,8 +3,13 @@ import { Grid, Box, Typography } from '@mui/material'
 
 const { kakao } = window
 
-const Kakao = ({ lodgingData }) => {
+const Kakao = () => {
   useEffect(() => {
+    if (!window.kakao || !window.kakao.maps) {
+      console.error('Kakao Maps API is not loaded')
+      return // Kakao Maps API가 없으면 여기서 함수를 종료합니다.
+    }
+
     const container = document.getElementById('map')
     const options = {
       center: new kakao.maps.LatLng(
@@ -22,7 +27,7 @@ const Kakao = ({ lodgingData }) => {
     })
 
     marker.setMap(map)
-  }, [lodgingData])
+  }, [])
 
   return (
     <Box

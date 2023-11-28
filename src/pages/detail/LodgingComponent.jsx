@@ -13,6 +13,7 @@ import {
 import RoomComponent from './RoomComponent'
 import LeftArrowIcon from '../../assets/svg/LeftArrowIcon'
 import RightArrowIcon from '../../assets/svg/RightArrowIcon'
+import Hostinfo from './host/HostInfo'
 
 function LodgingComponent({ lodgingData }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -170,6 +171,7 @@ function LodgingComponent({ lodgingData }) {
           </Link>
         </DialogActions>
       </Dialog>
+      <Hostinfo />
       <Grid container spacing={2}>
         {lodgingData.rooms.map((index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>

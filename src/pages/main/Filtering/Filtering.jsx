@@ -29,7 +29,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box className="p-4">
           <Typography component="Box">{children}</Typography>
         </Box>
       )}
@@ -58,64 +58,62 @@ export default function Filtering() {
   }
 
   return (
-    <Box className="flex mx-auto p-2 bg-white w-4/5 h-2/4 rounded-t-md rounded-l-md rounded-r-md rounded-b mt-4 mb-12">
+    <Box className="flex mx-auto p-2 bg-white w-4/5 h-2/4 rounded-t-xl rounded-r-xl rounded-b-xl rounded-l-xl mt-4 mb-12">
       <Box className="w-full">
-        <Box sx={{ borderColor: 'Boxider' }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab
-              label={
-                <>
-                  <FaHotel /> 호텔
-                </>
-              }
-              {...a11yProps(0)}
-            />
-            <Tab
-              label={
-                <>
-                  <PiAirplaneTiltFill /> 항공권
-                </>
-              }
-              {...a11yProps(1)}
-            />
-            <Tab
-              label={
-                <>
-                  <IoMdTrain /> 기차표
-                </>
-              }
-              {...a11yProps(2)}
-            />
-            <Tab
-              label={
-                <>
-                  <FaCar /> 렌터카·공항픽업
-                </>
-              }
-              {...a11yProps(3)}
-            />
-            <Tab
-              label={
-                <>
-                  <IoTicket /> 투어&티켓
-                </>
-              }
-              {...a11yProps(4)}
-            />
-            <Tab
-              label={
-                <>
-                  <MdFlightTakeoff /> 항공 + 호텔
-                </>
-              }
-              {...a11yProps(5)}
-            />
-          </Tabs>
-        </Box>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab
+            label={
+              <>
+                <FaHotel /> 호텔
+              </>
+            }
+            {...a11yProps(0)}
+          />
+          <Tab
+            label={
+              <>
+                <PiAirplaneTiltFill /> 항공권
+              </>
+            }
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={
+              <>
+                <IoMdTrain /> 기차표
+              </>
+            }
+            {...a11yProps(2)}
+          />
+          <Tab
+            label={
+              <>
+                <FaCar /> 렌터카·공항픽업
+              </>
+            }
+            {...a11yProps(3)}
+          />
+          <Tab
+            label={
+              <>
+                <IoTicket /> 투어&티켓
+              </>
+            }
+            {...a11yProps(4)}
+          />
+          <Tab
+            label={
+              <>
+                <MdFlightTakeoff /> 항공 + 호텔
+              </>
+            }
+            {...a11yProps(5)}
+          />
+        </Tabs>
 
         {/* 호텔 */}
         <CustomTabPanel value={value} index={0}>

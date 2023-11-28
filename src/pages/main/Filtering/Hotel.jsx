@@ -35,7 +35,6 @@ function Hotel() {
         <RoomCount />
       </Box>
 
-      {/* 제출했을 때 호텔 목록 리스트로 넘겨지게 해야함 */}
       <Box className="flex justify-center items-center w-auto mt-9 mr-24">
         <Button
           onClick={handleBtnClick}

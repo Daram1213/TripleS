@@ -6,6 +6,7 @@ import DetailFooter from './detail/DetailFooter'
 import ReservationModal from './detail/ReservationModal'
 import { Box } from '@mui/material'
 import Kakao from './detail/Kakao'
+import Hostinfo from './detail/host/HostInfo'
 
 function DetailPage() {
   const lodgingData = {

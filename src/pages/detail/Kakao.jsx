@@ -4,7 +4,13 @@ import { Grid, Box, Typography } from '@mui/material'
 const { kakao } = window
 
 const Kakao = () => {
+const Kakao = () => {
   useEffect(() => {
+    if (!window.kakao || !window.kakao.maps) {
+      console.error('Kakao Maps API is not loaded')
+      return // Kakao Maps API가 없으면 여기서 함수를 종료합니다.
+    }
+
     if (!window.kakao || !window.kakao.maps) {
       console.error('Kakao Maps API is not loaded')
       return // Kakao Maps API가 없으면 여기서 함수를 종료합니다.
@@ -12,10 +18,7 @@ const Kakao = () => {
 
     const container = document.getElementById('map')
     const options = {
-      center: new kakao.maps.LatLng(
-        lodgingData.lodging.map.latitude,
-        lodgingData.lodging.map.longitude,
-      ),
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
     }
     const map = new kakao.maps.Map(container, options)

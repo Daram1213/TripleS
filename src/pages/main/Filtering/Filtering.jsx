@@ -62,6 +62,7 @@ export default function Filtering() {
       <Box className="w-full">
         <Tabs
           value={value}
+          centered
           onChange={handleChange}
           aria-label="basic tabs example"
         >

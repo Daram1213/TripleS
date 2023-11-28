@@ -31,7 +31,7 @@ export default function CheckInOut() {
         ]}
       >
         <Box className="flex">
-          <Box className="w-full">
+          <Box className="w-2/6">
             <DemoItem label="체크인">
               <DatePicker
                 value={checkInDate}
@@ -41,13 +41,13 @@ export default function CheckInOut() {
             </DemoItem>
           </Box>
 
-          <Box className="flex mt-10 ml-2 whitespace-nowrap">
+          <Box className="flex mt-10 whitespace-nowrap mx-4">
             <Typography className="text-xs">
               {nightCount} 박 {nightCount + 1} 일
             </Typography>
           </Box>
 
-          <Box className="ml-2">
+          <Box>
             <DemoItem label="체크아웃">
               <DatePicker
                 value={checkOutDate}

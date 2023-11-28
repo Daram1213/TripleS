@@ -7,7 +7,7 @@ import { IoMdPerson } from 'react-icons/io'
 function AirlineTicket() {
   return (
     <>
-      <Box className="flex mb-5 text-blue-900 justify-start">
+      <Box className="flex mb-5 text-blue-900">
         <Box className="flex w-full">
           <Box className="flex items-center mr-5 text-sm">
             <PiAirplaneTiltFill />
@@ -22,7 +22,7 @@ function AirlineTicket() {
             일반석
           </Box>
         </Box>
-        <Box className="flex items-center mr-5 text-sm w-2/5 justify-end">
+        <Box className="flex items-center mr-5 text-sm w-2/5">
           <Checkbox type="checkBox" />
           <Typography className="ml-2">항공 + 호텔</Typography>
         </Box>

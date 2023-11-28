@@ -39,7 +39,7 @@ function AirHotel() {
           </Box>
         </Box>
 
-        <Box className="flex items-center mt-12 mx-2">
+        <Box className="flex items-center mt-12 ml-[-56px] mr-2">
           <IoAirplane className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
         </Box>
 
@@ -53,7 +53,7 @@ function AirHotel() {
         </Box>
 
         {/* 가는편 오는편 */}
-        <Box className="ml-2 w-1/4">
+        <Box className="w-1/5 ml-[-50px]">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">가는편</Typography>
           </Box>
@@ -69,7 +69,7 @@ function AirHotel() {
           <IoRemoveOutline />
         </Box>
 
-        <Box className="w-1/4">
+        <Box className="w-1/5">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">오는편</Typography>
           </Box>
@@ -89,7 +89,7 @@ function AirHotel() {
             <FaHotel className="text-xs" />
           </Typography>
         </Box>
-        <Box className="w-2/5">
+        <Box className="w-7/12">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">도착지</Typography>
           </Box>
@@ -102,7 +102,7 @@ function AirHotel() {
         </Box>
 
         {/* 체크인 체크아웃 */}
-        <Box className="ml-2 w-1/4">
+        <Box className="ml-4 w-1/4">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">체크인</Typography>
           </Box>
@@ -114,13 +114,13 @@ function AirHotel() {
           </Box>
         </Box>
 
-        <Box className="flex items-center mx-2 mt-12">
+        <Box className="flex items-center mx-6 mt-12">
           <Typography className="text-xs flex items-center text-center">
             박
           </Typography>
         </Box>
 
-        <Box className="w-3/12">
+        <Box className="w-1/4">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">체크아웃</Typography>
           </Box>

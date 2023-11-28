@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Typography, Avatar } from '@mui/material'
 
 import FooterItem from './FooterItem'

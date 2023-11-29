@@ -7,7 +7,7 @@ const fetchSearchHotel = async ({ queryKey }) => {
   const page = queryKey[3] ?? 1
 
   const apiRes = await axios.get(
-    `http://15.165.25.34:3000/api/search?keyword=%EC%84%9C%EC%9A%B8&type=lodging&page=1&item=${items}&sort=review`,
+    `http://15.165.25.34:3000/api/search?keyword=%EC%84%9C%EC%9A%B8&type=lodging&page=${page}&item=${1}&sort=review`,
   )
 
   if (!apiRes.statusText) {

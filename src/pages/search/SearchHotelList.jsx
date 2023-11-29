@@ -9,7 +9,7 @@ import SideBar from '../../components/search/SideBar'
 
 function SearchHotelList() {
   const [page, setPage] = useState(1)
-  const items = 1
+  const items = 2
   const [hotels, setHotels] = useState([])
   const { keyword } = useParams()
 
@@ -21,7 +21,12 @@ function SearchHotelList() {
   )
 
   const hotelRes = useQuery({
-    queryKey: ['hotels', keyword, items, page],
+    queryKey: {
+      type: 'hotels',
+      keyword,
+      items,
+      page,
+    },
     queryFn: fetchSearchHotel,
   })
 

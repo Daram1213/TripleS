@@ -9,7 +9,7 @@ import SideBar from '../../components/search/SideBar'
 
 function SearchTourList() {
   const [page, setPage] = useState(1)
-  const items = 10
+  const items = 2
   const [attractions, setAttractions] = useState([])
   const { keyword } = useParams()
 
@@ -20,7 +20,12 @@ function SearchTourList() {
     [],
   )
   const attractionRes = useQuery({
-    queryKey: ['attractions', keyword, items, page],
+    queryKey: {
+      type: 'attractions',
+      keyword,
+      items,
+      page,
+    },
     queryFn: fetchSearchTour,
   })
 

@@ -57,7 +57,6 @@ function PickUp() {
           </Box>
         </Box>
 
-        {/* 검색 버튼 */}
         <Box className="w-1/5 mt-12 ml-2">
           <Button
             variant="contained"

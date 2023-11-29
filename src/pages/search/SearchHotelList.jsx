@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Box, Typography } from '@mui/material'
-<<<<<<< HEAD
 import fetchSearchHotel from '../../fetch/fetchSearchHotel'
-=======
-import fetchSearchHotel from '../../fetch/fetchSearchHotel.jsx'
->>>>>>> aa0100d (chore: commit before push feature/searchList)
 import useIntersect from '../../components/search/useIntersect'
 import HotelItem from '../../components/search/HotelItem'
 import SideBar from '../../components/search/SideBar'

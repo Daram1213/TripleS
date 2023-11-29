@@ -17,7 +17,6 @@ function PickUp() {
         </Box>
       </Box>
 
-      {/* 인수일시 */}
       <Box className="flex">
         <Box className="w-1/5 rounded-l">
           <Box className="flex text-grey-700 p-3">
@@ -36,14 +35,10 @@ function PickUp() {
             <Typography className="invisible">시간</Typography>
           </Box>
           <Box>
-            <TextField
-              type="time"
-              className="focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-            />
+            <TextField type="time" className="w-full" />
           </Box>
         </Box>
 
-        {/* 반납일시 */}
         <Box className="w-1/5 ml-2">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">반납일시</Typography>

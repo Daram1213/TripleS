@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Tabs, Tab, Typography, Box } from '@mui/material'
 
-// icon
 import { FaHotel } from 'react-icons/fa6'
 import { PiAirplaneTiltFill } from 'react-icons/pi'
 import { IoMdTrain } from 'react-icons/io'

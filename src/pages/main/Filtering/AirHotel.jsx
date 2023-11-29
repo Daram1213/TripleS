@@ -20,7 +20,6 @@ function AirHotel() {
         </Box>
       </Box>
 
-      {/* 출발지 */}
       <Box className="flex">
         <Box className="mt-12">
           <Typography
@@ -52,7 +51,6 @@ function AirHotel() {
           </Box>
         </Box>
 
-        {/* 가는편 오는편 */}
         <Box className="w-1/5 ml-[-3rem]">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">가는편</Typography>
@@ -82,7 +80,6 @@ function AirHotel() {
         </Box>
       </Box>
 
-      {/* 2번째 도착지 */}
       <Box className="flex mt-3">
         <Box className="mt-12">
           <Typography className="flex w-auto h-14 items-center justify-center text-white bg-blue-600 w-10 h-full rounded-l p-2">
@@ -101,7 +98,6 @@ function AirHotel() {
           </Box>
         </Box>
 
-        {/* 체크인 체크아웃 */}
         <Box className="ml-4 w-1/4">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">체크인</Typography>
@@ -132,7 +128,6 @@ function AirHotel() {
           </Box>
         </Box>
 
-        {/* 검색 버튼 */}
         <Box className="flex items-center w-2/12 mt-12 ml-2">
           <Button variant="contained" className="w-auto h-14">
             <IoSearch className="text-xl" />

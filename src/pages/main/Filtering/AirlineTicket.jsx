@@ -28,13 +28,9 @@ function AirlineTicket() {
         </Box>
       </Box>
 
-      {/* 출발지 - 도착지 */}
       <Box className="flex">
         <Box className="w-3/12">
-          <TextField
-            className="w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-            placeholder="출발지"
-          />
+          <TextField className="w-full" placeholder="출발지" />
         </Box>
 
         <Box className="flex items-center mx-2">
@@ -45,12 +41,8 @@ function AirlineTicket() {
           <TextField placeholder="도착지" />
         </Box>
 
-        {/*  */}
         <Box className="w-3/12 mx-3">
-          <TextField
-            type="date"
-            className="ml-4 border-t border-b border-l border-grey rounded-t rounded-l w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-          />
+          <TextField type="date" className="ml-4 w-full" />
         </Box>
 
         <Box className="flex items-center">
@@ -58,18 +50,11 @@ function AirlineTicket() {
         </Box>
 
         <Box className="w-3/12 ml-2">
-          <TextField
-            type="date"
-            className="ml-2 rounded-r w-200 focus:border-b-2 focus:border-blue-500 p-3 w-full outline-none text-sm"
-          />
+          <TextField type="date" className="ml-2 w-full" />
         </Box>
 
-        {/* 검색 버튼 */}
         <Box className="flex items-center w-3/12 ml-2">
-          <Button
-            variant="contained"
-            className="flex items-center text-white bg-blue-600 w-auto h-14 text-xl rounded-tl-md rounded-bl-md rounded-br-md rounded-tr-none transition duration-300 ease-in-out hover:bg-blue-700"
-          >
+          <Button variant="contained" className="w-auto h-14">
             <IoSearch className="text-2xl" />
           </Button>
         </Box>

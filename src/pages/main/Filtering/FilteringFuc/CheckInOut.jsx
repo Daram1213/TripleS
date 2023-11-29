@@ -8,13 +8,12 @@ import { Typography, Box } from '@mui/material'
 
 export default function CheckInOut() {
   const initialCheckInDate = dayjs('2022-04-17')
-  const initialCheckOutDate = dayjs('2022-04-18') // Set to the next day for 1 night
+  const initialCheckOutDate = dayjs('2022-04-18')
 
   const [checkInDate, setCheckInDate] = useState(initialCheckInDate)
   const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate)
   const [nightCount, setNightCount] = useState(1)
 
-  // 날짜 변경에 따른 몇 박 몇 일 계산
   useEffect(() => {
     const nights = dayjs(checkOutDate).diff(dayjs(checkInDate), 'day')
     setNightCount(nights >= 0 ? nights : 0)

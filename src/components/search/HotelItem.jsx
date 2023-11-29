@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 function HotelItem({ hotel }) {
+  const [city] = hotel?.address?.split(' ')
+
   return (
     // 클릭시 숙소 디테일 페이지로 이동
     <Link to="/hotelDetail/{hotel.id}">
@@ -22,7 +24,7 @@ function HotelItem({ hotel }) {
             {hotel.name}
           </Typography>
           <Typography variant="body1" className="-mt-1">
-            {hotel.address?.city} {hotel.country}
+            {city}
           </Typography>
 
           <Box className="-mt-1.5">

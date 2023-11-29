@@ -24,7 +24,7 @@ function SearchTourList() {
     queryFn: fetchSearchTour,
   })
 
-  const attractionData = attractionRes?.data?.attractions
+  const attractionData = attractionRes?.data?.attraction
 
   useEffect(() => {
     if (!attractionRes.isLoading && attractionData) {
@@ -38,7 +38,11 @@ function SearchTourList() {
   const [intersectRef] = useIntersect(
     async (entry, observer) => {
       observer.unobserve(entry.target)
-      if (!attractionRes.isLoading && attractionData.length === items)
+      if (
+        !attractionRes.isLoading &&
+        attractionData &&
+        attractionData.length === items
+      )
         setPage((prevPage) => prevPage + 1)
       observer.observe(entry.target)
     },

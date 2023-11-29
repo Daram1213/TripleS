@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 function HotelItem({ hotel }) {
+  console.log(hotel.address)
   return (
     // 클릭시 숙소 디테일 페이지로 이동
-    <Link>
+    <Link to="1">
       <Box className="h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100">
         <Box className="h-[126px] w-[126px] overflow-hidden">
           <img

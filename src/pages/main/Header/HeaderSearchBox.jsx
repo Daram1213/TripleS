@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search'
@@ -30,17 +29,17 @@ function HeaderSearchBox() {
   }
 
   const handleSearchButton = () => {
-    navigate(`/searchList/:${keyword}`)
+    navigate(`/searchList/${keyword}`)
   }
 
   const handleEnterPress = (_) => {
     if (_.key === 'Enter') {
-      navigate(`/searchList/:${keyword}`)
+      navigate(`/searchList/${keyword}`)
     }
   }
 
   const handleSearch = (_) => {
-    navigate(`/searchList/:${_}`)
+    navigate(`/searchList/${_}`)
   }
 
   const handleInputChange = (_) => {
@@ -70,12 +69,13 @@ function HeaderSearchBox() {
                 {hotTripLocation.map((location) => (
                   <ListItemButton
                     key={location.id}
+                    className="gap-3"
                     onClick={() => handleSearch(location.locale)}
                   >
-                    <LocationOnIcon sx={{ marginRight: '0.5rem' }} />
+                    <LocationOnIcon />
                     <ListItemText
                       primary={location.locale}
-                      sx={{ flex: 'none', marginRight: '1rem' }}
+                      sx={{ flex: 'none' }}
                     />
                     <ListItemText
                       primary={location.detailLocale}

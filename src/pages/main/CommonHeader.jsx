@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-import React from 'react'
 import { Box } from '@mui/material'
 import HeaderLogo from './Header/HeaderLogo'
 import FunctionOptions from './Header/FunctionOptions'

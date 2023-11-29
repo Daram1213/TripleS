@@ -10,6 +10,9 @@ export default {
         'hotel-bg':
           "url('https://pages.trip.com/Hotels/images/V8HomePageBackGround.webp')",
       },
+      backgroundPosition: {
+        'top-15': 'center top -15rem',
+      },
       borderRadius: {
         lg: '4rem',
       },

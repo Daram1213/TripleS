@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { Box, Link, Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import dummyData from '../../../assets/dummyData/dummyData'

@@ -10,7 +10,6 @@ import DetailPage from './pages/DetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
-import ReservationPage from './pages/reservation/ReservationPage'
 
 function App() {
   const theme = createTheme()
@@ -43,10 +42,7 @@ function App() {
                   path="/searchTourList/:keyword"
                   element={<SearchTourList />}
                 />
-                <Route
-                  path="/hotelDetail/:lodgingId"
-                  element={<DetailPage />}
-                />
+                <Route path="/hotelDetail" element={<DetailPage />} />
               </Route>
             </Routes>
           </QueryClientProvider>

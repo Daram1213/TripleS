@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 function TourItem({ attraction }) {
+  const [city] = attraction?.address?.split(' ')
+
   return (
     // 클릭시 여행지 디테일 페이지로 이동
     <Link>
@@ -22,7 +24,7 @@ function TourItem({ attraction }) {
             {attraction.name}
           </Typography>
           <Typography variant="body1" className="-mt-1">
-            {attraction.address?.city} {attraction.country}
+            {city}
           </Typography>
 
           <Box className="-mt-1.5">

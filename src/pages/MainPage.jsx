@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import MainHeader from './main/MainHeader'
 import Footer from './main/Footer/Footer'
 import HomeBody from './main/HomeBody/HomeBody'

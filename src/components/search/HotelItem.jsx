@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 function HotelItem({ hotel }) {
+  console.log(hotel.address)
   return (
     // 클릭시 숙소 디테일 페이지로 이동
     <Link to="1">

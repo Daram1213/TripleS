@@ -39,7 +39,7 @@ function AirHotel() {
           </Box>
         </Box>
 
-        <Box className="flex items-center mt-12 ml-[-56px] mr-2">
+        <Box className="flex items-center mt-12 ml-[-4rem] mr-2">
           <IoAirplane className="text-2xl text-blue-600 border-2 border-blue-600 rounded-full p-1" />
         </Box>
 
@@ -53,7 +53,7 @@ function AirHotel() {
         </Box>
 
         {/* 가는편 오는편 */}
-        <Box className="w-1/5 ml-[-50px]">
+        <Box className="w-1/5 ml-[-3rem]">
           <Box className="flex text-grey-700 p-3">
             <Typography className="text-xs">가는편</Typography>
           </Box>
@@ -134,10 +134,7 @@ function AirHotel() {
 
         {/* 검색 버튼 */}
         <Box className="flex items-center w-2/12 mt-12 ml-2">
-          <Button
-            variant="contained"
-            className="flex items-center justify-center text-white bg-blue-600 w-auto h-14 text-lg rounded-r-lg rounded-l-lg p-2 transition duration-300 ease-in-out hover:bg-opacity-80"
-          >
+          <Button variant="contained" className="w-auto h-14">
             <IoSearch className="text-xl" />
           </Button>
         </Box>

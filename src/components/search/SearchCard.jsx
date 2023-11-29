@@ -14,15 +14,26 @@ function SearchCard() {
   const { keyword } = useParams()
   // 한 페이지에 불러 올 아이템 수
   const items = 1
+  const page = 1
   const [attractions, setAttractions] = useState([])
   const [hotels, setHotels] = useState([])
 
   const hotelRes = useQuery({
-    queryKey: ['hotels', keyword, items],
+    queryKey: {
+      type: 'hotels',
+      keyword,
+      items,
+      page,
+    },
     queryFn: fetchSearchHotel,
   })
   const attractionRes = useQuery({
-    queryKey: ['attractions', keyword, items],
+    queryKey: {
+      type: 'attractions',
+      keyword,
+      items,
+      page,
+    },
     queryFn: fetchSearchTour,
   })
 

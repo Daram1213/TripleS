@@ -7,6 +7,8 @@ export default {
       backgroundImage: {
         'custom-bg':
           "url('https://pages.trip.com/images/home-background/head-banner-bg-new-1920.webp')",
+        'hotel-bg':
+          "url('https://pages.trip.com/Hotels/images/V8HomePageBackGround.webp')",
       },
       borderRadius: {
         lg: '4rem',

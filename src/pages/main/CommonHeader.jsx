@@ -2,24 +2,22 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import HeaderLogo from './Header/HeaderLogo'
-import HeaderSearchBox from './Header/HeaderSearchBox'
 import FunctionOptions from './Header/FunctionOptions'
 import NavigationBar from './Header/NavigationBar'
 import Filtering from './Filtering/Filtering'
-import LogoWriting from './LogoWriting'
 
-function Header() {
+function CommonHeader() {
   return (
-    <Box className="main-hd-container bg-custom-bg relative w-full bg-cover bg-no-repeat bg-center pb-20">
-      <Box className="main-hd-flex-icon px-8 clear-both flow-root">
+    <Box className="main-hd-container relative bg-hotel-bg bg-cover pb-20">
+      <Box className="main-hd-flex-icon px-8 flex">
         <HeaderLogo />
-        <HeaderSearchBox />
+        <Box className="flex items-center ml-4">
+          <NavigationBar />
+        </Box>
         <FunctionOptions />
-        <NavigationBar />
       </Box>
-      <LogoWriting />
       <Filtering />
     </Box>
   )
 }
-export default Header
+export default CommonHeader

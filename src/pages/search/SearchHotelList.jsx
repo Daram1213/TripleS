@@ -41,7 +41,7 @@ function SearchHotelList() {
   const [intersectRef] = useIntersect(
     async (entry, observer) => {
       observer.unobserve(entry.target)
-      if (!hotelRes.isLoading && hotelData && hotelData.length === items)
+      if (!hotelRes.isLoading && hotelData?.length === items)
         setPage((prevPage) => prevPage + 1)
       observer.observe(entry.target)
     },

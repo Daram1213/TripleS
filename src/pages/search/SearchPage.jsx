@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { Box, Typography } from '@mui/material'
 import SearchCard from '../../components/search/SearchCard'
 import fetchSearchTour from '../../fetch/fetchSearchTour'
 import fetchSearchHotel from '../../fetch/fetchSearchHotel'
@@ -50,9 +49,7 @@ function SearchPage() {
     }
   }, [attractionData, attractionRes.isLoading])
   return (
-    <Box>
-      <SearchCard hotels={hotels} attractions={attractions} keyword={keyword} />
-    </Box>
+    <SearchCard hotels={hotels} attractions={attractions} keyword={keyword} />
   )
 }
 

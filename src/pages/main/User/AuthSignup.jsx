@@ -1,0 +1,100 @@
+import { Box, Typography, TextField, Button } from '@mui/material'
+
+function AuthSignup() {
+  return (
+    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-400 bg-white shadow-lg p-8 rounded h-max">
+      <Box>
+        <Typography
+          display="flex"
+          alignItems="flex-start"
+          id="modal-modal-title"
+          variant="h6"
+          fontWeight="bold"
+        >
+          회원가입
+        </Typography>
+      </Box>
+      <Box className="mt-2">
+        <Typography variant="caption" color="textSecondary">
+          간편하게 예약을 관리하고 회원 전용 혜택도 누려보세요
+        </Typography>
+      </Box>
+      <Box
+        className="mt-6 w-full"
+        component="form"
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          className="w-full"
+          id="outlined-basic"
+          label="이메일"
+          placeholder="이메일을 입력해주세요"
+          variant="outlined"
+        />
+        <Box className="mt-2">
+          <TextField
+            className="w-full"
+            id="outlined-basic"
+            label="이름"
+            placeholder="이름을 입력해주세요"
+            variant="outlined"
+          />
+        </Box>
+        <Box className="mt-2">
+          <TextField
+            className="w-full"
+            id="outlined-basic"
+            label="비밀번호"
+            placeholder="비밀번호를 입력해주세요"
+            variant="outlined"
+          />
+        </Box>
+        <Box className="mt-2">
+          <TextField
+            className="w-full"
+            id="outlined-basic"
+            label="생일"
+            placeholder="생일을 입력해주세요"
+            variant="outlined"
+          />
+        </Box>
+        <Box className="mt-2">
+          <TextField
+            className="w-full"
+            id="outlined-basic"
+            label="주소"
+            placeholder="주소를 입력해주세요"
+            variant="outlined"
+          />
+        </Box>
+      </Box>
+      <Box className="mt-6 w-full">
+        <Button
+          variant="contained"
+          className="w-full h-12"
+          sx={{ backgroundColor: 'rgba(0, 0, 255, 0.5)' }}
+        >
+          계속
+        </Button>
+      </Box>
+      <Box className="flex justify-center mt-2">
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          sx={{ cursor: 'pointer' }}
+        >
+          로그인
+        </Typography>
+      </Box>
+      <Box className="mt-6">
+        <Typography variant="caption" color="textSecondary">
+          로그인 또는 회원가입 시, TripleS 이용약관 및 개인정보 정책에 동의한
+          것으로 간주합니다.
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
+
+export default AuthSignup

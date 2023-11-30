@@ -1,13 +1,12 @@
-import React from 'react'
+import { useState } from 'react'
 import { Box, Typography, Modal } from '@mui/material'
 import SouthKoreaFlag from '../../../assets/img/SouthKorea.png'
 // import AuthLogin from '../User/AuthLogin'
 import AuthSignup from '../User/AuthSignup'
 
 function FunctionOptions() {
-  const [open, setOpen] = React.useState(false)
-  const handleOpen = (event) => {
-    event.stopPropagation()
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => {
     setOpen(true)
   }
   const handleClose = () => setOpen(false)

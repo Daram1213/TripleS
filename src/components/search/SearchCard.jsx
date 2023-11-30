@@ -1,62 +1,15 @@
-import { useParams, Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 import SideBar from './SideBar'
 import HotelItem from './HotelItem'
 import TourItem from './TourItem'
-import fetchSearchHotel from '../../fetch/fetchSearchHotel'
-import fetchSearchTour from '../../fetch/fetchSearchTour'
 
-function SearchCard() {
-  // 검색어 useParams로 가져오기 e.g. 서울, 종로, 일본
-  const { keyword } = useParams()
-  // 한 페이지에 불러 올 아이템 수
-  const items = 1
-  const page = 1
-  const [attractions, setAttractions] = useState([])
-  const [hotels, setHotels] = useState([])
-
-  const hotelRes = useQuery({
-    queryKey: {
-      type: 'hotels',
-      keyword,
-      items,
-      page,
-    },
-    queryFn: fetchSearchHotel,
-  })
-  const attractionRes = useQuery({
-    queryKey: {
-      type: 'attractions',
-      keyword,
-      items,
-      page,
-    },
-    queryFn: fetchSearchTour,
-  })
-
-  // 위의 데이터에서 필요한 값 가져옴
-  const hotelData = hotelRes?.data?.lodging
-  const attractionData = attractionRes?.data?.attraction
-
-  useEffect(() => {
-    if (!hotelRes.isLoading && hotelData) {
-      setHotels(() => [...hotelData])
-    }
-  }, [hotelData, hotelRes.isLoading])
-
-  useEffect(() => {
-    if (!attractionRes.isLoading && attractionData) {
-      setAttractions(() => [...attractionData])
-    }
-  }, [attractionData, attractionRes.isLoading])
-
+function SearchCard({ hotels, attractions, keyword }) {
   return (
     <Box className="flex flex-col items-center gap-3">
       <Typography
-        className="text-gray-900 w-[1350px]"
+        className="text-gray-900 w-[84rem]"
         style={{
           display: 'inline',
           marginLeft: '1rem',
@@ -68,7 +21,7 @@ function SearchCard() {
         <FiChevronRight className="w-10 inline" />
         검색
       </Typography>
-      <Box className="text-gray-900 w-[1350px] ml-2">
+      <Box className="text-gray-900  w-[84rem] ml-2">
         <Typography
           style={{
             display: 'inline',
@@ -107,7 +60,7 @@ function SearchCard() {
         </Typography>
       </Box>
       <Box className="flex justify-center w-full" style={{ width: '100%' }}>
-        <Box className="max-w-[calc(100vw - 64px)] flex w-[1350px] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
+        <Box className="max-w-[calc(100vw - 64px)] flex  w-[84rem] overflow-x-auto sm:flex-col md:flex-col lg:flex-row">
           <SideBar keyword={keyword} />
           <Box className="flex flex-auto flex-col px-4">
             <Box className="flex-auto px-4">

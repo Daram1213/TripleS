@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import SearchCard from '../../components/search/SearchCard'
@@ -11,8 +11,8 @@ function SearchPage() {
   // 한 페이지에 불러 올 아이템 수
   const items = 1
   const page = 1
-  const [attractions, setAttractions] = useState([])
-  const [hotels, setHotels] = useState([])
+  let hotels = []
+  let attractions = []
 
   const hotelRes = useQuery({
     queryKey: {
@@ -37,17 +37,20 @@ function SearchPage() {
   const hotelData = hotelRes?.data?.lodging
   const attractionData = attractionRes?.data?.attraction
 
-  useEffect(() => {
+  hotels = useMemo(() => {
     if (!hotelRes.isLoading && hotelData) {
-      setHotels(() => [...hotelData])
+      return [...hotels, ...hotelData]
     }
-  }, [hotelData, hotelRes.isLoading])
+    return [...hotels]
+  }, [hotels, hotelData, hotelRes.isLoading])
 
-  useEffect(() => {
+  attractions = useMemo(() => {
     if (!attractionRes.isLoading && attractionData) {
-      setAttractions(() => [...attractionData])
+      return [...attractions, ...attractionData]
     }
-  }, [attractionData, attractionRes.isLoading])
+    return [...attractions]
+  }, [attractions, attractionData, attractionRes.isLoading])
+
   return (
     <SearchCard hotels={hotels} attractions={attractions} keyword={keyword} />
   )

@@ -1,12 +1,5 @@
 import { useState } from 'react'
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Divider,
-  Link,
-} from '@mui/material'
+import { Box, Typography, TextField, Button, Divider } from '@mui/material'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
@@ -43,23 +36,12 @@ function AuthLogin() {
   }
 
   return (
-    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 bg-white shadow-lg p-6 rounded h-4/5 gap-2">
-      <Typography
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginTop: '-1rem',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-        }}
-      >
-        X
-      </Typography>
+    <Box className="flex flex-col absolute p-6 rounded h-fit gap-2">
       <Typography
         display="flex"
         alignItems="flex-start"
         id="modal-modal-title"
-        variant="h6"
+        variant="h5"
         fontWeight="bold"
       >
         로그인
@@ -108,16 +90,6 @@ function AuthLogin() {
           로그인
         </Button>
       </Box>
-      <Box className="flex justify-center mt-2">
-        <Link
-          to="/signup"
-          variant="body2"
-          color="textSecondary"
-          sx={{ cursor: 'pointer' }}
-        >
-          회원가입
-        </Link>
-      </Box>
       <Box className="flex justify-center mt-6 relative">
         <Divider
           orientation="horizontal"
@@ -141,7 +113,7 @@ function AuthLogin() {
           다른 로그인 방식
         </Typography>
       </Box>
-      <Box className="flex justify-center m-6 ">
+      <Box className="flex justify-center m-6">
         <Typography>
           <SiNaver class="text-4xl text-white  rounded-full bg-green-500 p-2.5 cursor-pointer" />
         </Typography>
@@ -152,7 +124,11 @@ function AuthLogin() {
           <FcGoogle class="text-4xl ml-6 rounded-full bg-white-500 p-2 border cursor-pointer" />
         </Typography>
       </Box>
-      <Typography variant="caption" color="textSecondary">
+      <Typography
+        sx={{ marginTop: '6rem' }}
+        variant="caption"
+        color="textSecondary"
+      >
         로그인 또는 회원가입 시, TripleS 이용약관 및 개인정보 정책에 동의한
         것으로 간주합니다.
       </Typography>

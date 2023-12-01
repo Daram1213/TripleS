@@ -1,14 +1,51 @@
 import { useState } from 'react'
-import { Box, Typography, Modal } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
+import PropTypes from 'prop-types'
 import SouthKoreaFlag from '../../../assets/img/SouthKorea.png'
+import AuthModal from '../User/AuthModal'
 import AuthLogin from '../User/AuthLogin'
+import AuthSignup from '../User/AuthSignup'
+
+function LoginForm({ onSwitchToSignup, onClose }) {
+  return (
+    <>
+      <Box className="flex justify-end">
+        <Button onClick={onSwitchToSignup}>회원가입</Button>
+        <Button onClick={onClose}>X</Button>
+      </Box>
+      <AuthLogin />
+    </>
+  )
+}
+
+function SignupForm({ onSwitchToLogin, onClose }) {
+  return (
+    <>
+      <Box className="flex justify-end">
+        <Button onClick={onSwitchToLogin}>로그인</Button>
+        <Button onClick={onClose}>X</Button>
+      </Box>
+      <AuthSignup />
+    </>
+  )
+}
 
 function FunctionOptions() {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => {
-    setOpen(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLoginForm, setIsLoginForm] = useState(true)
+
+  const openModal = () => {
+    setIsModalOpen(true)
   }
-  const handleClose = () => setOpen(false)
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  const switchForm = () => {
+    setIsLoginForm((prev) => !prev)
+  }
+
   return (
     <Box className="float-right flex text-white cursor-pointer items-center m-3 mr-8 absolute right-0 gap-4">
       <Typography>앱</Typography>
@@ -26,20 +63,29 @@ function FunctionOptions() {
       </Typography>
       <Typography
         className="relative p-2 rounded-md bg-slate-50 text-black"
-        onClick={handleOpen}
+        onClick={openModal}
       >
         로그인 / 회원가입
       </Typography>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <AuthLogin />
-      </Modal>
+      <AuthModal open={isModalOpen} onClose={closeModal}>
+        {isLoginForm ? (
+          <LoginForm onSwitchToSignup={switchForm} onClose={closeModal} />
+        ) : (
+          <SignupForm onSwitchToLogin={switchForm} onClose={closeModal} />
+        )}
+      </AuthModal>
     </Box>
   )
+}
+
+LoginForm.propTypes = {
+  onSwitchToSignup: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+}
+
+SignupForm.propTypes = {
+  onSwitchToLogin: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default FunctionOptions

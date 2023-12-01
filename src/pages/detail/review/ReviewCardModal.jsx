@@ -35,7 +35,6 @@ export default function ReviewCardModal() {
               <ReviewCardComponent name="Daniel" visitDate={2023.11} />
               <ReviewCardComponent name="Daniel" visitDate={2023.11} />
             </Box>
-            
 
         </Box>
       </Modal>

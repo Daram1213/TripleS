@@ -5,10 +5,12 @@ import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
 import { useNavigate } from 'react-router'
 import fetchLogin from '../../../fetch/fetchLogin'
+import { isValidEmailFormat } from '../../../assets/validation/validationSingup'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isValidEmail, setIsValidEmail] = useState(true)
   const router = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -18,14 +20,7 @@ function AuthLogin() {
     const { accessToken, refreshToken } = result
     localStorage.setItem('access', accessToken)
     localStorage.setItem('refresh', refreshToken)
-    router('/')
-  }
-
-  const [isValidEmail, setIsValidEmail] = useState(true)
-
-  const isValidEmailFormat = (inputEmail) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(inputEmail)
+    router('/AuthSignup')
   }
 
   const handleEmailChange = (e) => {

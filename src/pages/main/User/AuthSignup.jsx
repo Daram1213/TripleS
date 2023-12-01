@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { Box, Typography, TextField, Button } from '@mui/material'
 import fetchSignup from '../../../fetch/fetchSignup'
+import {
+  isValidEmailFormat,
+  isValidNameFormat,
+  isValidPasswordFormat,
+} from '../../../assets/validation/validationSingup'
 
 function AuthSignup() {
   const [email, setEmail] = useState('')
@@ -9,20 +14,26 @@ function AuthSignup() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [address, setAddress] = useState('')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const result = await fetchSignup(email, name, password, address, false)
-  }
-
   const [isValidEmail, setIsValidEmail] = useState(true)
   const [isValidName, setIsValidName] = useState(true)
   const [isValidPassword, setIsValidPassword] = useState(true)
   const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(true)
 
-  const isValidEmailFormat = (inputEmail) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(inputEmail)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const isValidInput = email && name && password && address
+
+    try {
+      if (isValidInput) {
+        await fetchSignup(email, name, password, address, false)
+        window.alert('회원가입 되었습니다. 로그인해주세요')
+      } else {
+        window.alert('입력값을 확인해주세요')
+      }
+    } catch (error) {
+      window.alert('회원가입 실패')
+    }
   }
 
   const handleEmailChange = (e) => {
@@ -32,18 +43,11 @@ function AuthSignup() {
     setIsValidEmail(isValid)
   }
 
-  const isValidNameFormat = (inputName) => inputName.length >= 2
   const handleNameChange = (e) => {
     const inputName = e.target.value
     const isValid = isValidNameFormat(inputName)
     setName(inputName)
     setIsValidName(isValid)
-  }
-
-  const isValidPasswordFormat = (inputPassword) => {
-    const passwordRegex =
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/
-    return passwordRegex.test(inputPassword)
   }
 
   const handlePasswordChange = (e) => {

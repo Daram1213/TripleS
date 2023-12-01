@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
-function TourItem({ attraction }) {
+function TourItem({ attraction, smallCard }) {
   const city = useMemo(
     () => (attraction?.address ? attraction.address.split(' ')[0] : ''),
     [attraction],
@@ -10,13 +10,33 @@ function TourItem({ attraction }) {
 
   return (
     // 클릭시 여행지 디테일 페이지로 이동
-    <Link>
-      <Box className="h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100">
-        <Box className="h-[8rem] w-[8rem] overflow-hidden">
+    <Link to="/tourDetail/1">
+      <Box
+        className={
+          smallCard
+            ? 'h-20 group relative mb-2 flex overflow-hidden border border-solid border-gray-200 bg-white'
+            : 'h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100'
+        }
+      >
+        <Box
+          className={
+            smallCard
+              ? 'h-[5rem] w-[5rem] overflow-hidden'
+              : 'h-[8rem] w-[8rem] overflow-hidden'
+          }
+
+          // className={`${smallCard} ? "h-[5rem] w-[5rem] overflow-hidden" : "h-[8rem] w-[8rem] overflow-hidden"`}
+        >
           <img
+            // src={`src/assets/img/attraction/${attraction.mainImage}`}
             src="https://p1.pxfuel.com/preview/778/373/101/nature-landscape-rocks-formation-cave-beauty.jpg"
-            className="h-[8rem] w-[8rem] object-cover duration-1000 group-hover:scale-125 "
-            alt="Nature"
+            // className={`${smallCard} ? "h-[5rem] w-[5rem] object-cover": "h-[8rem] w-[8rem] overflow-hidden object-cover  duration-1000 group-hover:scale-125 "`}
+            className={
+              smallCard
+                ? 'h-[5rem] w-[5rem] object-cover'
+                : 'h-[8rem] w-[8rem] overflow-hidden object-cover duration-1000 group-hover:scale-125'
+            }
+            alt={`attraction ${attraction.attractionId}`}
           />
         </Box>
         <Box className=" flex flex-col items-start justify-start gap-1 px-2 py-1.5 text-gray-500">
@@ -35,7 +55,7 @@ function TourItem({ attraction }) {
             <Typography
               variant="body1"
               className=" text-blue-500"
-              style={{ display: 'inline' }}
+              style={smallCard ? { display: 'inline' } : { display: 'inline' }}
             >
               {attraction.avgRating}
             </Typography>

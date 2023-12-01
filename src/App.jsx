@@ -10,6 +10,7 @@ import DetailPage from './pages/DetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
+import ReservationPage from './pages/reservation/ReservationPage'
 
 function App() {
   const theme = createTheme()

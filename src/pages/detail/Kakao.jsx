@@ -30,29 +30,33 @@ const Kakao = () => {
   }, [])
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
+    <div
+      style={{
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <Grid
-        sx={{
-          width: '480px',
-          height: '570px',
+      <Box className="font-bold text-xl mb-2">숙소 위치</Box>
+      <Map
+        center={{
+          lat: lodgingData.lodging.map.latitude,
+          lng: lodgingData.lodging.map.longitude,
         }}
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
+        style={{ width: '800px', height: '600px' }}
+        level={3}
       >
-        <Box className="font-bold text-xl mb-2">숙소 위치</Box>
-        <Box id="map" style={{ width: '500px', height: '500px' }}></Box>
-      </Grid>
-    </Box>
+        <MapMarker
+          position={{
+            lat: lodgingData.lodging.map.latitude,
+            lng: lodgingData.lodging.map.longitude,
+          }}
+        >
+          {' '}
+        </MapMarker>
+      </Map>
+    </div>
   )
 }
 

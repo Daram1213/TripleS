@@ -1,37 +1,7 @@
-import React, { useEffect } from 'react'
-import { Grid, Box, Typography } from '@mui/material'
+import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import { Box } from '@mui/material'
 
-const { kakao } = window
-
-const Kakao = () => {
-const Kakao = () => {
-  useEffect(() => {
-    if (!window.kakao || !window.kakao.maps) {
-      console.error('Kakao Maps API is not loaded')
-      return // Kakao Maps API가 없으면 여기서 함수를 종료합니다.
-    }
-
-    if (!window.kakao || !window.kakao.maps) {
-      console.error('Kakao Maps API is not loaded')
-      return // Kakao Maps API가 없으면 여기서 함수를 종료합니다.
-    }
-
-    const container = document.getElementById('map')
-    const options = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    }
-    const map = new kakao.maps.Map(container, options)
-
-    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-    })
-
-    marker.setMap(map)
-  }, [])
-
+const Kakao = ({ lodgingData }) => {
   return (
     <div
       style={{

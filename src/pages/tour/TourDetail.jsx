@@ -33,8 +33,7 @@ function TourDetail() {
   }, [mainAttractionRes.isLoading, mainAttractionRes?.data])
 
   const city = useMemo(
-    // () => (mainAttraction?.address ? mainAttraction.address.split(' ')[0] : ''),
-    () => (mainAttraction?.address ? '서울' : ''),
+    () => (mainAttraction?.address ? mainAttraction.address.split(' ')[0] : ''),
     [mainAttraction],
   )
 

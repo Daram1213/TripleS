@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Box, Typography, Modal } from '@mui/material'
 import SouthKoreaFlag from '../../../assets/img/SouthKorea.png'
-// import AuthLogin from '../User/AuthLogin'
-import AuthSignup from '../User/AuthSignup'
+import AuthLogin from '../User/AuthLogin'
 
 function FunctionOptions() {
   const [open, setOpen] = useState(false)
@@ -37,7 +36,7 @@ function FunctionOptions() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <AuthSignup />
+        <AuthLogin />
       </Modal>
     </Box>
   )

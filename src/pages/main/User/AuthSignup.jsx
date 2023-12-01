@@ -1,54 +1,71 @@
-import { Box, Typography, TextField, Button } from '@mui/material'
 import { useState } from 'react'
-import axios from 'axios'
+import { Box, Typography, TextField, Button } from '@mui/material'
+import fetchSignup from '../../../fetch/fetchSignup'
 
 function AuthSignup() {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [birth, setBirth] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [address, setAddress] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      // 회원가입에 사용할 데이터
-      const userData = {
-        email,
-        name,
-        password,
-        address,
-        userId: 123,
-        isAdmin: false,
-      }
 
-      // axios.post 메서드를 사용하여 POST 요청 보내기
-      const response = await axios.post(
-        'http://15.165.25.34:3000/api/signup',
-        userData, // 요청 본문에 보낼 데이터
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
+    const result = await fetchSignup(email, name, password, address, 124, false)
+  }
 
-      // if (response?.data?.success) {
+  const [isValidEmail, setIsValidEmail] = useState(true)
+  const [isValidName, setIsValidName] = useState(true)
+  const [isValidPassword, setIsValidPassword] = useState(true)
+  const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(true)
 
-      // } else if (response?.data?.error) {
-      //   alert(response.data.error)
-      //   alert('회원가입 실패')
-      // }
-      // 응답 데이터 출력
-      // console.log('signUp', response.data)
-    } catch (error) {
-      // 에러 발생 시 처리
-      // console.log('signUp failed', error)
+  const isValidEmailFormat = (inputEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(inputEmail)
+  }
+
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value
+    const isValid = isValidEmailFormat(inputEmail)
+    setEmail(inputEmail)
+    setIsValidEmail(isValid)
+  }
+
+  const isValidNameFormat = (inputName) => inputName.length >= 2
+  const handleNameChange = (e) => {
+    const inputName = e.target.value
+    const isValid = isValidNameFormat(inputName)
+    setName(inputName)
+    setIsValidName(isValid)
+  }
+
+  const isValidPasswordFormat = (inputPassword) => {
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/
+    return passwordRegex.test(inputPassword)
+  }
+
+  const handlePasswordChange = (e) => {
+    const inputPassword = e.target.value
+    const isValid = isValidPasswordFormat(inputPassword)
+    setPassword(inputPassword)
+    setIsValidPassword(isValid)
+  }
+
+  const handleConfirmPasswordChange = (e) => {
+    const inputConfirmPassword = e.target.value
+    setConfirmPassword(inputConfirmPassword)
+
+    if (inputConfirmPassword !== password) {
+      setIsValidConfirmPassword(false)
+    } else {
+      setIsValidConfirmPassword(true)
     }
   }
 
   return (
-    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-400 bg-white shadow-lg p-8 rounded h-max gap-2">
+    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 bg-white shadow-lg p-8 rounded h-max gap-2">
       <Typography
         sx={{
           display: 'flex',
@@ -73,7 +90,7 @@ function AuthSignup() {
         간편하게 예약을 관리하고 회원 전용 혜택도 누려보세요
       </Typography>
       <Box
-        className="mt-6 w-full"
+        className="flex flex-col mt-6 w-full gap-2"
         component="form"
         noValidate
         autoComplete="off"
@@ -81,56 +98,59 @@ function AuthSignup() {
         <TextField
           type="email"
           value={email}
-          className="w-full"
+          className={`w-full ${isValidEmail ? 'valid' : 'invalid'}`}
           id="outlined-basic"
           label="이메일"
           placeholder="이메일을 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setEmail(e.target.value)
-          }}
+          onChange={handleEmailChange}
         />
+        {!isValidEmail && email.length > 0 && (
+          <Box className="text-red-500">유효하지 않은 이메일 형식입니다.</Box>
+        )}
         <TextField
-          sx={{ marginTop: '8px' }}
           type="text"
           value={name}
-          className="w-full"
+          className={`w-full ${isValidName ? 'valid' : 'invalid'}`}
           id="outlined-basic"
           label="이름"
           placeholder="이름을 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setName(e.target.value)
-          }}
+          onChange={handleNameChange}
         />
+        {!isValidName && name.length > 0 && (
+          <Box className="text-red-500">이름은 2글자 이상이어야 합니다.</Box>
+        )}
         <TextField
-          sx={{ marginTop: '8px' }}
           type="password"
           value={password}
-          className="w-full"
+          className={`w-full ${isValidPassword ? 'valid' : 'invalid'}`}
           id="outlined-basic"
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setPassword(e.target.value)
-          }}
+          onChange={handlePasswordChange}
         />
+        {!isValidPassword && password.length > 0 && (
+          <Box style={{ color: 'red' }}>
+            비밀번호는 6자 이상이어야 하며, 대문자, 소문자, 숫자, 특수 문자를
+            모두 포함해야 합니다.
+          </Box>
+        )}
         <TextField
-          sx={{ marginTop: '8px' }}
-          type="text"
-          value={birth}
-          className="w-full"
-          id="outlined-basic"
-          label="생일"
-          placeholder="생일을 6자리를 입력해주세요"
+          type="password"
+          value={confirmPassword}
+          className={`w-full ${isValidConfirmPassword ? 'valid' : 'invalid'}`}
+          id="confirmPassword"
+          label="비밀번호 확인"
+          placeholder="비밀번호를 다시 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setBirth(e.target.value)
-          }}
+          onChange={handleConfirmPasswordChange}
         />
+        {!isValidConfirmPassword && confirmPassword.length > 0 && (
+          <Box style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</Box>
+        )}
         <TextField
-          sx={{ marginTop: '8px' }}
           type="text"
           value={address}
           className="w-full"
@@ -142,8 +162,6 @@ function AuthSignup() {
             setAddress(e.target.value)
           }}
         />
-      </Box>
-      <Box className="mt-6 w-full">
         <Button
           onClick={handleSubmit}
           variant="contained"
@@ -153,6 +171,7 @@ function AuthSignup() {
           회원가입
         </Button>
       </Box>
+
       <Box className="flex justify-center mt-2">
         <Typography
           variant="body2"

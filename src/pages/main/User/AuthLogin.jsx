@@ -1,51 +1,34 @@
-import axios from 'axios'
 import { useState } from 'react'
-import { Box, Typography, TextField, Button, Divider } from '@mui/material'
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Divider,
+  Link,
+} from '@mui/material'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
-// import { useHistory } from 'react-router-dom'
-// import AuthSignup from './AuthSignup'
+import { useNavigate } from 'react-router'
+import fetchLogin from '../../../fetch/fetchLogin'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  // const history = useHistory()
-
-  // const handleNavigate = () => {
-  //   history.push('/') // 홈으로 이동
-  // }
+  const router = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const userData = {
-        email: 'seodnjstlr@gmail.com',
-        password: '12345678',
-      }
 
-      const response = await axios.post(
-        'http://15.165.25.34:3000/api/login',
-        userData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-      // const accessToken = response.data.token
-
-      if (!response.statusText) {
-        throw new Error('에러.')
-      }
-      // console.log('login', response)
-    } catch (error) {
-      // console.log('login failed', error)
-    }
+    const result = await fetchLogin(email, password)
+    const { accessToken, refreshToken } = result
+    localStorage.setItem('access', accessToken)
+    localStorage.setItem('refresh', refreshToken)
+    router('/')
   }
   return (
-    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-400 bg-white shadow-lg p-6 rounded h-4/5 gap-2">
+    <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 bg-white shadow-lg p-6 rounded h-4/5 gap-2">
       <Typography
         sx={{
           display: 'flex',
@@ -110,13 +93,14 @@ function AuthLogin() {
         </Button>
       </Box>
       <Box className="flex justify-center mt-2">
-        <Typography
+        <Link
+          to="/signup"
           variant="body2"
           color="textSecondary"
           sx={{ cursor: 'pointer' }}
         >
           회원가입
-        </Typography>
+        </Link>
       </Box>
       <Box className="flex justify-center mt-6 relative">
         <Divider

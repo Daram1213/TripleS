@@ -12,7 +12,7 @@ function AuthSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const result = await fetchSignup(email, name, password, address, 124, false)
+    const result = await fetchSignup(email, name, password, address, false)
   }
 
   const [isValidEmail, setIsValidEmail] = useState(true)
@@ -79,7 +79,7 @@ function AuthSignup() {
         간편하게 예약을 관리하고 회원 전용 혜택도 누려보세요
       </Typography>
       <Box
-        className="flex flex-col w-full gap-2"
+        className="mt-6 w-full flex flex-col gap-2"
         component="form"
         noValidate
         autoComplete="off"
@@ -161,7 +161,7 @@ function AuthSignup() {
         </Button>
       </Box>
       <Typography
-        sx={{ marginTop: '5rem' }}
+        sx={{ marginTop: '3rem' }}
         variant="caption"
         color="textSecondary"
       >

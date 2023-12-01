@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box } from '@mui/material'
-import fetchMypage from '../../../fetch/fetchMypage'
+import fetchMypage from '../../../../fetch/fetchMypage'
 
 function Mypage() {
   const [data, setData] = useState()

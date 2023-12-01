@@ -27,6 +27,21 @@ function AuthLogin() {
     localStorage.setItem('refresh', refreshToken)
     router('/')
   }
+
+  const [isValidEmail, setIsValidEmail] = useState(true)
+
+  const isValidEmailFormat = (inputEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(inputEmail)
+  }
+
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value
+    const isValid = isValidEmailFormat(inputEmail)
+    setEmail(inputEmail)
+    setIsValidEmail(isValid)
+  }
+
   return (
     <Box className="flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 bg-white shadow-lg p-6 rounded h-4/5 gap-2">
       <Typography
@@ -61,15 +76,16 @@ function AuthLogin() {
         <TextField
           type="email"
           value={email}
-          className="w-full"
+          className={`w-full ${isValidEmail ? 'valid' : 'invalid'}`}
           id="outlined-basic"
           label="이메일"
           placeholder="이메일을 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setEmail(e.target.value)
-          }}
+          onChange={handleEmailChange}
         />
+        {!isValidEmail && email.length > 0 && (
+          <Box className="text-red-500">유효하지 않은 이메일 형식입니다.</Box>
+        )}
         <TextField
           type="password"
           value={password}

@@ -14,6 +14,7 @@ import RoomComponent from './RoomComponent'
 import LeftArrowIcon from '../../assets/svg/LeftArrowIcon.svg'
 import RightArrowIcon from '../../assets/svg/RightArrowIcon.svg'
 
+<<<<<<< HEAD
 // import Hostinfo from './host/HostInfo'
 
 function LodgingComponent({
@@ -23,6 +24,15 @@ function LodgingComponent({
 }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
+=======
+function LodgingComponent({
+  lodgingData,
+  setSelectedRoom,
+  setSelectedRoomType,
+}) {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+>>>>>>> f22db43a4a95e6ffe4ba37a03d54e551780e3226
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex(
@@ -178,7 +188,10 @@ function LodgingComponent({
           </Link>
         </DialogActions>
       </Dialog>
+<<<<<<< HEAD
       {/* <Hostinfo /> */}
+=======
+>>>>>>> f22db43a4a95e6ffe4ba37a03d54e551780e3226
       <Grid container spacing={2}>
         {lodgingData.roomType.map((roomType, index) => (
           <Grid item xs={12} sm={6} md={4} key={roomType._id}>

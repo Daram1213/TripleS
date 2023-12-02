@@ -146,7 +146,7 @@ function AuthSignup() {
           onChange={handlePasswordChange}
         />
         {!isValidPassword && password.length > 0 && (
-          <Box style={{ color: 'red' }}>
+          <Box className="text-red-500">
             비밀번호는 6자 이상이어야 하며, 대문자, 소문자, 숫자, 특수 문자를
             모두 포함해야 합니다.
           </Box>
@@ -162,7 +162,7 @@ function AuthSignup() {
           onChange={handleConfirmPasswordChange}
         />
         {!isValidConfirmPassword && confirmPassword.length > 0 && (
-          <Box style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</Box>
+          <Box className="text-red-500">비밀번호가 일치하지 않습니다.</Box>
         )}
         <TextField
           type="text"

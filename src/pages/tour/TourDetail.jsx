@@ -2,11 +2,13 @@ import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Box } from '@mui/system'
+import { Typography } from '@mui/material'
 import fetchSearchTour from '../../fetch/fetchSearchTour'
 import fetchTourDetail from '../../fetch/fetchTourDetail'
 import TourMap from '../../components/tour/TourMap'
 import TourPhoto from '../../components/tour/TourPhoto'
 import TourDetailCard from '../../components/tour/tourDetailCard'
+import TourDetailHeader from '../../components/tour/TourDetailHeader'
 
 function TourDetail() {
   const { tourId } = useParams()
@@ -55,15 +57,25 @@ function TourDetail() {
   }, [attractions, attractionData, attractionRes.isLoading])
 
   return (
-    <Box>
-      <Box className="flex w-[68rem] p-3 gap-3">
-        <TourDetailCard
-          attractionName={mainAttraction.name}
-          attractionDescription={mainAttraction.description}
+    <Box className="container flex flex-col items-center gap-3">
+      <Box className="w-[70rem]">
+        <TourDetailHeader mainAttraction={mainAttraction} city={city} />
+        <Box className="flex w-full p-3 gap-3">
+          <TourDetailCard
+            attractionName={mainAttraction.name}
+            attractionDescription={mainAttraction.description}
+            recommendTourTime={mainAttraction.recommendTourTime}
+          />
+          <TourPhoto images={mainAttraction.image} />
+        </Box>
+        <TourMap
+          mainAttraction={mainAttraction}
+          attractions={attractions.filter(
+            (attraction) =>
+              attraction.attractionId !== mainAttraction.attractionId,
+          )}
         />
-        <TourPhoto images={mainAttraction.image} />
       </Box>
-      <TourMap mainAttraction={mainAttraction} attractions={attractions} />
     </Box>
   )
 }

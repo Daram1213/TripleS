@@ -10,15 +10,23 @@ import {
   isValidEmailFormat,
   isValidPasswordFormat,
 } from '../../../assets/validation/validationSingup'
+import AuthFindPwd from './AuthFindPwd'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
   const [isValidEmail, setIsValidEmail] = useState(true)
   const [isValidPassword, setIsValidPassword] = useState(true)
-
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const navigate = useNavigate()
+
+  const handleFindPwd = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
 
   const handleEmailChange = (e) => {
     const inputEmail = e.target.value
@@ -129,10 +137,19 @@ function AuthLogin() {
         </Button>
       </Box>
       <Typography
-        sx={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
+        variant="body2"
+        color="textSecondary"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1rem',
+          cursor: 'pointer',
+        }}
+        onClick={handleFindPwd}
       >
         비밀번호 찾기
       </Typography>
+      <AuthFindPwd open={isModalOpen} onClose={handleCloseModal} />
       <Box className="flex justify-center mt-6 relative">
         <Divider
           orientation="horizontal"
@@ -157,15 +174,9 @@ function AuthLogin() {
         </Typography>
       </Box>
       <Box className="flex justify-center m-6">
-        <Typography>
-          <SiNaver class="text-4xl text-white  rounded-full bg-green-500 p-2.5 cursor-pointer" />
-        </Typography>
-        <Typography>
-          <RiKakaoTalkFill class="text-4xl rounded-full bg-yellow-300 p-2 ml-6 cursor-pointer" />
-        </Typography>
-        <Typography>
-          <FcGoogle class="text-4xl ml-6 rounded-full bg-white-500 p-2 border cursor-pointer" />
-        </Typography>
+        <SiNaver className="text-4xl text-white rounded-full bg-green-500 p-2.5 cursor-pointer" />
+        <RiKakaoTalkFill className="text-4xl rounded-full bg-yellow-300 p-2 ml-6 cursor-pointer" />
+        <FcGoogle className="text-4xl ml-6 rounded-full bg-white-500 p-2 border cursor-pointer" />
       </Box>
       <Typography
         sx={{ marginTop: '3rem' }}

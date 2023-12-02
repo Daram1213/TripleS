@@ -11,22 +11,25 @@ import {
   DialogActions,
 } from '@mui/material'
 import RoomComponent from './RoomComponent'
-import LeftArrowIcon from '../../assets/svg/LeftArrowIcon'
-import RightArrowIcon from '../../assets/svg/RightArrowIcon'
-import Hostinfo from './host/HostInfo'
+import LeftArrowIcon from '../../assets/svg/LeftArrowIcon.svg'
+import RightArrowIcon from '../../assets/svg/RightArrowIcon.svg'
 
-function LodgingComponent({ lodgingData }) {
+function LodgingComponent({
+  lodgingData,
+  setSelectedRoom,
+  setSelectedRoomType,
+}) {
   const [activeIndex, setActiveIndex] = useState(0)
-
-  console.log(lodgingData)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % lodgingData.image.length)
-    }, 3000) // 3초마다 슬라이드 변경
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % lodgingData.lodging.image.length,
+      )
+    }, 3000)
 
     return () => clearInterval(interval)
-  }, [lodgingData.image.length])
+  }, [lodgingData.lodging.image.length])
 
   const goToSlide = (index) => {
     setActiveIndex(index)
@@ -34,13 +37,13 @@ function LodgingComponent({ lodgingData }) {
 
   const goToPrevSlide = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? lodgingData.image.length - 1 : prevIndex - 1,
+      prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
     )
   }
 
   const goToNextSlide = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === lodgingData.image.length - 1 ? 0 : prevIndex + 1,
+      prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
     )
   }
 
@@ -59,16 +62,16 @@ function LodgingComponent({ lodgingData }) {
   return (
     <Box className="mt-8 container mx-auto px-4">
       <h1 className="text-4xl font-bold leading-tight text-gray-900 mb-2">
-        {lodgingData.name}
+        {lodgingData.lodging.name}
       </h1>
       <h2 className="text-2xl text-gray-600 mb-2">
-        {lodgingData.theme} - {lodgingData.types}
+        {lodgingData.lodging.theme} - {lodgingData.lodging.types}
       </h2>
       <Typography className="text-lg text-gray-500 mb-4">
-        {`${lodgingData.address}`}
+        {`${lodgingData.lodging.address}`}
       </Typography>
       <Box className="mb-4">
-        {lodgingData.option.map((item, index) => (
+        {lodgingData.lodging.option.map((item, index) => (
           <Chip
             key={index}
             label={item.details}
@@ -87,7 +90,7 @@ function LodgingComponent({ lodgingData }) {
           className="relative h-56 overflow-hidden rounded-lg md:h-96"
           style={{ borderRadius: 10 }}
         >
-          {lodgingData.image.map((imgSrc, index) => (
+          {lodgingData.lodging.image.map((imgSrc, index) => (
             <Box
               key={index}
               className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
@@ -105,7 +108,7 @@ function LodgingComponent({ lodgingData }) {
         </Box>
         {/* Slider indicators */}
         <Box className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          {lodgingData.image.map((_, index) => (
+          {lodgingData.lodging.image.map((_, index) => (
             <Link
               key={index}
               type="Link"
@@ -127,7 +130,7 @@ function LodgingComponent({ lodgingData }) {
           onClick={goToPrevSlide}
         >
           <Box className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <LeftArrowIcon />
+            <img src={LeftArrowIcon} alt="LeftArrowIcon" />
 
             <Box className="sr-only">Previous</Box>
           </Box>
@@ -139,7 +142,7 @@ function LodgingComponent({ lodgingData }) {
           onClick={goToNextSlide}
         >
           <Box className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <RightArrowIcon />
+            <img src={RightArrowIcon} alt="RightArrowIcon" />
 
             <Box className="sr-only">Next</Box>
           </Box>
@@ -147,7 +150,7 @@ function LodgingComponent({ lodgingData }) {
       </Box>
 
       <Typography variant="body1" paragraph>
-        {lodgingData.description}
+        {lodgingData.lodging.description}
       </Typography>
       <Link
         variant="outlined"
@@ -163,7 +166,9 @@ function LodgingComponent({ lodgingData }) {
           <Box className="font-bold text-xl mb-2">숙소 설명</Box>
         </DialogTitle>
         <DialogContent>
-          <Typography variant="body1">{lodgingData.description}</Typography>
+          <Typography variant="body1">
+            {lodgingData.lodging.description}
+          </Typography>
         </DialogContent>
         <DialogActions>
           <Link onClick={handleCloseModal} color="primary">
@@ -171,11 +176,15 @@ function LodgingComponent({ lodgingData }) {
           </Link>
         </DialogActions>
       </Dialog>
-      <Hostinfo />
       <Grid container spacing={2}>
-        {lodgingData.rooms.map((index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <RoomComponent />
+        {lodgingData.roomType.map((roomType, index) => (
+          <Grid item xs={12} sm={6} md={4} key={roomType._id}>
+            <RoomComponent
+              roomType={roomType}
+              room={lodgingData.lodging.rooms[index]}
+              setSelectedRoom={setSelectedRoom}
+              setSelectedRoomType={setSelectedRoomType}
+            />
           </Grid>
         ))}
       </Grid>

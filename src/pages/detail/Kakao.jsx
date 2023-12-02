@@ -1,53 +1,35 @@
-import React, { useEffect } from 'react'
-import { Grid, Box, Typography } from '@mui/material'
-
-const { kakao } = window
+import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import { Box } from '@mui/material'
 
 const Kakao = ({ lodgingData }) => {
-  useEffect(() => {
-    const container = document.getElementById('map')
-    const options = {
-      center: new kakao.maps.LatLng(
-        lodgingData.map.latitude,
-        lodgingData.map.longitude,
-      ),
-      level: 3,
-    }
-    const map = new kakao.maps.Map(container, options)
-
-    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-    })
-
-    marker.setMap(map)
-  }, [lodgingData])
-
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
+    <div
+      style={{
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <Grid
-        sx={{
-          width: '480px',
-          height: '570px',
+      <Box className="font-bold text-xl mb-2">숙소 위치</Box>
+      <Map
+        center={{
+          lat: lodgingData.lodging.map.latitude,
+          lng: lodgingData.lodging.map.longitude,
         }}
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
+        style={{ width: '800px', height: '600px' }}
+        level={3}
       >
-        <Box className="font-bold text-xl mb-2">숙소 위치</Box>
-        <Box id="map" style={{ width: '500px', height: '500px' }}></Box>
-      </Grid>
-    </Box>
+        <MapMarker
+          position={{
+            lat: lodgingData.lodging.map.latitude,
+            lng: lodgingData.lodging.map.longitude,
+          }}
+        >
+          {' '}
+        </MapMarker>
+      </Map>
+    </div>
   )
 }
 

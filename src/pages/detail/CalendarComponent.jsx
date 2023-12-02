@@ -4,8 +4,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 import dayjs from 'dayjs'
 import { Grid, Box } from '@mui/material'
+import Swal from 'sweetalert2'
 
-const CalendarComponent = ({ lodgingData, setReservations }) => {
+const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
@@ -18,7 +19,7 @@ const CalendarComponent = ({ lodgingData, setReservations }) => {
 
   useEffect(() => {
     if (startDate || endDate) {
-      updateReservations()
+      updateRooms()
     }
   }, [startDate, endDate])
 
@@ -28,26 +29,49 @@ const CalendarComponent = ({ lodgingData, setReservations }) => {
     }
   }, [selecting, startDate, endDate])
 
+  const resetCalendar = () => {
+    setStartDate(null)
+    setEndDate(null)
+    setSelecting(true) // Set to true to start selecting a new start date
+  }
+
   const handleDateChange = (newValue) => {
     const formattedDate = newValue ? newValue.format('YYYY-MM-DD') : ''
 
     if (selecting) {
+      // 시작 날짜 선택
       setStartDate(formattedDate)
       setSelecting(false)
     } else {
-      setEndDate(formattedDate)
-      setSelecting(true)
+      // 종료 날짜 선택: 시작 날짜보다 이전이면 선택하지 않고 경고 메시지 표시
+      if (!startDate || dayjs(formattedDate).isAfter(dayjs(startDate))) {
+        setEndDate(formattedDate)
+        setSelecting(true)
+      } else {
+        Swal.fire({
+          title: '잘못된 날짜 선택',
+          text: '시작 날짜는 종료 날짜보다 이전이어야 합니다.',
+          icon: 'error',
+          confirmButtonText: '확인',
+        }).then(() => {
+          // Clear the selected dates
+          resetCalendar()
+        })
+      }
     }
   }
 
-  const updateReservations = () => {
-    setReservations((prevReservations) =>
-      prevReservations.map((reservation, index) =>
+  const updateRooms = () => {
+    setRooms((rooms) =>
+      rooms.map((room, index) =>
         index === 0
-          ? { ...reservation, checkInDate: startDate, checkOutDate: endDate }
-          : reservation,
+          ? { ...room, checkInDate: startDate, checkOutDate: endDate }
+          : room,
       ),
     )
+
+    // 선택한 날짜를 부모 컴포넌트로 전달
+    setSelectedDates({ startDate, endDate })
   }
 
   const handleMonthChange = (date) => {
@@ -89,7 +113,7 @@ const CalendarComponent = ({ lodgingData, setReservations }) => {
         >
           <Box className="font-bold text-xl mb-2">
             {startDate && endDate
-              ? `${lodgingData.address}에서 ${nights}박`
+              ? `${lodgingData.lodging.address}에서 ${nights}박`
               : '숙박 일정을 선택하세요'}
           </Box>
         </Grid>

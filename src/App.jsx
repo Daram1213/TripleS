@@ -5,11 +5,12 @@ import { ThemeProvider } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import MainPage from './pages/MainPage'
-import DetailPage from './pages/DetailPage'
+import HotelDetailPage from './pages/HotelDetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchDetailPage from './pages/search/SearchDetailPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
+import ReservationPage from './pages/reservation/ReservationPage'
 
 function App() {
   const theme = createTheme()
@@ -31,7 +32,7 @@ function App() {
           <Routes>
             <Route element={<Outlet />}>
               <Route path="/" element={<MainPage />} />
-              <Route path="/detail/:lodgingId" element={<DetailPage />} />
+              <Route path="/detail/:lodgingId" element={<HotelDetailPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/search-detail" element={<SearchDetailPage />} />
               {/* 다른 중첩된 라우트 설정 */}
@@ -44,6 +45,7 @@ function App() {
                 element={<SearchTourList />}
               />
               <Route path="/search-detail" element={<SearchDetailPage />} />
+              <Route path="/reservation" element={<ReservationPage />} />
             </Route>
           </Routes>
         </QueryClientProvider>

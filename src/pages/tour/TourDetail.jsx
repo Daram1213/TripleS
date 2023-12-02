@@ -2,15 +2,14 @@ import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Box } from '@mui/system'
-import SearchCard from '../../components/search/SearchCard'
 import fetchSearchTour from '../../fetch/fetchSearchTour'
-import fetchSearchHotel from '../../fetch/fetchSearchHotel'
 import fetchTourDetail from '../../fetch/fetchTourDetail'
 import TourMap from '../../components/tour/TourMap'
+import TourPhoto from '../../components/tour/TourPhoto'
+import TourDetailCard from '../../components/tour/tourDetailCard'
 
 function TourDetail() {
-  // const { tourId } = useParams()
-  const tourId = 1
+  const { tourId } = useParams()
   let mainAttraction = {}
   let attractions = []
 
@@ -55,7 +54,18 @@ function TourDetail() {
     return [...attractions]
   }, [attractions, attractionData, attractionRes.isLoading])
 
-  return <TourMap mainAttraction={mainAttraction} attractions={attractions} />
+  return (
+    <Box>
+      <Box className="flex w-[68rem] p-3 gap-3">
+        <TourDetailCard
+          attractionName={mainAttraction.name}
+          attractionDescription={mainAttraction.description}
+        />
+        <TourPhoto images={mainAttraction.image} />
+      </Box>
+      <TourMap mainAttraction={mainAttraction} attractions={attractions} />
+    </Box>
+  )
 }
 
 export default TourDetail

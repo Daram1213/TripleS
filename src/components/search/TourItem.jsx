@@ -10,7 +10,7 @@ function TourItem({ attraction, smallCard }) {
 
   return (
     // 클릭시 여행지 디테일 페이지로 이동
-    <Link to="/tourDetail/1">
+    <Link to={`/tourDetail/${attraction.attractionId}`}>
       <Box
         className={
           smallCard

@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const fetchLogin = async (email, password) => {
+const fetchLogin = async (email, name) => {
   try {
     const response = await axios.post(
       'http://15.165.25.34:3000/api/findUser',
       {
         email,
-        password,
+        name,
       },
       {
         headers: {

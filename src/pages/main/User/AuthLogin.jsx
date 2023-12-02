@@ -113,7 +113,7 @@ function AuthLogin() {
           onChange={handlePasswordChange}
         />
         {!isValidPassword && password.length > 0 && (
-          <Box style={{ color: 'red' }}>
+          <Box className="text-red-500">
             비밀번호는 6자 이상이어야 하며, 대문자, 소문자, 숫자, 특수 문자를
             모두 포함해야 합니다.
           </Box>
@@ -128,6 +128,11 @@ function AuthLogin() {
           로그인
         </Button>
       </Box>
+      <Typography
+        sx={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}
+      >
+        비밀번호 찾기
+      </Typography>
       <Box className="flex justify-center mt-6 relative">
         <Divider
           orientation="horizontal"
@@ -163,7 +168,7 @@ function AuthLogin() {
         </Typography>
       </Box>
       <Typography
-        sx={{ marginTop: '6rem' }}
+        sx={{ marginTop: '3rem' }}
         variant="caption"
         color="textSecondary"
       >

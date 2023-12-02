@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { LuDot } from 'react-icons/lu'
 
@@ -11,7 +11,8 @@ function ReviewCardComponent({ reviewData }) {
       try {
         const response = await fetch('http://15.165.25.34:3000/api/lodgings/1')
         const data = await response.json()
-        setReviews(data)
+        setReviews(data?.lodging?.reviews)
+        console.log(reviews)
       } catch (error) {
         console.error('리뷰 호출 중 에러 발생', error)
       }
@@ -20,6 +21,7 @@ function ReviewCardComponent({ reviewData }) {
     fetchReviews()
   }, [])
 
+  console.log(reviews)
   return (
     <Box className="Reviewcard1 mb-5 w-96">
       {reviews.map((review) => {})}
@@ -39,7 +41,7 @@ function ReviewCardComponent({ reviewData }) {
       <Box className="flex flex-row">
         <Box className="rate_star text-xs">{reviews.rating}</Box>
         <LuDot />
-        <Box className="visitDate text-xs">{createdAt}</Box>
+        <Box className="visitDate text-xs">{reviews.createdAt}</Box>
       </Box>
 
       <Box className="review_comment text-xs w-8/12 ">

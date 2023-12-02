@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-array-index-key */
 import { useMemo } from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, Link } from '@mui/material'
 
 function HotAttractionList({ data }) {
   const attractions = useMemo(
@@ -12,15 +10,18 @@ function HotAttractionList({ data }) {
   return (
     <Box className="hot-container mt-4 relative text-center flex">
       {attractions.map((attraction) => (
-        <Box
-          key={attraction.name}
+        <Link
+          key={attraction.attractionId}
+          color="inherit"
+          underline="none"
           className="hot-hotel-item mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer bg-slate-50"
+          href={`/tourDetail/${attraction.attractionId}`}
         >
           <Box className="rounded-md overflow-hidden">
             <img
               className="hot-hotel-img hover:scale-110 hover:transition"
               src={attraction.mainImage}
-              alt={`Attractions ${attraction.name}`}
+              alt={`Attraction ${attraction.attractionId}`}
             />
           </Box>
           <Box className="hot-hotel-content flex-1 p-4 flex flex-col">
@@ -58,7 +59,7 @@ function HotAttractionList({ data }) {
               </Typography>
             </Box>
           </Box>
-        </Box>
+        </Link>
       ))}
       <Box className="hot-hotel-item-hi mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer">
         <img

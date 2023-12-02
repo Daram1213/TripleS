@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-array-index-key */
 import { useMemo } from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, Link } from '@mui/material'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 
 function HotLodgingList({ data }) {
@@ -13,9 +11,12 @@ function HotLodgingList({ data }) {
   return (
     <Box className="hot-container mt-4 relative text-center flex">
       {lodgings.map((lodging) => (
-        <Box
+        <Link
           key={lodging.lodgingId}
+          color="inherit"
+          underline="none"
           className="hot-hotel-item mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer bg-slate-50"
+          href={`/hotelDetail/${lodging.lodgingId}`}
         >
           <Box className="rounded-md overflow-hidden">
             <img
@@ -97,7 +98,7 @@ function HotLodgingList({ data }) {
               </Typography>
             </Box>
           </Box>
-        </Box>
+        </Link>
       ))}
       <Box className="hot-hotel-item mr-4 box-content w-[calc(25%-12px)] rounded-md shadow-md overflow-hidden flex flex-col cursor-pointer bg-[#071718]">
         <img

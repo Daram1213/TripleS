@@ -15,12 +15,10 @@ function AuthSignup() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [address, setAddress] = useState('')
-
   const [isValidEmail, setIsValidEmail] = useState(true)
   const [isValidName, setIsValidName] = useState(true)
   const [isValidPassword, setIsValidPassword] = useState(true)
   const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(true)
-
   const navigate = useNavigate()
 
   const handleEmailChange = (e) => {

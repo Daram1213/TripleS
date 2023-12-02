@@ -21,6 +21,27 @@ function LodgingComponent({
   setSelectedRoom,
   setSelectedRoomType,
 }) {
+  console.log(lodgingData.lodging)
+
+  lodgingData.lodging.image = [
+    '../../../src/assets/img/hotel/a1.jpeg',
+    '../../../src/assets/img/hotel/a2.jpeg',
+    '../../../src/assets/img/hotel/a3.jpeg',
+    '../../../src/assets/img/hotel/aMain.jpeg',
+    '../../../src/assets/img/hotel/b2.jpeg',
+    '../../../src/assets/img/hotel/b1.jpeg',
+    '../../../src/assets/img/hotel/b3.jpeg',
+    '../../../src/assets/img/hotel/bMain.jpeg',
+    '../../../src/assets/img/hotel/c1.jpeg',
+    '../../../src/assets/img/hotel/c2.jpeg',
+    '../../../src/assets/img/hotel/c3.jpeg',
+    '../../../src/assets/img/hotel/cMain.jpeg',
+    '../../../src/assets/img/hotel/d1.jpeg',
+    '../../../src/assets/img/hotel/d2.jpeg',
+    '../../../src/assets/img/hotel/d3.jpeg',
+    '../../../src/assets/img/hotel/dMain.jpeg',
+  ]
+
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
@@ -60,6 +81,15 @@ function LodgingComponent({
   }
 
   const colorPalette = ['#6495ED', '#6A5ACD', '#6B8E23', '#C0C0C0', '#BDB76B'] // 색상 팔레트
+
+  console.log(lodgingData.roomType)
+  for (let i = 0; i < lodgingData.roomType.length; i++) {
+    const imageExtension = i < 2 ? 'JPG' : 'jpg' // 1번째와 2번째는 JPG, 나머지는 jpg로 설정
+    lodgingData.roomType[i].image = [
+      `../../../src/assets/detail/room${i + 1}.${imageExtension}`,
+      // 추가 이미지 경로들...
+    ]
+  }
 
   return (
     <Box className="mt-8 container mx-auto px-4">

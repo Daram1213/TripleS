@@ -52,7 +52,7 @@ function App() {
   const [selectedRoomType, setSelectedRoomType] = useState(null)
 
   console.log(selectedRoom)
-  console.log(selectedRoomType)
+  console.log('selectedRoomType', selectedRoomType)
 
   const [selectedDates, setSelectedDates] = useState({
     startDate: null,

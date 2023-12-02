@@ -22,19 +22,17 @@ const ReservationModal = ({
   const [isReserved, setIsReserved] = useState(false)
   const [userData, setUserData] = useState(null)
 
-  useEffect(() => {
-    // Fetch user information when the component mounts
-    axios
-      .get('http://15.165.25.34:3000/api/users')
-      .then((response) => {
-        // Set the user data in the state
-        setUserData(response.data)
-        console.log(userData)
-      })
-      .catch((error) => {
-        console.error('Error fetching user information:', error)
-      })
-  }, [])
+  const fetchUserData = async () => {
+    try {
+      const userData = await getUser()
+      console.log(userData)
+      setUserData(userData)
+    } catch (error) {
+      console.error('Failed to fetch user data:', error)
+    }
+  }
+
+  fetchUserData()
 
   const handleReservation = async () => {
     // 예약 정보 객체 생성 (예시)
@@ -108,7 +106,7 @@ const ReservationModal = ({
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           <Box
             component="img"
-            src={lodgingData.image}
+            src={selectedRoomType.image}
             alt="객실 이미지"
             sx={{ width: '30%', borderRadius: 2, mr: 2 }}
           />

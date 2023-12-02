@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import { Modal, Box, Typography, Button, Paper, TextField } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
-import { makeReservation } from '../../fetch/fetchLodging'
-import { getUser } from '../../fetch/fetchLodging'
+import { makeReservation, getUser } from '../../fetch/fetchLodging' // import getUser from fetchLodging.js
 import axios from 'axios'
 
 const ReservationModal = ({
@@ -22,17 +21,27 @@ const ReservationModal = ({
   const [isReserved, setIsReserved] = useState(false)
   const [userData, setUserData] = useState(null)
 
-  const fetchUserData = async () => {
-    try {
-      const userData = await getUser()
-      console.log(userData)
-      setUserData(userData)
-    } catch (error) {
-      console.error('Failed to fetch user data:', error)
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await getUser()
+        console.log(userData)
+        setUserData(userData)
+      } catch (error) {
+        console.error('Failed to fetch user data:', error)
+      }
     }
-  }
 
-  fetchUserData()
+    fetchUserData() // Call the function here
+
+    // 모달이 열릴 때
+    document.body.style.overflow = 'hidden'
+
+    // 클린업 함수: 모달이 닫힐 때
+    return () => {
+      document.body.style.overflow = 'visible'
+    }
+  }, []) // Empty dependency array to run the effect only once
 
   const handleReservation = async () => {
     // 예약 정보 객체 생성 (예시)
@@ -63,19 +72,6 @@ const ReservationModal = ({
       // Handle the error as needed
     }
   }
-
-  useEffect(() => {
-    // 모달이 열릴 때
-    document.body.style.overflow = 'hidden'
-
-    // 클린업 함수: 모달이 닫힐 때
-    return () => {
-      document.body.style.overflow = 'visible'
-    }
-  }, [])
-
-  console.log(selectedRoom)
-  console.log(selectedRoomType)
 
   const [specialRequest, setSpecialRequest] = useState('')
 

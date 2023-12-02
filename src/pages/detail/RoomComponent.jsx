@@ -23,8 +23,6 @@ const RoomComponent = ({
     console.log('Selected Room:', room)
   }
 
-  console.log(roomType.image)
-
   return (
     <Box className="max-w-sm rounded overflow-hidden shadow-lg mb-6">
       <Box className="px-6 py-4">

@@ -59,13 +59,17 @@ function LodgingComponent({
   }
 
   const goToPrevSlide = () => {
-    setActiveIndex((prevIndex) =>
+    setActiveIndex(
+      (prevIndex) =>
+        prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
       prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
     )
   }
 
   const goToNextSlide = () => {
-    setActiveIndex((prevIndex) =>
+    setActiveIndex(
+      (prevIndex) =>
+        prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
       prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
     )
   }

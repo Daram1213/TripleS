@@ -1,77 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Typography, Button } from '@mui/material'
 
-const ReservationPage = () => {
-  const reservationData = {
-    roomType: 'Deluxe Room',
-    checkInDate: '2023-12-14',
-    checkOutDate: '2023-12-15',
-    adults: 2,
-    children: 1,
-    totalAmount: '$200',
+const Sidebar = () => {
+  // 사이드바 열기/닫기 상태 관리
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen)
   }
 
   return (
-    <Box p={3} className="max-w-lg mx-auto mt-6">
-      <Typography variant="h4" className="text-2xl font-semibold mb-4">
-        Reservation Details
-      </Typography>
+    <Box
+      className={`h-screen w-1/4 fixed bg-gray-200 transition-transform transform ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
+    >
+      {/* 사이드바 내용 */}
+      <Box p={3}>
+        {/* 여기에 사이드바의 내용을 추가하세요 */}
+        {/* 예를 들어 사이드바 메뉴 항목 등을 넣을 수 있습니다 */}
+      </Box>
+    </Box>
+  )
+}
 
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Room Type:
-        </Typography>
-        <Typography variant="subtitle1">{reservationData.roomType}</Typography>
-      </div>
-
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Check-In Date:
-        </Typography>
-        <Typography variant="subtitle1">
-          {reservationData.checkInDate}
-        </Typography>
-      </div>
-
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Check-Out Date:
-        </Typography>
-        <Typography variant="subtitle1">
-          {reservationData.checkOutDate}
-        </Typography>
-      </div>
-
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Adults:
-        </Typography>
-        <Typography variant="subtitle1">{reservationData.adults}</Typography>
-      </div>
-
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Children:
-        </Typography>
-        <Typography variant="subtitle1">{reservationData.children}</Typography>
-      </div>
-
-      <div className="mb-4">
-        <Typography variant="subtitle1" className="font-semibold">
-          Total Amount:
-        </Typography>
-        <Typography variant="subtitle1">
-          {reservationData.totalAmount}
-        </Typography>
-      </div>
-
-      <Button
-        variant="contained"
-        color="primary"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+const ReservationPage = () => {
+  return (
+    <Box>
+      <Sidebar />
+      <Box
+        className={`ml-1/4 transition-transform transform ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
-        Confirm Reservation
-      </Button>
+        {/* 페이지 내용 */}
+        <Box p={3} className="max-w-lg mx-auto mt-6">
+          <Typography variant="h4" className="text-2xl font-semibold mb-4">
+            Reservation Details
+          </Typography>
+          {/* ... 페이지 내용 */}
+        </Box>
+      </Box>
     </Box>
   )
 }

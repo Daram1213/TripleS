@@ -3,7 +3,7 @@ import axios from 'axios'
 const fetchLogin = async (email, password) => {
   try {
     const response = await axios.post(
-      'http://15.165.25.34:3000/api/login',
+      'http://15.165.25.34:3000/api/findUser',
       {
         email,
         password,
@@ -17,7 +17,7 @@ const fetchLogin = async (email, password) => {
     return response
   } catch (error) {
     return {
-      error: 'Login failed',
+      error: 'FindUser failed',
     }
   }
 }

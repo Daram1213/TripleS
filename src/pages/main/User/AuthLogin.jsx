@@ -3,31 +3,70 @@ import { Box, Typography, TextField, Button, Divider } from '@mui/material'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
+import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
 import fetchLogin from '../../../fetch/fetchLogin'
-import { isValidEmailFormat } from '../../../assets/validation/validationSingup'
+import {
+  isValidEmailFormat,
+  isValidPasswordFormat,
+} from '../../../assets/validation/validationSingup'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
   const [isValidEmail, setIsValidEmail] = useState(true)
-  const router = useNavigate()
+  const [isValidPassword, setIsValidPassword] = useState(true)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const result = await fetchLogin(email, password)
-    const { accessToken, refreshToken } = result
-    localStorage.setItem('access', accessToken)
-    localStorage.setItem('refresh', refreshToken)
-    router('/AuthSignup')
-  }
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     const inputEmail = e.target.value
     const isValid = isValidEmailFormat(inputEmail)
     setEmail(inputEmail)
     setIsValidEmail(isValid)
+  }
+
+  const handlePasswordChange = (e) => {
+    const inputPassword = e.target.value
+    const isValid = isValidPasswordFormat(inputPassword)
+    setPassword(inputPassword)
+    setIsValidPassword(isValid)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const isValidInput =
+      isValidEmailFormat(email) && isValidPasswordFormat(password)
+
+    try {
+      if (isValidInput) {
+        const result = await fetchLogin(email, password)
+
+        if (result) {
+          await Swal.fire({
+            title: '환영합니다!',
+            icon: 'success',
+            confirmButtonText: '확인',
+          })
+          localStorage.setItem('login-token', JSON.stringify(result))
+          navigate('/hotel')
+        }
+      } else {
+        await Swal.fire({
+          title: '이메일, 비밀번호를 확인해주세요!',
+          icon: 'error',
+          confirmButtonText: '확인',
+        })
+      }
+    } catch (error) {
+      await Swal.fire({
+        title: '로그인 중 오류가 발생했습니다',
+        icon: 'error',
+        confirmButtonText: '확인',
+      })
+    }
   }
 
   return (
@@ -71,10 +110,14 @@ function AuthLogin() {
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
           variant="outlined"
-          onChange={(e) => {
-            setPassword(e.target.value)
-          }}
+          onChange={handlePasswordChange}
         />
+        {!isValidPassword && password.length > 0 && (
+          <Box style={{ color: 'red' }}>
+            비밀번호는 6자 이상이어야 하며, 대문자, 소문자, 숫자, 특수 문자를
+            모두 포함해야 합니다.
+          </Box>
+        )}
         <Button
           type="submit"
           onClick={handleSubmit}

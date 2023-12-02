@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Box, Typography, TextField, Button } from '@mui/material'
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router'
 import fetchSignup from '../../../fetch/fetchSignup'
 import {
   isValidEmailFormat,
@@ -19,22 +21,7 @@ function AuthSignup() {
   const [isValidPassword, setIsValidPassword] = useState(true)
   const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(true)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const isValidInput = email && name && password && address
-
-    try {
-      if (isValidInput) {
-        await fetchSignup(email, name, password, address, false)
-        window.alert('회원가입 되었습니다. 로그인해주세요')
-      } else {
-        window.alert('입력값을 확인해주세요')
-      }
-    } catch (error) {
-      window.alert('회원가입 실패')
-    }
-  }
+  const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
     const inputEmail = e.target.value
@@ -65,6 +52,40 @@ function AuthSignup() {
       setIsValidConfirmPassword(false)
     } else {
       setIsValidConfirmPassword(true)
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const isValidInput =
+      isValidEmailFormat(email) &&
+      isValidNameFormat(name) &&
+      isValidPasswordFormat(password) &&
+      confirmPassword === password
+
+    try {
+      if (isValidInput) {
+        await fetchSignup(email, name, password, address, false)
+        await Swal.fire({
+          title: '환영합니다!',
+          icon: 'success',
+          confirmButtonText: '확인',
+        })
+        navigate('/hotel')
+      } else {
+        await Swal.fire({
+          title: '이메일, 이름, 비밀번호, 주소를 확인해주세요!',
+          icon: 'error',
+          confirmButtonText: '확인',
+        })
+      }
+    } catch (error) {
+      await Swal.fire({
+        title: '회원가입 중 오류가 발생했습니다',
+        icon: 'error',
+        confirmButtonText: '확인',
+      })
     }
   }
 

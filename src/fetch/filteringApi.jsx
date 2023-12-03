@@ -22,13 +22,13 @@ async function FilteringApi() {
 
     // 응답이 200인 경우
     if (response.status !== 200) {
-      console.log('api호출 실패')
+      // console.log('api호출 실패')
     }
-    console.log(response.data)
+    // console.log(response.data)
     return response.data
   } catch (error) {
     // API 호출 중 에러 발생
-    console.log('에러발생')
+    // console.log('에러발생')
   }
 }
 

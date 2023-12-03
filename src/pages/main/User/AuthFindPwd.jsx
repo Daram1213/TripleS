@@ -6,7 +6,7 @@ import fetchFindUser from '../../../fetch/fetchFindUser'
 function AuthFindPwd({ open, onClose }) {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
-  // const [message, setMessage] = useState('')
+  const [temporaryPassword, setTemporaryPassword] = useState('')
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -19,8 +19,10 @@ function AuthFindPwd({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await fetchFindUser(email, name)
-    if (response.data) {
-      console.log('response:', response.data)
+
+    if (response && response.success) {
+      // 임시 비밀번호를 상태에 저장합니다.
+      setTemporaryPassword(temporaryPassword)
     }
   }
   return (
@@ -68,6 +70,11 @@ function AuthFindPwd({ open, onClose }) {
         >
           확인
         </Button>
+        {temporaryPassword && (
+          <div>
+            <p>임시 비밀번호: {temporaryPassword}</p>
+          </div>
+        )}
       </Box>
     </Modal>
   )

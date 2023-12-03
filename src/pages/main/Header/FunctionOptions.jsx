@@ -3,6 +3,7 @@ import { Box, Typography, Button } from '@mui/material'
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
+import { Cookies, useCookies } from 'react-cookie'
 import SouthKoreaFlag from '../../../assets/img/SouthKorea.png'
 import AuthModal from '../User/AuthModal'
 import AuthLogin from '../User/AuthLogin'
@@ -38,6 +39,7 @@ function FunctionOptions() {
   const [isLoginForm, setIsLoginForm] = useState(true)
   const navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [cookies, setCookie, removeCookie, getCookie] = useCookies()
 
   useEffect(() => {
     const loginToken = localStorage.getItem('login-token')
@@ -50,7 +52,8 @@ function FunctionOptions() {
       const result = await fetchLogout()
 
       if (result) {
-        localStorage.removeItem('login-token')
+        getCookie('accessToken')
+        // localStorage.removeItem('login-token')
         setIsLoggedIn(false)
         await Swal.fire({
           title: '로그아웃 되었습니다',

@@ -20,7 +20,7 @@ function AuthFindPwd({ open, onClose }) {
     e.preventDefault()
     const response = await fetchFindUser(email, name)
     if (response.data) {
-      console.log('test')
+      console.log('response:', response.data)
     }
   }
   return (
@@ -30,7 +30,7 @@ function AuthFindPwd({ open, onClose }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className="absolute flex flex-col top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/5 h-2/5 p-4 bg-white rounded-md gap-3">
+      <Box className="absolute flex flex-col top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/4 h-2/5 p-4 bg-white rounded-md gap-3">
         <Typography
           display="flex"
           alignItems="flex-start"

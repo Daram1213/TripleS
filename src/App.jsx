@@ -6,7 +6,7 @@ import { createTheme } from '@mui/material/styles'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import MainPage from './pages/MainPage'
 import HotelPage from './pages/main/HotelPage/HotelPage'
-import DetailPage from './pages/DetailPage'
+import HotelDetailPage from './pages/HotelDetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
@@ -45,9 +45,8 @@ function App() {
                 />
                 <Route
                   path="/hotelDetail/:lodgingId"
-                  element={<DetailPage />}
+                  element={<HotelDetailPage />}
                 />
-                <Route path="/tourDetail/:tourId" element={<TourDetail />} />
               </Route>
             </Routes>
           </QueryClientProvider>

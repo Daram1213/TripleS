@@ -17,7 +17,7 @@ import PastTrips from './PastTrips'
 import CancelledTrips from './CancelledTrips'
 
 export default function ReservationPage() {
-  const [selectedComponent, setSelectedComponent] = useState(null)
+  const [selectedComponent, setSelectedComponent] = useState('upcoming')
 
   const reservation = {
     year: 2023,

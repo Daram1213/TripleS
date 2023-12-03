@@ -13,7 +13,9 @@ const fetchLogin = async (email, password) => {
           'Content-Type': 'application/json',
         },
       },
+      { withCredentials: true },
     )
+    console.log(response.data)
     return response
   } catch (error) {
     return {

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Box, Typography, TextField, Button, Divider } from '@mui/material'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
+import { Cookies, useCookies } from 'react-cookie'
 import fetchLogin from '../../../fetch/fetchLogin'
 import {
   isValidEmailFormat,
@@ -42,6 +43,8 @@ function AuthLogin() {
     setIsValidPassword(isValid)
   }
 
+  const [setCookie] = useCookies()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -58,7 +61,9 @@ function AuthLogin() {
             icon: 'success',
             confirmButtonText: '확인',
           })
-          localStorage.setItem('login-token', JSON.stringify(result))
+          setCookie('accessToken', result.accessToken)
+          console.log('accessToken', Cookies.accessToken)
+          // localStorage.setItem('login-token', JSON.stringify(result))
           navigate('/hotel')
         }
       } else {
@@ -76,6 +81,14 @@ function AuthLogin() {
       })
     }
   }
+
+  useEffect(() => {
+    if (Cookies.accessToken === 'true') {
+      console.log('쿠키존재')
+    }
+  }, [])
+
+  console.log(Cookies.accessToken)
 
   return (
     <Box className="flex flex-col absolute p-6 rounded h-fit gap-2">

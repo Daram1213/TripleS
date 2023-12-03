@@ -14,6 +14,7 @@ const fetchFindUser = async (email, name) => {
         },
       },
     )
+    console.log(response.data)
     return response
   } catch (error) {
     return {

@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
 import { styled, lighten, darken } from '@mui/system'
 import { FormControl } from '@mui/base'
 import { InputLabel, List } from '@mui/material'
-import travelListData from '../../../../assets/dummyData/travelListData'
+import axios from 'axios'
+// import travelListData from '../../../../assets/dummyData/travelListData'
 
 const GroupHeader = styled('div')(({ theme }) => ({
   position: 'sticky',
@@ -21,15 +23,22 @@ const GroupItems = styled('ul')({
 })
 
 export default function RenderGroup() {
-  const { travelList } = travelListData
+  // const { travelList } = travelListData
+  const [locationList, seLocationList] = useState([])
+
+  useEffect(() => {
+    axios.get('http://15.165.25.34:3000/api/location').then((res) => {
+      seLocationList(res.data)
+    })
+  }, [])
 
   return (
     <Autocomplete
       className="w-3/4 mt-3"
       id="grouped-demo"
-      options={travelList}
-      groupBy={(option) => option.genre}
-      getOptionLabel={(option) => option.title}
+      options={locationList}
+      groupBy={(option) => option.country}
+      getOptionLabel={(option) => option.city}
       renderInput={(params) => (
         <FormControl>
           <InputLabel htmlFor="travel-search">여행지</InputLabel>

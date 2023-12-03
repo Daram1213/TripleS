@@ -1,53 +1,58 @@
-import React, { useEffect } from 'react'
-import { Grid, Box, Typography } from '@mui/material'
+import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import React from 'react'
 
-const { kakao } = window
-
-const Kakao = ({ lodgingData }) => {
-  useEffect(() => {
-    const container = document.getElementById('map')
-    const options = {
-      center: new kakao.maps.LatLng(
-        lodgingData.map.latitude,
-        lodgingData.map.longitude,
-      ),
-      level: 3,
-    }
-    const map = new kakao.maps.Map(container, options)
-
-    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-
-    var marker = new kakao.maps.Marker({
-      position: markerPosition,
-    })
-
-    marker.setMap(map)
-  }, [lodgingData])
-
+function Kakao({ lodgingData }) {
+  console.log(lodgingData)
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Grid
-        sx={{
-          width: '480px',
-          height: '570px',
-        }}
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box className="font-bold text-xl mb-2">숙소 위치</Box>
-        <Box id="map" style={{ width: '500px', height: '500px' }}></Box>
-      </Grid>
-    </Box>
+    <>
+      <div class="border-b border-gray-300 py-4"></div>
+      <div className="container mx-auto">
+        <div className="flex flex-col mt-10">
+          <div className="flex-grow">
+            <div className="flex flex-col items-center justify-center w-full">
+              <div class="container mx-auto px-4 py-2">
+                <h1 class="text-xl font-semibold text-gray-800">숙소 위치</h1>
+              </div>
+              <div className="w-full max-w-4xl">
+                <Map
+                  center={{
+                    lat: lodgingData.lodging.map.latitude,
+                    lng: lodgingData.lodging.map.longitude,
+                  }}
+                  style={{ width: '100%', height: '600px' }}
+                  level={3}
+                  className="rounded-lg shadow-lg"
+                >
+                  <MapMarker
+                    position={{
+                      lat: lodgingData.lodging.map.latitude,
+                      lng: lodgingData.lodging.map.longitude,
+                    }}
+                  />
+                </Map>
+              </div>
+            </div>
+          </div>
+          <div className="flex-shrink">
+            <div className="flex justify-between">
+              <div className="text-xl">{lodgingData.lodging.name}</div>
+              <div className="flex">
+                <button className="py-2 px-4 rounded-md bg-gray-500 text-white">
+                  +
+                </button>
+                <button className="py-2 px-4 rounded-md bg-gray-500 text-white">
+                  -
+                </button>
+              </div>
+            </div>
+            <div className="text-gray-500">
+              {lodgingData.lodging.description}
+              <a href="#">더 보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

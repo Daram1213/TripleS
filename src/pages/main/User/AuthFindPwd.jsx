@@ -19,12 +19,11 @@ function AuthFindPwd({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await fetchFindUser(email, name)
-
-    if (response && response.success) {
-      // 임시 비밀번호를 상태에 저장합니다.
-      setTemporaryPassword(temporaryPassword)
+    if (response) {
+      setTemporaryPassword(response.password)
     }
   }
+
   return (
     <Modal
       open={open}
@@ -63,6 +62,7 @@ function AuthFindPwd({ open, onClose }) {
           onChange={handleNameChange}
         />
         <Button
+          type="submit"
           onClick={handleSubmit}
           variant="contained"
           className="w-full h-12"
@@ -71,9 +71,9 @@ function AuthFindPwd({ open, onClose }) {
           확인
         </Button>
         {temporaryPassword && (
-          <div>
-            <p>임시 비밀번호: {temporaryPassword}</p>
-          </div>
+          <Box>
+            <Typography>임시 비밀번호: {temporaryPassword}</Typography>
+          </Box>
         )}
       </Box>
     </Modal>

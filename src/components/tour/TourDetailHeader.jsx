@@ -6,6 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 import { Box, fontWeight } from '@mui/system'
 import { Typography } from '@mui/material'
 import { Button } from '@mui/base'
+import moment from 'moment/moment'
 
 export default function TourDetailHeader({ mainAttraction, city }) {
   const maxRating = 5
@@ -20,10 +21,11 @@ export default function TourDetailHeader({ mainAttraction, city }) {
 
   const formattedHour = (time) => {
     if (!time) return
-    const [hour, minutes] = time.split(':')
-    const timeArea = hour > 12 ? '오후' : '오전'
-    const calculatedHour = hour % 12 === 0 ? 0 : hour % 12
-    return `${timeArea} ${calculatedHour}:${minutes}`
+
+    const parsedTime = moment(time, 'HH:mm')
+    const formattedTime = parsedTime.format('A h:mm')
+
+    return formattedTime
   }
 
   const isOpen = ({ open, close }) => {

@@ -12,7 +12,7 @@ import markerOthers from '../../assets/img/attraction/markerOthers.png'
 
 export default function TourMap({ attractions, mainAttraction }) {
   if (!mainAttraction || attractions?.length === 0) {
-    return <div>Loading...</div>
+    return <Box>Loading...</Box>
   }
 
   const markerRef = useRef(null)

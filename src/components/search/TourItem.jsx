@@ -14,14 +14,14 @@ function TourItem({ attraction, smallCard }) {
       <Box
         className={
           smallCard
-            ? 'h-20 group relative mb-2 flex overflow-hidden border border-solid border-gray-200 bg-white'
+            ? 'h-23 group relative mb-2 flex overflow-hidden border border-solid border-gray-200 bg-white'
             : 'h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100'
         }
       >
         <Box
           className={
             smallCard
-              ? 'h-[5rem] w-[5rem] overflow-hidden'
+              ? 'h-[6rem] w-[6rem] overflow-hidden'
               : 'h-[8rem] w-[8rem] overflow-hidden'
           }
 
@@ -33,7 +33,7 @@ function TourItem({ attraction, smallCard }) {
             // className={`${smallCard} ? "h-[5rem] w-[5rem] object-cover": "h-[8rem] w-[8rem] overflow-hidden object-cover  duration-1000 group-hover:scale-125 "`}
             className={
               smallCard
-                ? 'h-[5rem] w-[5rem] object-cover'
+                ? 'h-[6rem] w-[6rem] object-cover'
                 : 'h-[8rem] w-[8rem] overflow-hidden object-cover duration-1000 group-hover:scale-125'
             }
             alt={`attraction ${attraction.attractionId}`}

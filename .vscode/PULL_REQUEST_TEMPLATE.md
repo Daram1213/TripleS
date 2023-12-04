@@ -1,6 +1,0 @@
-
-## Changes :memo:
-
--
-
-## Screenshots :camera:

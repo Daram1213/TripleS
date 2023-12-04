@@ -4,7 +4,7 @@ import Autocomplete from '@mui/material/Autocomplete'
 import { styled, lighten, darken } from '@mui/system'
 import { FormControl } from '@mui/base'
 import { InputLabel, List } from '@mui/material'
-import axios from 'axios'
+import fetchLocation from '../../../../fetch/fetchLocation'
 
 const GroupHeader = styled('div')(({ theme }) => ({
   position: 'sticky',
@@ -22,12 +22,19 @@ const GroupItems = styled('ul')({
 })
 
 export default function RenderGroup() {
-  const [locationList, seLocationList] = useState([])
+  const [locationList, setLocationList] = useState([])
 
   useEffect(() => {
-    axios.get('http://15.165.25.34:3000/api/location').then((res) => {
-      seLocationList(res.data)
-    })
+    const fetchData = async () => {
+      try {
+        const locationData = await fetchLocation()
+        setLocationList(locationData)
+      } catch (error) {
+        console.error('Error setting location data:', error)
+      }
+    }
+
+    fetchData()
   }, [])
 
   return (

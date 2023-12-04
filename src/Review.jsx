@@ -20,11 +20,8 @@ function Review() {
         <Box className="flex flex-col ">
           <Box className="flex flex-row">
             <Box className="review-title flex mb-4 mt-4 justify-around">
-              <Typography>
-                {' '}
-                <TiStar size={30} />
-                3.58 • 후기 n 개
-              </Typography>
+              
+              <Typography> <TiStar size={30} />3.58 • 후기 n 개</Typography>
               <RateTotalComponent />
             </Box>
           </Box>
@@ -78,7 +75,7 @@ function Review() {
             </Box>
 
             <Box className="review_modal">
-              <ReviewCardModal />
+              <ReviewCardModal/>
             </Box>
           </Box>
         </Box>

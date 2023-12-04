@@ -50,8 +50,13 @@ function LodgingComponent({
         (prevIndex) => (prevIndex + 1) % lodgingData.lodging.image.length,
       )
     }, 3000)
+      setActiveIndex(
+        (prevIndex) => (prevIndex + 1) % lodgingData.lodging.image.length,
+      )
+    }, 3000)
 
     return () => clearInterval(interval)
+  }, [lodgingData.lodging.image.length])
   }, [lodgingData.lodging.image.length])
 
   const goToSlide = (index) => {
@@ -61,11 +66,13 @@ function LodgingComponent({
   const goToPrevSlide = () => {
     setActiveIndex((prevIndex) =>
       prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
+      prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
     )
   }
 
   const goToNextSlide = () => {
     setActiveIndex((prevIndex) =>
+      prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
       prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
     )
   }
@@ -93,6 +100,17 @@ function LodgingComponent({
 
   console.log(lodgingData.lodging.rooms)
 
+  console.log(lodgingData.roomType)
+  for (let i = 0; i < lodgingData.roomType.length; i++) {
+    const imageExtension = i < 2 ? 'JPG' : 'jpg' // 1번째와 2번째는 JPG, 나머지는 jpg로 설정
+    lodgingData.roomType[i].image = [
+      `../../../src/assets/detail/room${i + 1}.${imageExtension}`,
+      // 추가 이미지 경로들...
+    ]
+  }
+
+  console.log(lodgingData.lodging.rooms)
+
   return (
     <Box className="mt-8 container mx-auto px-4">
       <LodgingHeader lodgingData={lodgingData} />
@@ -106,6 +124,13 @@ function LodgingComponent({
         return (
           <HotelRoomComponent
             key={index}
+            roomData={roomData}
+            roomType={roomType || {}}
+            setSelectedRoomType={setSelectedRoomType}
+            setSelectedRoom={setSelectedRoom}
+          />
+        )
+      })}
             roomData={roomData}
             roomType={roomType || {}}
             setSelectedRoomType={setSelectedRoomType}

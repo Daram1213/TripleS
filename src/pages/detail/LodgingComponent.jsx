@@ -42,44 +42,6 @@ function LodgingComponent({
     '../../../src/assets/img/hotel/dMain.jpeg',
   ]
 
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex + 1) % lodgingData.lodging.image.length,
-      )
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [lodgingData.lodging.image.length])
-
-  const goToSlide = (index) => {
-    setActiveIndex(index)
-  }
-
-  const goToPrevSlide = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? lodgingData.lodging.image.length - 1 : prevIndex - 1,
-    )
-  }
-
-  const goToNextSlide = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === lodgingData.lodging.image.length - 1 ? 0 : prevIndex + 1,
-    )
-  }
-
-  const [openModal, setOpenModal] = useState(false)
-
-  const handleOpenModal = () => {
-    setOpenModal(true)
-  }
-
-  const handleCloseModal = () => {
-    setOpenModal(false)
-  }
-
   const colorPalette = ['#6495ED', '#6A5ACD', '#6B8E23', '#C0C0C0', '#BDB76B'] // 색상 팔레트
 
   console.log(lodgingData.roomType)

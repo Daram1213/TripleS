@@ -11,7 +11,6 @@ import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
 import TourDetail from './pages/tour/tourDetail'
-import LikedPlace from './components/tempMyPage/likedPlaces'
 
 function App() {
   const theme = createTheme()
@@ -49,7 +48,6 @@ function App() {
                   element={<DetailPage />}
                 />
                 <Route path="/tourDetail/:tourId" element={<TourDetail />} />
-                <Route path="/like" element={<LikedPlace />} />
               </Route>
             </Routes>
           </QueryClientProvider>

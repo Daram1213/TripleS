@@ -16,24 +16,7 @@ const ReservationModal = ({
 }) => {
   const checkInDate = dayjs(selectedDates?.startDate || new Date())
   const checkOutDate = dayjs(selectedDates?.endDate || new Date())
-import { Modal, Box, Typography, Button, Paper, TextField } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
-import { makeReservation } from '../../fetch/fetchLodging'
-import { getUser } from '../../fetch/fetchLodging'
-import axios from 'axios'
-import Swal from 'sweetalert2'
-
-const ReservationModal = ({
-  lodgingData,
-  closeModal,
-  selectedRoom,
-  selectedRoomType,
-  selectedDates,
-}) => {
-  const checkInDate = dayjs(selectedDates?.startDate || new Date())
-  const checkOutDate = dayjs(selectedDates?.endDate || new Date())
   const totalNights = checkOutDate.diff(checkInDate, 'day')
-  const pricePerNight = selectedRoomType?.price || 0
   const pricePerNight = selectedRoomType?.price || 0
   const totalPrice = pricePerNight * totalNights
 

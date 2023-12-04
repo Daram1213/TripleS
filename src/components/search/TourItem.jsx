@@ -9,33 +9,27 @@ function TourItem({ attraction, smallCard }) {
   )
 
   return (
-    // 클릭시 여행지 디테일 페이지로 이동
     <Link to={`/tourDetail/${attraction.attractionId}`}>
       <Box
-        className={
+        className={`group relative flex overflow-hidden border border-solid border-gray-200 bg-white ${
           smallCard
-            ? 'h-23 group relative mb-2 flex overflow-hidden border border-solid border-gray-200 bg-white'
-            : 'h-29 group relative mb-6 flex overflow-hidden border border-solid border-gray-200 bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100'
-        }
+            ? 'h-23 mb-2'
+            : 'h-29 mb-6 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100'
+        }`}
       >
         <Box
-          className={
-            smallCard
-              ? 'h-[6rem] w-[6rem] overflow-hidden'
-              : 'h-[8rem] w-[8rem] overflow-hidden'
-          }
-
-          // className={`${smallCard} ? "h-[5rem] w-[5rem] overflow-hidden" : "h-[8rem] w-[8rem] overflow-hidden"`}
+          className={` overflow-hidden
+            ${smallCard ? 'h-[6rem] w-[6rem]' : 'h-[8rem] w-[8rem]'}
+          `}
         >
           <img
-            // src={`src/assets/img/attraction/${attraction.mainImage}`}
             src="https://p1.pxfuel.com/preview/778/373/101/nature-landscape-rocks-formation-cave-beauty.jpg"
-            // className={`${smallCard} ? "h-[5rem] w-[5rem] object-cover": "h-[8rem] w-[8rem] overflow-hidden object-cover  duration-1000 group-hover:scale-125 "`}
-            className={
-              smallCard
-                ? 'h-[6rem] w-[6rem] object-cover'
-                : 'h-[8rem] w-[8rem] overflow-hidden object-cover duration-1000 group-hover:scale-125'
-            }
+            className={`object-cover 
+              ${
+                smallCard
+                  ? 'h-[6rem] w-[6rem]'
+                  : 'h-[8rem] w-[8rem] overflow-hidden duration-1000 group-hover:scale-125'
+              }`}
             alt={`attraction ${attraction.attractionId}`}
           />
         </Box>

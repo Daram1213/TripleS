@@ -9,11 +9,9 @@ function TourPopupItem({ attraction }) {
   )
 
   return (
-    // 클릭시 여행지 디테일 페이지로 이동
     <Link>
       <Box className="w-full">
         <img
-          // src={`src/assets/img/attraction/${attraction.mainImage}`}
           src="https://p1.pxfuel.com/preview/778/373/101/nature-landscape-rocks-formation-cave-beauty.jpg"
           className="w-full h-1/2 object-cover"
           alt={`attraction ${attraction.attractionId}`}

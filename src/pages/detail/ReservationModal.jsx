@@ -23,6 +23,19 @@ const ReservationModal = ({
   const [isReserved, setIsReserved] = useState(false)
   const [userData, setUserData] = useState(null)
 
+  const [phoneNumber, setPhoneNumber] = useState('')
+
+  const [adults, setAdults] = useState(1) // Default value for adults
+  const [children, setChildren] = useState(0)
+
+  const handleAdultsChange = (e) => {
+    setAdults(parseInt(e.target.value))
+  }
+
+  const handleChildrenChange = (e) => {
+    setChildren(parseInt(e.target.value))
+  }
+
   const fetchUserData = async () => {
     try {
       const userData = await getUser()
@@ -35,7 +48,11 @@ const ReservationModal = ({
 
   useEffect(() => {
     fetchUserData()
-  }, []) // useEffect를 사용하여 컴포넌트가 마운트될 때에만 데이터를 불러오도록 변경
+  }, [])
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value)
+  }
 
   const handleReservation = async () => {
     if (!selectedRoom || !selectedDates.startDate || !selectedDates.endDate) {
@@ -57,21 +74,22 @@ const ReservationModal = ({
     })
 
     if (confirm) {
-      // 예약 정보 객체 생성 (예시)
       const reservationData = {
-        user: '6567aac0910622e34444b351',
-        firstName: 'wonsik',
-        lastName: 'seo',
-        email: 'test@test.com',
-        phoneNumber: '010-1111-1111',
+        user: userData.data.userId.toString(),
+        firstName: userData.data.name,
+        lastName: userData.data.name,
+        email: userData.data.email,
+        phoneNumber: phoneNumber,
         room: selectedRoomType._id,
         status: false,
         checkInDate: selectedDates.startDate,
         checkOutDate: selectedDates.endDate,
-        adults: selectedRoom.roomBooking.adults,
-        children: selectedRoom.roomBooking.children,
+        adults: adults,
+        children: children,
         request: specialRequest,
       }
+
+      console.log('reservationData', reservationData)
 
       try {
         const reservationResult = await makeReservation(reservationData)
@@ -102,7 +120,9 @@ const ReservationModal = ({
   console.log(selectedRoom)
   console.log(selectedRoomType)
 
-  const selectedRoomData = selectedRoom || { startDate: '', endDate: '' }
+  const selectedRoomData = selectedRoom || {
+    roomBooking: { checkInDate: new Date(), checkOutDate: new Date() },
+  }
   const selectedRoomTypeData = selectedRoomType || { price: 0, capacity: 1 }
 
   const [specialRequest, setSpecialRequest] = useState('')
@@ -118,30 +138,71 @@ const ReservationModal = ({
             ₩{selectedRoomTypeData.price}
           </span>
         </div>
-        <div class="flex justify-between items-center mt-4">
-          <div>
-            <span class="block text-sm text-gray-600">체크인</span>
-            <span class="block text-lg text-gray-800">
-              {selectedRoomData.startDate}
-            </span>
-          </div>
-          <div>
-            <span class="block text-sm text-gray-600">체크아웃</span>
-            <span class="block text-lg text-gray-800">
-              {selectedRoomData.endDate}
-            </span>
-          </div>
+        <div>
+          <span class="block text-sm text-gray-600">체크인</span>
+          <span class="block text-lg text-gray-800">
+            {selectedRoomData.roomBooking
+              ? new Date(
+                  selectedRoomData.roomBooking.checkInDate,
+                ).toLocaleDateString('ko-KR')
+              : 'No Check-In Date'}
+          </span>
         </div>
+        <div>
+          <span class="block text-sm text-gray-600">체크아웃</span>
+          <span class="block text-lg text-gray-800">
+            {selectedRoomData.roomBooking
+              ? new Date(
+                  selectedRoomData.roomBooking.checkOutDate,
+                ).toLocaleDateString('ko-KR')
+              : 'No Check-Out Date'}
+          </span>
+        </div>
+
         <div class="mt-4">
-          <label for="guests" class="text-sm text-gray-600">
-            인원
+          <label for="adults" class="text-sm text-gray-600">
+            어른
           </label>
           <select
-            id="guests"
+            id="adults"
+            value={adults}
+            onChange={handleAdultsChange}
             class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           >
-            <option>게스트 {selectedRoomTypeData.capacity}명</option>
+            <option value={1}>1 어른</option>
+            <option value={2}>2 어른</option>
+            {/* Add more options as needed */}
           </select>
+        </div>
+
+        <div class="mt-4">
+          <label for="children" class="text-sm text-gray-600">
+            아이
+          </label>
+          <select
+            id="children"
+            value={children}
+            onChange={handleChildrenChange}
+            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          >
+            <option value={0}>0 아이</option>
+            <option value={1}>1 아이</option>
+            <option value={2}>2 아이</option>
+            {/* Add more options as needed */}
+          </select>
+        </div>
+        <div class="mt-4">
+          <label for="phone" class="text-sm text-gray-600">
+            휴대폰 번호
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            placeholder="휴대폰 번호를 입력하세요"
+            value={phoneNumber} // Bind the input value to the state
+            onChange={handlePhoneNumberChange} // Add onChange event handler
+          />
         </div>
         <div className="mt-4">
           <label htmlFor="specialRequest" className="text-sm text-gray-600">

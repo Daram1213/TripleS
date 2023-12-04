@@ -16,14 +16,12 @@ import DescriptionComponent from './DescriptionComponent'
 import AmenitiesComponent from './AmenitiesComponent'
 import HotelRoomComponent from './HotelRoomComponent'
 
-// import Hostinfo from './host/HostInfo'
-
 function LodgingComponent({
   lodgingData,
   setSelectedRoom,
   setSelectedRoomType,
 }) {
-  console.log(lodgingData.lodging)
+  console.log('lodgingData.lodging', lodgingData.lodging)
 
   lodgingData.lodging.image = [
     '../../../src/assets/img/hotel/a1.jpeg',
@@ -100,7 +98,6 @@ function LodgingComponent({
       <LodgingHeader lodgingData={lodgingData} />
       <GalleryComponent lodgingData={lodgingData} />
       <DescriptionComponent lodgingData={lodgingData} />
-      {/* <Hostinfo /> */}
       <AmenitiesComponent lodgingData={lodgingData} />
       {lodgingData.lodging.rooms.map((roomData, index) => {
         const roomType = lodgingData.roomType.find(

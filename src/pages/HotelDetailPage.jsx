@@ -6,49 +6,39 @@ import ReservationModal from './detail/ReservationModal'
 import { useParams } from 'react-router'
 import Kakao from './detail/Kakao'
 import Grid from '@mui/material/Grid'
+import { getLodgingData } from '../fetch/fetchLodging'
 
 function App() {
   const [lodging, setLodging] = useState(null)
   const [rooms, setRooms] = useState([])
   const { lodgingId } = useParams()
 
+  console.log(lodgingId)
   useEffect(() => {
-    // Define the URL for the GET request
-    const apiUrl = `http://15.165.25.34:3000/api/lodgings/${lodgingId}`
+    const fetchLodgingData = async () => {
+      try {
+        const data = await getLodgingData(lodgingId)
+        console.log(data)
 
-    // Make the GET request to the API
-    fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Set the retrieved data to the 'lodging' state
         setLodging(data)
         setRooms(data?.lodging?.rooms)
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching data:', error)
-      })
-  }, [lodgingId])
+      }
+    }
 
-  // lodging을 넘겨야함
-  console.log(lodging)
+    fetchLodgingData() // 이 부분에서 lodgingId를 전달할 필요가 없습니다.
+  }, [lodgingId]) // 의존성 배열에 lodgingId가 있습니다.
 
   const [selectedRoom, setSelectedRoom] = useState(null)
   const [selectedRoomType, setSelectedRoomType] = useState(null)
-
-  console.log(selectedRoom)
-  console.log('selectedRoomType', selectedRoomType)
 
   const [selectedDates, setSelectedDates] = useState({
     startDate: null,
     endDate: null,
   })
 
-  console.log(selectedDates)
+  console.log('lodging', lodging)
 
   return (
     <div>

@@ -3,7 +3,6 @@ import { StarIcon } from '@heroicons/react/solid'
 import { HeartIcon, ShareIcon } from '@heroicons/react/outline'
 
 const LodgingHeader = ({ lodgingData }) => {
-  console.log(lodgingData)
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-2">

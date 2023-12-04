@@ -12,8 +12,6 @@ function App() {
   const [lodging, setLodging] = useState(null)
   const [rooms, setRooms] = useState([])
   const { lodgingId } = useParams()
-
-  console.log(lodgingId)
   useEffect(() => {
     const fetchLodgingData = async () => {
       try {
@@ -27,8 +25,10 @@ function App() {
       }
     }
 
-    fetchLodgingData() // 이 부분에서 lodgingId를 전달할 필요가 없습니다.
-  }, [lodgingId]) // 의존성 배열에 lodgingId가 있습니다.
+    if (lodgingId) {
+      fetchLodgingData()
+    }
+  }, [lodgingId])
 
   const [selectedRoom, setSelectedRoom] = useState(null)
   const [selectedRoomType, setSelectedRoomType] = useState(null)
@@ -37,8 +37,6 @@ function App() {
     startDate: null,
     endDate: null,
   })
-
-  console.log('lodging', lodging)
 
   return (
     <div>
@@ -53,25 +51,23 @@ function App() {
 
           <Grid
             container
-            spacing={2}
+            spacing={4} // Increased spacing
             alignItems="center"
             justifyContent="center"
           >
-            <Grid item>
+            <Grid item xs={6}>
               <CalendarComponent
                 lodgingData={lodging}
                 setRooms={setRooms}
                 setSelectedDates={setSelectedDates}
-                style={{ flex: 1 }}
               />
             </Grid>
-            <Grid item>
+            <Grid item xs={6}>
               <ReservationModal
                 lodgingData={lodging}
                 selectedRoom={selectedRoom}
                 selectedRoomType={selectedRoomType}
                 selectedDates={selectedDates}
-                style={{ flex: 1 }}
               />
             </Grid>
           </Grid>

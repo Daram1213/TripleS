@@ -12,6 +12,7 @@ export const getLodgingData = (lodgingId) => {
 }
 
 export const makeReservation = async (reservationData) => {
+  console.log(reservationData)
   return axios
     .post('http://15.165.25.34:3000/api/orders', reservationData)
     .then((response) => {

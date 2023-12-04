@@ -5,7 +5,6 @@ import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
-import { useCookies } from 'react-cookie'
 import fetchLogin from '../../../fetch/fetchLogin'
 import {
   isValidEmailFormat,
@@ -20,7 +19,6 @@ function AuthLogin() {
   const [isValidPassword, setIsValidPassword] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const navigate = useNavigate()
-  const [setCookie] = useCookies()
 
   const handleFindPwd = () => {
     setIsModalOpen(true)
@@ -60,7 +58,6 @@ function AuthLogin() {
             icon: 'success',
             confirmButtonText: '확인',
           })
-          setCookie('accessToken', result.accessToken)
           navigate('/hotel')
         }
       } else {

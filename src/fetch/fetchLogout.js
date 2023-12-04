@@ -9,9 +9,7 @@ const fetchLogin = async () => {
     })
     return response
   } catch (error) {
-    return {
-      error: 'Logout failed',
-    }
+    throw new Error('fetchLogout Error')
   }
 }
 

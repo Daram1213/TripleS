@@ -5,7 +5,6 @@ import { styled, lighten, darken } from '@mui/system'
 import { FormControl } from '@mui/base'
 import { InputLabel, List } from '@mui/material'
 import axios from 'axios'
-// import travelListData from '../../../../assets/dummyData/travelListData'
 
 const GroupHeader = styled('div')(({ theme }) => ({
   position: 'sticky',
@@ -23,7 +22,6 @@ const GroupItems = styled('ul')({
 })
 
 export default function RenderGroup() {
-  // const { travelList } = travelListData
   const [locationList, seLocationList] = useState([])
 
   useEffect(() => {

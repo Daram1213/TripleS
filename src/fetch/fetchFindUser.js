@@ -14,12 +14,9 @@ const fetchFindUser = async (email, name) => {
         },
       },
     )
-    console.log(response.data)
     return response.data
   } catch (error) {
-    return {
-      error: 'FindUser failed',
-    }
+    throw new Error('fetchFindUser Error')
   }
 }
 

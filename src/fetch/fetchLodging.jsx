@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const getLodgingData = (lodgingId) => {
+  console.log('Requesting data for lodgingId:', lodgingId)
   return axios
     .get(`http://15.165.25.34:3000/api/lodgings/${lodgingId}`) // URL 수정
     .then((response) => {

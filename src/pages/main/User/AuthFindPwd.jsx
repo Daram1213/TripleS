@@ -71,9 +71,7 @@ function AuthFindPwd({ open, onClose }) {
           확인
         </Button>
         {temporaryPassword && (
-          <Box>
-            <Typography>임시 비밀번호: {temporaryPassword}</Typography>
-          </Box>
+          <Typography>임시 비밀번호: {temporaryPassword}</Typography>
         )}
       </Box>
     </Modal>

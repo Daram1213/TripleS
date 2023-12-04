@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 import {
   Box,
   Divider,
@@ -17,14 +17,14 @@ const drawerWidth = 240
 
 function ResponsiveDrawer(props) {
   const { window } = props
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
 
   const drawer = (
-    <div>
+    <Box>
       <Toolbar />
       <Divider />
       <List>
@@ -40,7 +40,7 @@ function ResponsiveDrawer(props) {
         ))}
       </List>
       <Divider />
-    </div>
+    </Box>
   )
 
   const container =

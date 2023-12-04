@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, Tabs, Tab } from '@mui/material'
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
-import { useCookies } from 'react-cookie'
 import SouthKoreaFlag from '../../../assets/img/SouthKorea.png'
 import AuthModal from '../User/AuthModal'
 import AuthLogin from '../User/AuthLogin'
@@ -37,9 +36,13 @@ function SignupForm({ onSwitchToLogin, onClose }) {
 function FunctionOptions() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoginForm, setIsLoginForm] = useState(true)
-  const navigate = useNavigate()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [getCookie] = useCookies()
+  const [value, setValue] = useState(0)
+  const navigate = useNavigate()
+
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue)
+  }
 
   useEffect(() => {
     const loginToken = localStorage.getItem('login-token')
@@ -52,7 +55,6 @@ function FunctionOptions() {
       const result = await fetchLogout()
 
       if (result) {
-        getCookie('accessToken')
         localStorage.removeItem('login-token')
         setIsLoggedIn(false)
         await Swal.fire({
@@ -105,10 +107,28 @@ function FunctionOptions() {
         예약 검색
       </Typography>
       <Typography
-        className="relative p-2 rounded-md bg-slate-50 text-black"
+        className="relative p-2 rounded-md text-black"
         onClick={isLoggedIn ? handleLogout : openModal}
       >
-        {isLoggedIn ? '로그아웃' : '로그인 / 회원가입'}
+        {/* {isLoggedIn ? '로그아웃' : '로그인 / 회원가입'} */}
+        {isLoggedIn ? (
+          <Tabs value={value} onChange={handleTabChange}>
+            <Tab label="탭1" />
+            <Tab label="탭2" />
+            <Tab label="탭3" />
+            {/* Add more tabs as needed */}
+            <Typography className="sr-only">
+              Dummy text to preserve height
+            </Typography>
+          </Tabs>
+        ) : (
+          <Typography
+            className="relative p-2 rounded-md bg-slate-50 text-black"
+            onClick={openModal}
+          >
+            로그인 / 회원가입
+          </Typography>
+        )}
       </Typography>
       <AuthModal open={isModalOpen} onClose={closeModal}>
         {isLoginForm ? (

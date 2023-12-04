@@ -15,12 +15,9 @@ const fetchLogin = async (email, password) => {
       },
       { withCredentials: true },
     )
-    console.log(response.data)
     return response
   } catch (error) {
-    return {
-      error: 'Login failed',
-    }
+    throw new Error('fetchLogin Error')
   }
 }
 

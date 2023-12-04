@@ -42,6 +42,13 @@ function AuthLogin() {
     setIsValidPassword(isValid)
   }
 
+  function setCookie(name, value, days) {
+    const expires = new Date(
+      Date.now() + days * 24 * 60 * 60 * 1000,
+    ).toUTCString()
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -61,6 +68,7 @@ function AuthLogin() {
         const result = await fetchLogin(email, password)
 
         if (result) {
+          setCookie('accessToken', JSON.stringify(result.data), 7)
           showSwal('반갑습니다 :)', 'success')
           navigate('/hotel')
         }

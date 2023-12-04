@@ -7,8 +7,6 @@ import {
 } from '@heroicons/react/solid'
 
 const DescriptionComponent = ({ lodgingData }) => {
-  console.log(lodgingData)
-
   const [showModal, setShowModal] = useState(false)
 
   const getIcon = (optionType) => {
@@ -16,12 +14,13 @@ const DescriptionComponent = ({ lodgingData }) => {
       case '프론트서비스':
         return <CheckCircleIcon className="h-5 w-5 text-green-500" />
       case 'info':
-        return <InformationCircleIcon className="h-5 w-5 text-blue-500" />
+        return <InfoIcon className="h-5 w-5 text-blue-500" />
       case 'question':
       default:
-        return <QuestionMarkCircleIcon className="h-5 w-5 text-yellow-500" />
+        return <HelpOutlineIcon className="h-5 w-5 text-yellow-500" />
     }
   }
+
   return (
     <div className="max-w-lg mx-auto p-4">
       <div className="flex justify-between items-center mb-4">

@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Modal from '@mui/material/Modal'
-import Button from '@mui/material/Button'
-import {
-  CheckCircleIcon,
-  InformationCircleIcon,
-  QuestionMarkCircleIcon,
-  XIcon,
-} from '@heroicons/react/solid'
+import { Box, Typography, Button, Modal } from '@mui/material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle' // CheckCircleIcon 대체
+import InfoIcon from '@mui/icons-material/Info' // InformationCircleIcon 대체
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline' // QuestionMarkCircleIcon 대체
+import CloseIcon from '@mui/icons-material/Close' // XIcon 대체
 
 const DescriptionComponent = ({ lodgingData }) => {
-  console.log(lodgingData)
-
   const [showModal, setShowModal] = useState(false)
 
   const getIcon = (optionType) => {
@@ -20,129 +13,74 @@ const DescriptionComponent = ({ lodgingData }) => {
       case '프론트서비스':
         return <CheckCircleIcon className="h-5 w-5 text-green-500" />
       case 'info':
-        return <InformationCircleIcon className="h-5 w-5 text-blue-500" />
+        return <InfoIcon className="h-5 w-5 text-blue-500" />
       case 'question':
       default:
-        return <QuestionMarkCircleIcon className="h-5 w-5 text-yellow-500" />
+        return <HelpOutlineIcon className="h-5 w-5 text-yellow-500" />
     }
   }
+
   return (
-    <Box sx={{ maxWidth: 'lg', mx: 'auto', p: 4 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          mb: 4,
-        }}
-      >
+    <Box className="max-w-lg mx-auto p-4">
+      <Box className="flex justify-between items-center mb-4">
         <Box>
-          <Typography variant="h5" component="h1" sx={{ fontWeight: 'bold' }}>
-            Ddnayo 나이 호스팅하는 펜션
+          <Typography variant="h5" className="font-bold">
+            {lodgingData.lodging.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            차대 일명 · 체험 1개 · 손님 1명
+          <Typography variant="body2" className="text-gray-600">
+            {lodgingData.lodging.details}
           </Typography>
         </Box>
-        <Box
-          sx={{
-            borderRadius: '50%',
-            bgcolor: 'pink',
-            height: 48,
-            width: 48,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Typography sx={{ color: 'white', fontSize: 'large' }}>dd</Typography>
+        <Box className="rounded-full bg-pink-500 h-12 w-12 flex items-center justify-center">
+          <Typography className="text-white text-lg">dd</Typography>
         </Box>
       </Box>
 
-      <Box sx={{ mb: 4 }}>
+      <Box className="mb-4">
         {lodgingData.lodging.option.map((option, index) => (
-          <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-            {getIcon(option.category)}
-            <Typography variant="body2" sx={{ ml: 2 }}>
-              {option.details}
-            </Typography>
+          <Box key={index} className="flex items-center space-x-2 mb-3">
+            {getIcon(option.type)}
+            <Typography variant="body2">{option.details}</Typography>
           </Box>
         ))}
       </Box>
 
-      <Box sx={{ bgcolor: 'grey.100', p: 4 }}>
-        <Typography variant="body2" sx={{ mb: 2 }}>
-          특별한 정보는 자동 번역되었습니다.
-          <Typography
-            component="span"
-            sx={{ color: 'blue', cursor: 'pointer' }}
-          >
+      <Box className="bg-gray-100 p-4">
+        <Typography variant="body2" className="mb-2">
+          {lodgingData.lodging.specialInfo}
+          <Typography component="span" className="text-blue-500 cursor-pointer">
             원문 보기
           </Typography>
         </Typography>
-        <Typography variant="body2" sx={{ mb: 2 }}>
+        <Typography variant="body2" className="mb-2">
           {lodgingData.lodging.rule}
         </Typography>
         <Typography variant="body2">
           {lodgingData.lodging.description}
         </Typography>
         <Button
-          sx={{ mt: 4 }}
-          variant="outlined"
+          className="mt-4 border rounded-md"
           onClick={() => setShowModal(true)}
         >
           더 보기
         </Button>
       </Box>
 
-      {/* Modal for more information */}
       <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
-        sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center' }}
+        className="flex items-start justify-center"
       >
-        <Box
-          sx={{
-            p: 5,
-            border: 1,
-            borderRadius: 1,
-            bgcolor: 'background.paper',
-            width: '90%',
-            maxWidth: 'md',
-            mt: 10,
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              mb: 4,
-            }}
-          >
-            <Typography variant="h6" component="h3">
-              숙소 설명
-            </Typography>
+        <Box className="bg-white p-5 border rounded-md w-11/12 max-w-md mt-10 shadow-lg">
+          <Box className="flex justify-between items-center mb-4">
+            <Typography variant="h6">숙소 설명</Typography>
             <Button onClick={() => setShowModal(false)}>
-              <XIcon />
+              <CloseIcon />
             </Button>
           </Box>
-          <Typography variant="body2" sx={{ mb: 2 }}>
+          <Typography variant="body2" className="mb-2">
             {lodgingData.lodging.description}
           </Typography>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-            숙소
-          </Typography>
-          <Typography variant="body2" sx={{ mb: 2 }}>
-            {lodgingData.lodging.theme}
-          </Typography>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-            운영 시간
-          </Typography>
-          <Typography variant="body2" sx={{ mb: 2 }}>
-            {lodgingData.lodging.rule}
-          </Typography>
-          {/* ... additional content ... */}
         </Box>
       </Modal>
     </Box>

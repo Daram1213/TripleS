@@ -2,25 +2,6 @@ import React, { useState } from 'react'
 
 const GalleryComponent = ({ lodgingData }) => {
   const [showModal, setShowModal] = useState(false)
-  // Replace these with your actual image URLs
-  lodgingData.lodging.image = [
-    '../../../src/assets/img/hotel/a1.jpeg',
-    '../../../src/assets/img/hotel/a2.jpeg',
-    '../../../src/assets/img/hotel/a3.jpeg',
-    '../../../src/assets/img/hotel/aMain.jpeg',
-    '../../../src/assets/img/hotel/b2.jpeg',
-    '../../../src/assets/img/hotel/b1.jpeg',
-    '../../../src/assets/img/hotel/b3.jpeg',
-    '../../../src/assets/img/hotel/bMain.jpeg',
-    '../../../src/assets/img/hotel/c1.jpeg',
-    '../../../src/assets/img/hotel/c2.jpeg',
-    '../../../src/assets/img/hotel/c3.jpeg',
-    '../../../src/assets/img/hotel/cMain.jpeg',
-    '../../../src/assets/img/hotel/d1.jpeg',
-    '../../../src/assets/img/hotel/d2.jpeg',
-    '../../../src/assets/img/hotel/d3.jpeg',
-    '../../../src/assets/img/hotel/dMain.jpeg',
-  ]
 
   const mainImage = lodgingData.lodging.image[0]
   const otherImages = lodgingData.lodging.image.slice(1, 5)
@@ -43,7 +24,7 @@ const GalleryComponent = ({ lodgingData }) => {
             <div key={index} className="rounded overflow-hidden shadow-lg">
               <img
                 className="w-full h-full object-cover"
-                src={image}
+                src={image} // Use image here instead of otherImages
                 alt={`Gallery ${index + 1}`}
               />
             </div>

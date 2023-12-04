@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
-import { Modal, Box, Typography, Button, Paper, TextField } from '@mui/material'
+import {
+  Modal,
+  Box,
+  Typography,
+  Button,
+  TextField,
+  FormControl,
+  Select,
+  MenuItem,
+  TextareaAutosize,
+} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { makeReservation } from '../../fetch/fetchLodging'
 import { getUser } from '../../fetch/fetchLodging'

@@ -48,31 +48,27 @@ function AuthLogin() {
     const isValidInput =
       isValidEmailFormat(email) && isValidPasswordFormat(password)
 
+    async function showSwal(title, icon) {
+      await Swal.fire({
+        title,
+        icon,
+        confirmButtonText: '확인',
+      })
+    }
+
     try {
       if (isValidInput) {
         const result = await fetchLogin(email, password)
 
         if (result) {
-          await Swal.fire({
-            title: '환영합니다!',
-            icon: 'success',
-            confirmButtonText: '확인',
-          })
+          showSwal('반갑습니다 :)', 'success')
           navigate('/hotel')
         }
       } else {
-        await Swal.fire({
-          title: '이메일, 비밀번호를 확인해주세요!',
-          icon: 'error',
-          confirmButtonText: '확인',
-        })
+        showSwal('이메일, 비밀번호를 확인해주세요!', 'error')
       }
     } catch (error) {
-      await Swal.fire({
-        title: '로그인 중 오류가 발생했습니다',
-        icon: 'error',
-        confirmButtonText: '확인',
-      })
+      showSwal('로그인 중 오류가 발생했습니다', 'error')
     }
   }
 

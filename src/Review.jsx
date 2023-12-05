@@ -1,82 +1,56 @@
 import React from 'react'
 import ReviewCardModal from './pages/detail/review/ReviewCardModal'
-import { Box, Typography } from '@mui/material'
-import { TiStar } from 'react-icons/ti'
-import { LuDot } from 'react-icons/lu'
-// import Evaluation1Component from './pages/detail/review/Evaluation1Component'
-// import Evaluation2Component from './pages/detail/review/Evaluation2Component'
-// import Evaluation3Component from './pages/detail/review/Evaluation3Component'
-// import Evaluation4Component from './pages/detail/review/Evaluation4Component'
-// import Evaluation5Component from './pages/detail/review/Evaluation5Component'
-// import Evaluation6Component from './pages/detail/review/Evaluation6Component'
 import RateTotalComponent from './pages/detail/review/RateTotalComponent'
 import ReviewCardComponent from './pages/detail/review/ReviewCardComponent'
+import { useState, useEffect } from 'react'
+
+import { TiStar } from 'react-icons/ti'
+import { Box, Typography } from '@mui/material'
+import fetchReview from './fetch/fetchReview'
 
 function Review() {
+  const [reviews, setReviews] = useState([])
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await fetchReview()
+        const data = response.lodging.review
+        setReviews(data) // review api이 배열형태
+      } catch (error) {
+        console.error('리뷰 호출 중 에러 발생', error)
+      }
+    }
+
+    fetchReviews()
+  }, [])
+
   return (
     <Box>
-      <Box className="flex ml-3 mt-2 border-y-2">
-        {/* ^---- width 추가할 것:max-w-lg */}
-        <Box className="flex flex-col ">
-          <Box className="flex flex-row">
-            <Box className="review-title flex mb-4 mt-4 justify-around">
-              
-              <Typography> <TiStar size={30} />3.58 • 후기 n 개</Typography>
-              <RateTotalComponent />
+      <fetchReview />
+      <Box className="flex flex-col ml-3 mt-2 border-y-2 w-[1200px]">
+        <Box className="flex flex-col">
+          <Box className="review-title flex flex-row mb-4 mt-4 justify-evenly">
+            <Box className="flex flex-row mt-10">
+              <TiStar size={30} />
+              <Typography>3.58 • 후기 {reviews.length}개</Typography>
             </Box>
+            <RateTotalComponent />
           </Box>
-          {/* <Box className="flex flex-row mb-4 w-full ">
-            <Box className="review_rate flex justify-between">
-               <Box>
-                <RateTotalComponent />
-              </Box> 
-               <Box>
-                <Evaluation1Component name="청결도" rate={4.3} />
-              </Box>
-              <Box>
-                <Evaluation2Component name="정확도" rate={5} />
-              </Box>
-              <Box>
-                <Evaluation3Component name="체크인" rate={4.7} />
-              </Box>
-              <Box>
-                <Evaluation4Component name="의사소통" rate={5} />
-              </Box>
-              <Box>
-                <Evaluation5Component name="위치" rate={4.5} />
-              </Box>
-              <Box>
-                <Evaluation6Component name="가격 대비 만족도" rate={4} />
-              </Box> 
-            </Box>
-          </Box> */}
         </Box>
       </Box>
       <Box className="flex w-full h-full ml-3 ">
         <Box className="">
-          <Box className=" review_list flex flex-wrap flex-[1_1_50%] border-b-2 pb-9 w-[1200px]">
+          <Box className=" review_list flex flex-wrap flex-[1_1_50%]  pb-9 w-[1200px] justify-center">
             <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
-            </Box>
-            <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
+              <ReviewCardComponent />
             </Box>
             <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
+              <ReviewCardComponent />
             </Box>
-            <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
-            </Box>
-            <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
-            </Box>
-            <Box className="review_card">
-              <ReviewCardComponent name="Daniel" visitDate={2023.11} />
-            </Box>
-
-            <Box className="review_modal">
-              <ReviewCardModal/>
-            </Box>
+          </Box>
+          <Box className="review_modal border-b-2 ml-3">
+            <ReviewCardModal />
           </Box>
         </Box>
       </Box>

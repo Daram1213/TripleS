@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Tabs, Tab, Typography, Box } from '@mui/material'
 import MemberInfo from './MemberInfo'
 import Reservation from './Reservation'
+import WishlistTravel from './WishlistTravel'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -72,7 +73,7 @@ function MypageBody() {
         <Reservation />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        찜한여행지
+        <WishlistTravel />
       </TabPanel>
     </Box>
   )

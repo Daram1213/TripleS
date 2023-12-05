@@ -9,7 +9,7 @@ import { GiPayMoney } from 'react-icons/gi'
 
 function RateTotalComponent() {
   return (
-    <Box className="flex flex-col ml-2 border-r-2">
+    <Box className="flex flex-col ml-2">
       <Box className="totalRate_title text-xs w-20 ">
         전체평점
         <Box className="text-[12px] font-bold">

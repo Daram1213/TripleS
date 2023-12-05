@@ -42,7 +42,6 @@ function HotelSearchPage() {
     }
 
     handleFiltering(filters)
-    console.log(filters)
   }, [handleFiltering, location.search])
 
   return (

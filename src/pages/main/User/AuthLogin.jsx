@@ -50,19 +50,18 @@ function AuthLogin() {
     document.cookie = `${name}=${value}; expires=${expires}; path=/`
   }
 
+  async function showSwal(title, icon) {
+    await Swal.fire({
+      title,
+      icon,
+      confirmButtonText: '확인',
+    })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     const isValidInput =
       isValidEmailFormat(email) && isValidPasswordFormat(password)
-
-    async function showSwal(title, icon) {
-      await Swal.fire({
-        title,
-        icon,
-        confirmButtonText: '확인',
-      })
-    }
 
     try {
       if (isValidInput) {

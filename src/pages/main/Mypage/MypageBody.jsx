@@ -61,14 +61,18 @@ function MypageBody() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="예약확인" {...a11yProps(0)} />
-        <Tab label="내 정보" {...a11yProps(1)} />
+        <Tab label="내 정보" {...a11yProps(0)} />
+        <Tab label="예약확인" {...a11yProps(1)} />
+        <Tab label="찜한여행지" {...a11yProps(2)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Reservation />
+        <MemberInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <MemberInfo />
+        <Reservation />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        찜한여행지
       </TabPanel>
     </Box>
   )

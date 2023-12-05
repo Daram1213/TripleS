@@ -11,6 +11,7 @@ import {
   isValidPasswordFormat,
 } from '../../../assets/validation/validationSingup'
 import AuthFindPwd from './AuthFindPwd'
+import fetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
@@ -70,7 +71,11 @@ function AuthLogin() {
         if (result) {
           setCookie('accessToken', JSON.stringify(result.data), 7)
           showSwal('반갑습니다 :)', 'success')
-          navigate('/hotel')
+
+          const fetchGetIUserInfo = await fetchGetUserInfo()
+          if (fetchGetIUserInfo) {
+            navigate('/hotel')
+          }
         }
       } else {
         showSwal('이메일, 비밀번호를 확인해주세요!', 'error')

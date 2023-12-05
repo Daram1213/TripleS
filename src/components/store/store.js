@@ -5,9 +5,17 @@ const store = (set) => ({
   likedAttractions: [],
   addLikedAttraction: (attraction) =>
     set(
-      (state) => ({
-        likedAttractions: [...state.likedAttractions, attraction],
-      }),
+      (state) => {
+        const attractionExists = state.likedAttractions.some(
+          (item) => item.attractionId === attraction.attractionId,
+        )
+        if (!attractionExists) {
+          return {
+            likedAttractions: [...state.likedAttractions, attraction],
+          }
+        }
+        return state
+      },
       false,
       'addLikedAttraction',
     ),
@@ -22,7 +30,7 @@ const store = (set) => ({
       'deleteLikedAttraction',
     ),
   isAttractionLiked: false,
-  setAttractionLiked: (id) =>
+  setIsAttractionLiked: (id) =>
     set(
       (state) => ({
         isAttractionLiked: state.likedAttractions.some(
@@ -34,4 +42,5 @@ const store = (set) => ({
     ),
 })
 
+// export const useStore = create(devtools(store), { name: 'store' })
 export const useStore = create(persist(devtools(store), { name: 'store' }))

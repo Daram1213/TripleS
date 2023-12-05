@@ -4,8 +4,14 @@ import { FiChevronRight } from 'react-icons/fi'
 import SideBar from './SideBar'
 import HotelItem from './HotelItem'
 import TourItem from './TourItem'
+import { useStore } from '../store/store'
 
 function SearchCard({ hotels, attractions, keyword }) {
+  const { isAttractionLiked, setIsAttractionLiked } = useStore()
+  const addLikedAttraction = useStore((store) => store.addLikedAttraction)
+  const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
+  const likedAttractions = useStore((store) => store.likedAttractions)
+
   return (
     <Box className="flex flex-col items-center gap-3">
       <Typography
@@ -119,12 +125,19 @@ function SearchCard({ hotels, attractions, keyword }) {
                 여행지
               </Typography>
 
-              <Box className="grid w-full max-w-6xl  sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+              <Box className="grid w-full max-w-6xl sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 xl:grid-cols-3">
                 {attractions.length ? (
                   attractions.map((attraction) => (
+                    // setIsAttractionLiked(attraction.attractionId)
+
                     <TourItem
                       key={attraction.attractionId}
                       attraction={attraction}
+                      addLikedAttraction={addLikedAttraction}
+                      deleteLikedAttraction={deleteLikedAttraction}
+                      likedAttractions={likedAttractions}
+                      isAttractionLiked={isAttractionLiked}
+                      setIsAttractionLiked={setIsAttractionLiked}
                     />
                   ))
                 ) : (

@@ -8,6 +8,7 @@ import { Typography } from '@mui/material'
 import { Button } from '@mui/base'
 import moment from 'moment/moment'
 import { shallow } from 'zustand/shallow'
+import { useEffect, useState } from 'react'
 import { useStore } from '../store/store'
 
 export default function TourDetailHeader({ mainAttraction, city }) {
@@ -53,23 +54,29 @@ export default function TourDetailHeader({ mainAttraction, city }) {
   }
 
   const likedAttractions = useStore((store) => store.likedAttractions)
-  const setAttractionLiked = useStore((store) => store.setAttractionLiked)
 
-  const isAttractionLiked = useStore((store) => store.isAttractionLiked)
+  const [isAttractionLiked, setIsAttractionLiked] = useState(false)
 
   const addLikedAttraction = useStore((store) => store.addLikedAttraction)
   const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
 
   const handleLikedAttraction = () => {
-    setAttractionLiked(mainAttraction.attractionId)
+    setIsAttractionLiked(mainAttraction.attractionId)
     if (isAttractionLiked) {
       deleteLikedAttraction(mainAttraction.attractionId)
     } else {
       // 여기서 로그인 체크 필요
       addLikedAttraction(mainAttraction)
     }
-    setAttractionLiked(mainAttraction.attractionId)
   }
+
+  useEffect(() => {
+    setIsAttractionLiked(
+      likedAttractions?.some(
+        (attr) => attr.attractionId === mainAttraction.attractionId,
+      ),
+    )
+  }, [handleLikedAttraction])
 
   return (
     <Box className="flex flex-col gap-2 p-3">

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const fetchLocation = async () => {
+const fetchReservationList = async () => {
   try {
     const response = await axios.get(
       'http://15.165.25.34:3000/api/orders',
@@ -17,4 +17,4 @@ const fetchLocation = async () => {
   }
 }
 
-export default fetchLocation
+export default fetchReservationList

@@ -1,15 +1,37 @@
 import axios from 'axios'
 
 const fetchGetUserInfo = async () => {
+  function getCookie(name) {
+    const cookies = document.cookie.split(';')
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim()
+      if (cookie.startsWith(`${name}=`)) {
+        return cookie.substring(name.length + 1)
+      }
+    }
+    return null
+  }
+
   try {
+    const accessToken = getCookie('accessToken')
+    if (!accessToken) {
+      console.log('accessToken is not available')
+      return null
+    }
+    const accessTokenObject = JSON.parse(accessToken)
+    const tokenValue = accessTokenObject.token
+    console.log('tokenValue', tokenValue)
     const response = await axios.get('http://15.165.25.34:3000/api/users', {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${tokenValue}`,
       },
     })
+    console.log(response)
     return response.data
   } catch (error) {
-    throw new Error('fetchGetUserInfo Error')
+    console.error('API Error:', error)
+    throw new Error('Failed to fetch user data')
   }
 }
 

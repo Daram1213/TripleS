@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Box, Typography, TextField, Button } from '@mui/material'
 import { useNavigate } from 'react-router'
 import showSwal from '../../../assets/util/showSwal'
-import fetchSignup from '../../../fetch/fetchSignup'
+import FetchSignup from '../../../fetch/fetchSignup'
 import {
   isValidEmailFormat,
   isValidNameFormat,
@@ -57,7 +57,7 @@ function AuthSignup() {
     e.preventDefault()
 
     try {
-      await fetchSignup(email, name, password, address, false)
+      await FetchSignup(email, name, password, address, false)
 
       showSwal('환영합니다! 로그인을 해주세요!', 'success')
       navigate('/hotel')

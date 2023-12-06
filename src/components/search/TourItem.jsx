@@ -32,6 +32,23 @@ function TourItem({ attraction, smallCard, likedPage }) {
     )
   }, [attraction, likedAttractions])
 
+  const [checked, setChecked] = useState(true)
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked)
+  }
+  const label = {
+    inputProps: {
+      'aria-label': 'Checkbox demo',
+      style: {
+        position: 'absolute',
+        top: '4rem',
+        left: '-3rem',
+        fontSize: '28px',
+      },
+    },
+  }
+
   return (
     <Box className={`relative ${likedPage ? 'pl-20' : ''}`}>
       <Link to={`/tourDetail/${attraction.attractionId}`}>
@@ -97,7 +114,14 @@ function TourItem({ attraction, smallCard, likedPage }) {
           </Box>
         </Box>
       </Link>
-      <Button>
+      <Button
+        style={{
+          position: 'absolute',
+          top: '0',
+          right: '-0.5rem',
+          borderRadius: '50%',
+        }}
+      >
         {isAttractionLiked ? (
           <FaHeart
             onClick={() => {

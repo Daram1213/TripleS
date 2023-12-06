@@ -59,5 +59,4 @@ const store = (set, get) => ({
   },
 })
 
-// export const useStore = create(devtools(store), { name: 'store' })
 export const useStore = create(persist(devtools(store), { name: 'store' }))

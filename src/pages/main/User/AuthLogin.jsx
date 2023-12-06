@@ -65,7 +65,7 @@ function AuthLogin() {
 
           const fetchGetIUserInfo = await FetchGetUserInfo()
           if (fetchGetIUserInfo) {
-            navigate('/hotel')
+            navigate('/')
           }
         }
       } else {

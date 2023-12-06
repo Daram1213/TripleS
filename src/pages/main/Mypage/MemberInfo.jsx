@@ -7,7 +7,7 @@ import {
   Box,
   InputLabel,
 } from '@mui/material'
-import Swal from 'sweetalert2'
+import showSwal from '../../../assets/util/showSwal'
 import FetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
 import FetchUpdateUser from '../../../fetch/fetchUpdateUser'
 
@@ -27,11 +27,7 @@ export default function MemberInfo() {
         })
       }
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: '오류 발생',
-        text: '회원 정보 조회 중 오류가 발생했습니다.',
-      })
+      showSwal('회원 정보 조회 중 오류가 발생했습니다.', 'error')
     }
   }
 
@@ -48,19 +44,11 @@ export default function MemberInfo() {
         email: userInfo.email,
       })
       if (result) {
-        Swal.fire({
-          icon: 'success',
-          title: '회원 정보 업데이트 성공',
-          text: '회원 정보가 성공적으로 업데이트되었습니다.',
-        })
+        showSwal('회원 정보가 성공적으로 업데이트되었습니다.', 'success')
         handleGetUserInfo()
       }
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: '오류 발생',
-        text: '회원 정보 업데이트 중 오류가 발생했습니다.',
-      })
+      showSwal('회원 정보 업데이트 중 오류가 발생했습니다.', 'error')
     }
   }
 

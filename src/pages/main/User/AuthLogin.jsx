@@ -3,7 +3,6 @@ import { Box, Typography, TextField, Button, Divider } from '@mui/material'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
-import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
 import FetchLogin from '../../../fetch/fetchLogin'
 import {
@@ -12,6 +11,7 @@ import {
 } from '../../../assets/validation/validationSingup'
 import AuthFindPwd from './AuthFindPwd'
 import FetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
+import showSwal from '../../../assets/util/showSwal'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
@@ -41,14 +41,6 @@ function AuthLogin() {
     const isValid = isValidPasswordFormat(inputPassword)
     setPassword(inputPassword)
     setIsValidPassword(isValid)
-  }
-
-  function showSwal(title, icon) {
-    Swal.fire({
-      title,
-      icon,
-      confirmButtonText: '확인',
-    })
   }
 
   function setCookie(name, value, days) {

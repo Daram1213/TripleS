@@ -11,7 +11,7 @@ function getCookie(name) {
   return null
 }
 
-const fetchUpdateUser = async (email, password, name) => {
+const fetchUpdateUser = async ({ email, name }) => {
   try {
     const accessToken = getCookie('accessToken')
     if (!accessToken) {
@@ -23,7 +23,6 @@ const fetchUpdateUser = async (email, password, name) => {
       'http://15.165.25.34:3000/api/users',
       {
         email,
-        password,
         name,
       },
       {

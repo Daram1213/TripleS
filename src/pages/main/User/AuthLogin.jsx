@@ -5,13 +5,13 @@ import { FcGoogle } from 'react-icons/fc'
 import { SiNaver } from 'react-icons/si'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router'
-import fetchLogin from '../../../fetch/fetchLogin'
+import FetchLogin from '../../../fetch/fetchLogin'
 import {
   isValidEmailFormat,
   isValidPasswordFormat,
 } from '../../../assets/validation/validationSingup'
 import AuthFindPwd from './AuthFindPwd'
-import fetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
+import FetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
@@ -43,19 +43,19 @@ function AuthLogin() {
     setIsValidPassword(isValid)
   }
 
+  function showSwal(title, icon) {
+    Swal.fire({
+      title,
+      icon,
+      confirmButtonText: '확인',
+    })
+  }
+
   function setCookie(name, value, days) {
     const expires = new Date(
       Date.now() + days * 24 * 60 * 60 * 1000,
     ).toUTCString()
     document.cookie = `${name}=${value}; expires=${expires}; path=/`
-  }
-
-  async function showSwal(title, icon) {
-    await Swal.fire({
-      title,
-      icon,
-      confirmButtonText: '확인',
-    })
   }
 
   const handleSubmit = async (e) => {
@@ -65,13 +65,13 @@ function AuthLogin() {
 
     try {
       if (isValidInput) {
-        const result = await fetchLogin(email, password)
+        const result = await FetchLogin(email, password)
 
         if (result) {
           setCookie('accessToken', JSON.stringify(result.data), 7)
           showSwal('반갑습니다 :)', 'success')
 
-          const fetchGetIUserInfo = await fetchGetUserInfo()
+          const fetchGetIUserInfo = await FetchGetUserInfo()
           if (fetchGetIUserInfo) {
             navigate('/hotel')
           }

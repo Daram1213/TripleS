@@ -128,16 +128,9 @@ function SearchCard({ hotels, attractions, keyword }) {
               <Box className="grid w-full max-w-6xl sm:grid-cols-1 sm:gap-x-6 md:grid-cols-2 xl:grid-cols-3">
                 {attractions.length ? (
                   attractions.map((attraction) => (
-                    // setIsAttractionLiked(attraction.attractionId)
-
                     <TourItem
                       key={attraction.attractionId}
                       attraction={attraction}
-                      addLikedAttraction={addLikedAttraction}
-                      deleteLikedAttraction={deleteLikedAttraction}
-                      likedAttractions={likedAttractions}
-                      isAttractionLiked={isAttractionLiked}
-                      setIsAttractionLiked={setIsAttractionLiked}
                     />
                   ))
                 ) : (

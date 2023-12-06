@@ -22,7 +22,7 @@ const GalleryComponent = ({ lodgingData }) => {
             <Box key={index} className="rounded overflow-hidden shadow-lg">
               <img
                 className="w-full h-full object-cover"
-                src={image}
+                src={`/src/assets/img/hotel/${image}`}
                 alt={`Gallery ${index + 1}`}
               />
             </Box>

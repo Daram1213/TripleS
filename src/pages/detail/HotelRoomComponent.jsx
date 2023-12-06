@@ -18,7 +18,6 @@ const HotelRoomComponent = ({
     setSelectedRoom(roomData)
     setSelectedRoomType(roomType)
   }
-
   return (
     <Box className="bg-white p-6 rounded-lg shadow-md mb-4">
       {' '}
@@ -29,18 +28,22 @@ const HotelRoomComponent = ({
         <Box className="w-1/3">
           {/* Image container */}
           <Box className="bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden">
-            {roomType.image ? (
-              <img
-                src={roomType.image}
-                alt={`Room image of ${roomType.image}`}
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faCamera}
-                className="text-gray-400 h-12 w-12 mx-auto"
-              />
-            )}
+            {roomType.image.map((image) => (
+              <div key={roomType.id} className="relative">
+                {roomType.image ? (
+                  <img
+                    src={`/src/assets/img/room/${image}`}
+                    alt={`Room image of ${image}`}
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faCamera}
+                    className="text-gray-400 h-12 w-12 mx-auto absolute inset-0"
+                  />
+                )}
+              </div>
+            ))}
           </Box>
         </Box>
         <Box className="w-2/3 space-y-2">

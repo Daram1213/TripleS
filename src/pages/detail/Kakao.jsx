@@ -3,7 +3,6 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 
 function Kakao({ lodgingData }) {
-  console.log(lodgingData)
   return (
     <>
       <Box class="border-b border-gray-300 py-4"></Box>

@@ -17,8 +17,6 @@ function App() {
     const fetchLodgingData = async () => {
       try {
         const data = await getLodgingData(lodgingId)
-        console.log(data)
-
         setLodging(data)
         setRooms(data?.lodging?.rooms)
       } catch (error) {
@@ -52,7 +50,7 @@ function App() {
 
           <Grid
             container
-            spacing={4} // Increased spacing
+            spacing={4}
             alignItems="center"
             justifyContent="center"
           >

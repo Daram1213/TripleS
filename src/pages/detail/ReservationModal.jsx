@@ -11,10 +11,8 @@ import {
   MenuItem,
   TextareaAutosize,
 } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
 import { makeReservation } from '../../fetch/fetchLodging'
 import { getUser } from '../../fetch/fetchLodging'
-import axios from 'axios'
 import Swal from 'sweetalert2'
 
 const ReservationModal = ({
@@ -33,7 +31,7 @@ const ReservationModal = ({
   const [isReserved, setIsReserved] = useState(false)
   const [userData, setUserData] = useState(null)
 
-  const [adults, setAdults] = useState(0) // Default value for adults
+  const [adults, setAdults] = useState(0)
   const [children, setChildren] = useState(0)
 
   const handleAdultsChange = (e) => {
@@ -47,7 +45,6 @@ const ReservationModal = ({
   const fetchUserData = async () => {
     try {
       const userData = await getUser()
-      console.log('userData', userData)
       setUserData(userData)
     } catch (error) {
       console.error('Failed to fetch user data:', error)
@@ -79,7 +76,7 @@ const ReservationModal = ({
 
     if (confirm) {
       const reservationData = {
-        user: userData.data._id,
+        lodging: lodgingData.lodging._id,
         room: selectedRoomType._id,
         status: false,
         checkInDate: selectedDates.startDate,
@@ -89,8 +86,6 @@ const ReservationModal = ({
         request: specialRequest,
       }
 
-      console.log('reservationData', reservationData)
-
       try {
         const reservationResult = await makeReservation(reservationData)
 
@@ -98,7 +93,6 @@ const ReservationModal = ({
 
         if (reservationResult) {
           setIsReserved(true)
-          // 예약이 성공하면 SweetAlert로 성공 메시지를 띄울 수 있습니다.
           Swal.fire({
             title: '예약 완료',
             text: '예약이 성공적으로 완료되었습니다.',
@@ -106,8 +100,6 @@ const ReservationModal = ({
           })
         }
       } catch (error) {
-        // Handle the error as needed
-        // 예약이 실패한 경우에도 SweetAlert로 에러 메시지를 띄울 수 있습니다.
         Swal.fire({
           title: '예약 실패',
           text: '예약을 처리하는 중에 오류가 발생했습니다.',
@@ -204,7 +196,7 @@ const ReservationModal = ({
             value={specialRequest}
             onChange={(e) => setSpecialRequest(e.target.value)}
             className="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            rows="4" // 원하는 높이로 조정 가능
+            rows="4"
             placeholder="특별한 요청사항을 입력하세요"
           ></textarea>
         </Box>

@@ -33,7 +33,7 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
   const resetCalendar = () => {
     setStartDate(null)
     setEndDate(null)
-    setSelecting(true) // Set to true to start selecting a new start date
+    setSelecting(true)
   }
 
   const debouncedHandleDateChange = debounce((newValue) => {
@@ -44,7 +44,6 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
       setStartDate(formattedDate)
       setSelecting(false)
     } else {
-      // 종료 날짜 선택: 시작 날짜보다 이전이면 선택하지 않고 경고 메시지 표시
       if (!startDate || dayjs(formattedDate).isAfter(dayjs(startDate))) {
         setEndDate(formattedDate)
         setSelecting(true)
@@ -55,7 +54,6 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
           icon: 'error',
           confirmButtonText: '확인',
         }).then(() => {
-          // 선택한 날짜를 초기화
           resetCalendar()
         })
       }
@@ -71,7 +69,6 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
       ),
     )
 
-    // 선택한 날짜를 부모 컴포넌트로 전달
     setSelectedDates({ startDate, endDate })
   }
 

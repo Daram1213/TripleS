@@ -17,10 +17,9 @@ const AmenitiesComponent = ({ lodgingData }) => {
       case '에어컨':
         return <AdjustmentsIcon className="h-5 w-5 text-red-500" /> // Red color
       case 'TV':
-        return <DesktopComputerIcon className="h-5 w-5 text-green-500" /> // Green color
-      // Add cases for other amenities with different colors
+        return <DesktopComputerIcon className="h-5 w-5 text-green-500" />
       default:
-        return <CogIcon className="h-5 w-5 text-gray-500" /> // Gray color for the default case
+        return <CogIcon className="h-5 w-5 text-gray-500" />
     }
   }
 

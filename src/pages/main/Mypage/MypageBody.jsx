@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Tabs, Tab, Typography, Box } from '@mui/material'
 import MemberInfo from './MemberInfo'
 import Reservation from './Reservation'
@@ -30,12 +29,6 @@ function TabPanel(props) {
       )}
     </Box>
   )
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
 }
 
 function a11yProps(index) {

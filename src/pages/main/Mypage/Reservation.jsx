@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import Swal from 'sweetalert2'
 import { Button } from '@mui/base'
-import fetchReservationList from '../../../fetch/fetchReservationList'
+import FetchReservationList from '../../../fetch/fetchReservationList'
 
 function Reservation() {
   const [reservationData, setReservationData] = useState(null)
@@ -20,7 +20,7 @@ function Reservation() {
     e.preventDefault()
 
     try {
-      const result = await fetchReservationList()
+      const result = await FetchReservationList()
       setReservationData(result)
       setShowButton(false)
     } catch (error) {
@@ -46,10 +46,6 @@ function Reservation() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>이름</TableCell>
-              <TableCell>이메일</TableCell>
-              <TableCell>폰번호</TableCell>
               <TableCell>주문번호</TableCell>
               <TableCell>체크인</TableCell>
               <TableCell>체크아웃</TableCell>
@@ -61,10 +57,6 @@ function Reservation() {
             {reservationData.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.roomBookingId}</TableCell>
-                <TableCell>{item.firstName + item.lastName}</TableCell>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>{item.phoneNumber}</TableCell>
-                <TableCell>{item.room}</TableCell>
                 <TableCell>{item.checkInDate}</TableCell>
                 <TableCell>{item.checkOutDate}</TableCell>
                 <TableCell>{item.adults}</TableCell>

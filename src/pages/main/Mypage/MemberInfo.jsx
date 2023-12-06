@@ -8,8 +8,8 @@ import {
   InputLabel,
 } from '@mui/material'
 import Swal from 'sweetalert2'
-import fetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
-import fetchUpdateUser from '../../../fetch/fetchUpdateUser'
+import FetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
+import FetchUpdateUser from '../../../fetch/fetchUpdateUser'
 
 export default function MemberInfo() {
   const [userInfo, setUserInfo] = useState({
@@ -19,7 +19,7 @@ export default function MemberInfo() {
 
   const handleGetUserInfo = async () => {
     try {
-      const result = await fetchGetUserInfo()
+      const result = await FetchGetUserInfo()
       if (result) {
         setUserInfo({
           name: result.data.name,
@@ -43,11 +43,10 @@ export default function MemberInfo() {
     e.preventDefault()
 
     try {
-      const result = await fetchUpdateUser({
+      const result = await FetchUpdateUser({
         name: userInfo.name,
         email: userInfo.email,
       })
-
       if (result) {
         Swal.fire({
           icon: 'success',

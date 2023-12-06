@@ -55,6 +55,7 @@ function App() {
                   element={<DetailPage />}
                 />
                 <Route path="/tourDetail/:tourId" element={<TourDetail />} />
+                <Route path="/like" element={<LikedPlace />} />
               </Route>
             </Routes>
           </QueryClientProvider>

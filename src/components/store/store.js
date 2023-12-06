@@ -6,7 +6,6 @@ import fetchDeleteLikes from '../../fetch/fetchDeleteLikes'
 
 const store = (set, get) => ({
   likedAttractions: [],
-  // 로그인시 유저 정보 조회 후 setLikedAttraction(data.favoriteAttractions)
   setLikedAttraction: (fetchedAttractions) =>
     set(
       () => ({

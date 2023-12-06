@@ -7,7 +7,7 @@ import TourItem from './TourItem'
 
 function SearchCard({ hotels, attractions, keyword }) {
   return (
-    <Box className="flex flex-col items-center gap-3">
+    <Box className="flex flex-col items-center gap-3 mt-5">
       <Typography
         className="text-gray-900 w-[84rem]"
         style={{

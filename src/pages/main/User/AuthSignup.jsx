@@ -56,23 +56,11 @@ function AuthSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const isValidInput =
-      isValidEmailFormat(email) &&
-      isValidNameFormat(name) &&
-      isValidPasswordFormat(password) &&
-      confirmPassword === password
-
     try {
-      if (isValidInput) {
-        const result = await fetchSignup(email, name, password, address, false)
+      await fetchSignup(email, name, password, address, false)
 
-        if (result) {
-          showSwal('환영합니다! 로그인을 해주세요!', 'success')
-          navigate('/hotel')
-        }
-      } else {
-        showSwal('이메일, 이름, 비밀번호, 주소를 확인해주세요!', 'error')
-      }
+      showSwal('환영합니다! 로그인을 해주세요!', 'success')
+      navigate('/hotel')
     } catch (error) {
       showSwal('회원가입 중 오류가 발생했습니다', 'error')
     }

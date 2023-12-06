@@ -7,6 +7,7 @@ import { useParams } from 'react-router'
 import Kakao from './detail/Kakao'
 import Grid from '@mui/material/Grid'
 import { getLodgingData } from '../fetch/fetchLodging'
+import CommonHeader from './main/CommonHeader'
 
 function App() {
   const [lodging, setLodging] = useState(null)
@@ -42,7 +43,7 @@ function App() {
     <div>
       {lodging ? (
         <>
-          <DetailHeader />
+          <CommonHeader />
           <LodgingComponent
             lodgingData={lodging}
             setSelectedRoomType={setSelectedRoomType}

@@ -3,8 +3,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 import dayjs from 'dayjs'
-import { Grid, Box } from '@mui/material'
+import { Grid, Box, Typography } from '@mui/material'
 import Swal from 'sweetalert2'
+import { debounce } from 'lodash'
 
 const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
@@ -35,7 +36,7 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
     setSelecting(true) // Set to true to start selecting a new start date
   }
 
-  const handleDateChange = (newValue) => {
+  const debouncedHandleDateChange = debounce((newValue) => {
     const formattedDate = newValue ? newValue.format('YYYY-MM-DD') : ''
 
     if (selecting) {
@@ -54,12 +55,12 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
           icon: 'error',
           confirmButtonText: '확인',
         }).then(() => {
-          // Clear the selected dates
+          // 선택한 날짜를 초기화
           resetCalendar()
         })
       }
     }
-  }
+  }, 200)
 
   const updateRooms = () => {
     setRooms((rooms) =>
@@ -93,31 +94,31 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full h-full">
-        <div className="flex flex-col justify-center items-center w-full max-w-md p-4">
-          <div class="container mx-auto px-4 py-2">
-            <div class="border-b border-gray-300 py-4">
-              <h1 class="text-xl font-semibold text-gray-800">
+      <Box className="flex justify-center items-center w-full h-full">
+        <Box className="flex flex-col justify-center items-center w-full max-w-md p-4">
+          <Box class="container mx-auto px-4 py-2">
+            <Box class="border-b border-gray-300 py-4">
+              <Typography class="text-xl font-semibold text-gray-800">
                 {startDate && endDate
                   ? `${lodgingData.lodging.address}에서 ${nights}박`
                   : '숙박 일정을 선택하세요'}
-              </h1>
+              </Typography>
               {startDate && endDate && (
-                <p class="text-sm text-gray-500">{`${startDate}~${endDate}`}</p>
+                <Typography class="text-sm text-gray-500">{`${startDate}~${endDate}`}</Typography>
               )}
-            </div>
-          </div>
+            </Box>
+          </Box>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateCalendar
               value={calendarValue}
-              onChange={handleDateChange}
+              onChange={(newValue) => debouncedHandleDateChange(newValue)}
               onMonthChange={handleMonthChange}
               className="rounded-lg shadow-lg"
             />
           </LocalizationProvider>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   )
 }

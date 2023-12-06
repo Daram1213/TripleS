@@ -5,6 +5,7 @@ import {
   DesktopComputerIcon,
   CogIcon,
 } from '@heroicons/react/outline'
+import { Box, Typography } from '@mui/material'
 
 const AmenitiesComponent = ({ lodgingData }) => {
   const [expanded, setExpanded] = useState(false)
@@ -12,20 +13,22 @@ const AmenitiesComponent = ({ lodgingData }) => {
   const getIconComponent = (amenityName) => {
     switch (amenityName) {
       case '와이파이':
-        return <WifiIcon className="h-5 w-5 text-gray-500" />
+        return <WifiIcon className="h-5 w-5 text-blue-500" /> // Blue color
       case '에어컨':
-        return <AdjustmentsIcon className="h-5 w-5 text-gray-500" />
+        return <AdjustmentsIcon className="h-5 w-5 text-red-500" /> // Red color
       case 'TV':
-        return <DesktopComputerIcon className="h-5 w-5 text-gray-500" />
-      // Add cases for other amenities
+        return <DesktopComputerIcon className="h-5 w-5 text-green-500" /> // Green color
+      // Add cases for other amenities with different colors
       default:
-        return <CogIcon className="h-5 w-5 text-gray-500" /> // Placeholder for default case
+        return <CogIcon className="h-5 w-5 text-gray-500" /> // Gray color for the default case
     }
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mt-4 mb-4">
-      <h3 className="text-xl font-semibold mb-4">숙소 편의시설</h3>
+    <Box className="bg-white p-6 rounded-lg shadow-md mt-4 mb-4">
+      <Typography variant="h4" fontWeight="bold" mb={2}>
+        숙소 편의시설
+      </Typography>
       <ul className={`${expanded ? '' : 'max-h-24 overflow-hidden'}`}>
         {lodgingData.roomType
           .flatMap((room) => room.amenities)
@@ -42,7 +45,7 @@ const AmenitiesComponent = ({ lodgingData }) => {
       >
         {expanded ? '숨기기' : '편의시설 모두 보기'}
       </button>
-    </div>
+    </Box>
   )
 }
 

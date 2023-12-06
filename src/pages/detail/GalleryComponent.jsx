@@ -1,55 +1,53 @@
+import { Box } from '@mui/material'
 import React, { useState } from 'react'
 
 const GalleryComponent = ({ lodgingData }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const mainImage = lodgingData.lodging.image[0]
-  const otherImages = lodgingData.lodging.image.slice(1, 5)
-
   return (
-    <div className="container mx-auto p-4">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+    <Box className="container mx-auto p-4">
+      <Box className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* Main image */}
-        <div className="md:col-span-3">
+        <Box className="md:col-span-3">
           <img
             className="w-full h-full object-cover rounded overflow-hidden shadow-lg"
-            src={mainImage}
+            src={`/src/assets/img/hotel/${lodgingData.lodging.mainImage}`}
             alt="Main Gallery"
           />
-        </div>
+        </Box>
 
         {/* Other images */}
-        <div className="md:col-span-2 grid grid-rows-2 grid-cols-2 gap-4">
-          {otherImages.map((image, index) => (
-            <div key={index} className="rounded overflow-hidden shadow-lg">
+        <Box className="md:col-span-2 grid grid-rows-2 grid-cols-2 gap-4">
+          {lodgingData.lodging.image.slice(0, 4).map((image, index) => (
+            <Box key={index} className="rounded overflow-hidden shadow-lg">
               <img
                 className="w-full h-full object-cover"
-                src={image} // Use image here instead of otherImages
+                src={image}
                 alt={`Gallery ${index + 1}`}
               />
-            </div>
+            </Box>
           ))}
-        </div>
+        </Box>
 
         {/* View all photos button */}
-        <div className="md:col-start-5 md:row-start-2 flex justify-center items-center">
+        <Box className="md:col-start-5 md:row-start-2 flex justify-center items-center">
           <button
             className="text-lg font-semibold px-4 py-2 rounded-lg shadow-lg bg-white hover:bg-gray-100 whitespace-nowrap"
             onClick={() => setShowModal(true)}
           >
             사진 모두보기
           </button>
-        </div>
+        </Box>
 
         {/* Modal for all photos */}
         {showModal && (
-          <div
+          <Box
             className="fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full"
             onClick={() => setShowModal(false)}
           >
-            <div className="absolute top-0 mx-auto p-5 border w-11/12 shadow-lg rounded-md bg-white">
-              <div className="mt-3 text-center">
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+            <Box className="absolute top-0 mx-auto p-5 border w-11/12 shadow-lg rounded-md bg-white">
+              <Box className="mt-3 text-center">
+                <Box className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                   {/* Close button */}
                   <button
                     onClick={() => setShowModal(false)}
@@ -58,10 +56,10 @@ const GalleryComponent = ({ lodgingData }) => {
                   >
                     X
                   </button>
-                </div>
+                </Box>
                 {/* All images */}
-                <div className="mt-2 px-7 py-3">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <Box className="mt-2 px-7 py-3">
+                  <Box className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     {lodgingData.lodging.image.map((image, index) => (
                       <img
                         key={index}
@@ -70,14 +68,14 @@ const GalleryComponent = ({ lodgingData }) => {
                         alt={`Gallery ${index}`}
                       />
                     ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

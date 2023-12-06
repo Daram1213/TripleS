@@ -33,9 +33,7 @@ const ReservationModal = ({
   const [isReserved, setIsReserved] = useState(false)
   const [userData, setUserData] = useState(null)
 
-  const [phoneNumber, setPhoneNumber] = useState('')
-
-  const [adults, setAdults] = useState(1) // Default value for adults
+  const [adults, setAdults] = useState(0) // Default value for adults
   const [children, setChildren] = useState(0)
 
   const handleAdultsChange = (e) => {
@@ -60,10 +58,6 @@ const ReservationModal = ({
     fetchUserData()
   }, [])
 
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value)
-  }
-
   const handleReservation = async () => {
     if (!selectedRoom || !selectedDates.startDate || !selectedDates.endDate) {
       Swal.fire({
@@ -85,11 +79,7 @@ const ReservationModal = ({
 
     if (confirm) {
       const reservationData = {
-        user: userData.data.userId.toString(),
-        firstName: userData.data.name,
-        lastName: userData.data.name,
-        email: userData.data.email,
-        phoneNumber: phoneNumber,
+        user: userData.data._id,
         room: selectedRoomType._id,
         status: false,
         checkInDate: selectedDates.startDate,
@@ -127,9 +117,6 @@ const ReservationModal = ({
     }
   }
 
-  console.log(selectedRoom)
-  console.log(selectedRoomType)
-
   const selectedRoomData = selectedRoom || {
     roomBooking: { checkInDate: new Date(), checkOutDate: new Date() },
   }
@@ -138,40 +125,40 @@ const ReservationModal = ({
   const [specialRequest, setSpecialRequest] = useState('')
 
   return (
-    <div
+    <Box
       class="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md"
       style={{ marginTop: '20px', marginBottom: '20px' }}
     >
-      <div class="p-5">
-        <div class="flex justify-between items-center">
-          <span class="text-3xl font-bold text-gray-900">
+      <Box class="p-5">
+        <Box class="flex justify-between items-center">
+          <Typography class="text-3xl font-bold text-gray-900">
             ₩{selectedRoomTypeData.price}
-          </span>
-        </div>
-        <div>
-          <span class="block text-sm text-gray-600">체크인</span>
-          <span class="block text-lg text-gray-800">
+          </Typography>
+        </Box>
+        <Box>
+          <Typography class="block text-sm text-gray-600">체크인</Typography>
+          <Typography class="block text-lg text-gray-800">
             {selectedRoomData.roomBooking
               ? new Date(
                   selectedRoomData.roomBooking.checkInDate,
                 ).toLocaleDateString('ko-KR')
               : 'No Check-In Date'}
-          </span>
-        </div>
-        <div>
-          <span class="block text-sm text-gray-600">체크아웃</span>
-          <span class="block text-lg text-gray-800">
+          </Typography>
+        </Box>
+        <Box>
+          <Typography class="block text-sm text-gray-600">체크아웃</Typography>
+          <Typography class="block text-lg text-gray-800">
             {selectedRoomData.roomBooking
               ? new Date(
                   selectedRoomData.roomBooking.checkOutDate,
                 ).toLocaleDateString('ko-KR')
               : 'No Check-Out Date'}
-          </span>
-        </div>
+          </Typography>
+        </Box>
 
-        <div class="mt-4">
+        <Box class="mt-4">
           <label for="adults" class="text-sm text-gray-600">
-            어른
+            아이
           </label>
           <select
             id="adults"
@@ -179,13 +166,17 @@ const ReservationModal = ({
             onChange={handleAdultsChange}
             class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           >
+            <option value={0}>0 어른</option>
             <option value={1}>1 어른</option>
             <option value={2}>2 어른</option>
+            <option value={3}>3 어른</option>
+            <option value={4}>4 어른</option>
+            <option value={5}>5 어른</option>
             {/* Add more options as needed */}
           </select>
-        </div>
+        </Box>
 
-        <div class="mt-4">
+        <Box class="mt-4">
           <label for="children" class="text-sm text-gray-600">
             아이
           </label>
@@ -198,23 +189,13 @@ const ReservationModal = ({
             <option value={0}>0 아이</option>
             <option value={1}>1 아이</option>
             <option value={2}>2 아이</option>
+            <option value={3}>3 아이</option>
+            <option value={4}>4 아이</option>
+            <option value={5}>5 아이</option>
             {/* Add more options as needed */}
           </select>
-        </div>
-        <div class="mt-4">
-          <label for="phone" class="text-sm text-gray-600">
-            휴대폰 번호
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            placeholder="휴대폰 번호를 입력하세요"
-            value={phoneNumber} // Bind the input value to the state
-            onChange={handlePhoneNumberChange} // Add onChange event handler
-          />
-        </div>
-        <div className="mt-4">
+        </Box>
+        <Box className="mt-4">
           <label htmlFor="specialRequest" className="text-sm text-gray-600">
             요청사항
           </label>
@@ -226,7 +207,7 @@ const ReservationModal = ({
             rows="4" // 원하는 높이로 조정 가능
             placeholder="특별한 요청사항을 입력하세요"
           ></textarea>
-        </div>
+        </Box>
         <button
           onClick={handleReservation}
           className="w-full px-4 py-3 mt-8 text-sm font-bold text-white uppercase bg-red-500 rounded"
@@ -237,20 +218,20 @@ const ReservationModal = ({
         <p class="mt-4 text-xs text-center text-gray-600">
           예약 확정 전에는 요금이 청구되지 않습니다.
         </p>
-      </div>
-      <div class="px-5 py-4 bg-gray-100">
-        <div class="flex justify-between">
-          <span>
+      </Box>
+      <Box class="px-5 py-4 bg-gray-100">
+        <Box class="flex justify-between">
+          <Typography>
             ₩{selectedRoomTypeData.price} x {totalNights}박
-          </span>
-          <span>₩{totalPrice}</span>
-        </div>
-        <div class="flex justify-between mt-4 font-bold">
-          <span>총 합계</span>
-          <span>₩{totalPrice}</span>
-        </div>
-      </div>
-    </div>
+          </Typography>
+          <Typography>₩{totalPrice}</Typography>
+        </Box>
+        <Box class="flex justify-between mt-4 font-bold">
+          <Typography>총 합계</Typography>
+          <Typography>₩{totalPrice}</Typography>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

@@ -13,9 +13,8 @@ function TourItem({ attraction, smallCard, likedPage }) {
   )
 
   const [isAttractionLiked, setIsAttractionLiked] = useState(false)
-  const addLikedAttraction = useStore((store) => store.addLikedAttraction)
-  const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
-  const likedAttractions = useStore((store) => store.likedAttractions)
+  const { likedAttractions, deleteLikedAttraction, addLikedAttraction } =
+    useStore()
 
   const handleLikedAttraction = () => {
     if (isAttractionLiked) {

@@ -53,16 +53,12 @@ export default function TourDetailHeader({ mainAttraction, city }) {
     return '영업종료'
   }
 
-  const likedAttractions = useStore((store) => store.likedAttractions)
+  const { likedAttractions, addLikedAttraction, deleteLikedAttraction } =
+    useStore()
 
   const [isAttractionLiked, setIsAttractionLiked] = useState(false)
 
-  const addLikedAttraction = useStore((store) => store.addLikedAttraction)
-  const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
-
   const handleLikedAttraction = () => {
-    // 여기서 로그인 체크 필요
-
     if (isAttractionLiked) {
       deleteLikedAttraction(mainAttraction.attractionId)
     } else {

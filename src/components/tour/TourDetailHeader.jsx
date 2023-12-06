@@ -76,7 +76,7 @@ export default function TourDetailHeader({ mainAttraction, city }) {
         (attr) => attr.attractionId === mainAttraction.attractionId,
       ),
     )
-  }, [handleLikedAttraction])
+  }, [likedAttractions, mainAttraction])
 
   return (
     <Box className="flex flex-col gap-2 p-3">

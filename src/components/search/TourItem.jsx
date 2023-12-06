@@ -31,7 +31,7 @@ function TourItem({ attraction, smallCard, likedPage }) {
         (attr) => attr.attractionId === attraction.attractionId,
       ),
     )
-  }, [attraction, likedAttractions, handleLikedAttraction])
+  }, [attraction, likedAttractions])
 
   return (
     <Box className={`relative ${likedPage ? 'pl-20' : ''}`}>

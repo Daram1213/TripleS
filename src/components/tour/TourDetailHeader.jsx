@@ -61,11 +61,11 @@ export default function TourDetailHeader({ mainAttraction, city }) {
   const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
 
   const handleLikedAttraction = () => {
-    setIsAttractionLiked(mainAttraction.attractionId)
+    // 여기서 로그인 체크 필요
+
     if (isAttractionLiked) {
       deleteLikedAttraction(mainAttraction.attractionId)
     } else {
-      // 여기서 로그인 체크 필요
       addLikedAttraction(mainAttraction)
     }
   }

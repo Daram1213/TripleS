@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom'
 import { Box, Button, Typography } from '@mui/material'
 import { CiHeart } from 'react-icons/ci'
 import { FaHeart } from 'react-icons/fa'
+import Checkbox from '@mui/material/Checkbox'
 import { useStore } from '../store/store'
 
-function TourItem({
-  attraction,
-  smallCard,
-  // likedAttractions,
-  // addLikedAttraction,
-  // deleteLikedAttraction,
-  // isAttractionLiked,
-  // setIsAttractionLiked,
-}) {
+function TourItem({ attraction, smallCard, likedPage }) {
   const city = useMemo(
     () => (attraction?.address ? attraction.address.split(' ')[0] : ''),
     [attraction],
@@ -26,10 +19,8 @@ function TourItem({
 
   const handleLikedAttraction = () => {
     if (isAttractionLiked) {
-      console.log('딜리트실행')
       deleteLikedAttraction(attraction.attractionId)
     } else {
-      console.log('에드실행됨')
       addLikedAttraction(attraction)
     }
   }
@@ -42,8 +33,25 @@ function TourItem({
     )
   }, [attraction, likedAttractions, handleLikedAttraction])
 
+  const [checked, setChecked] = useState(true)
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked)
+  }
+  const label = {
+    inputProps: {
+      'aria-label': 'Checkbox demo',
+      style: {
+        position: 'absolute',
+        top: '4rem',
+        left: '-3rem',
+        fontSize: '28px',
+      },
+    },
+  }
+
   return (
-    <Box>
+    <Box className={`relative ${likedPage ? 'pl-20' : ''}`}>
       <Link to={`/tourDetail/${attraction.attractionId}`}>
         <Box
           className={`group relative flex overflow-hidden border border-solid border-gray-200 bg-white ${
@@ -108,13 +116,20 @@ function TourItem({
           </Box>
         </Box>
       </Link>
-      <Button>
+      <Button
+        style={{
+          position: 'absolute',
+          top: '0',
+          right: '-0.5rem',
+          borderRadius: '50%',
+        }}
+      >
         {isAttractionLiked ? (
           <FaHeart
             onClick={() => {
               handleLikedAttraction()
             }}
-            className="w-7 h-7 mr-1 text-blue-700"
+            className="w-7 h-7 mt-1 text-blue-700"
           />
         ) : (
           <CiHeart

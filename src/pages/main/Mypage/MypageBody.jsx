@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Tabs, Tab, Typography, Box } from '@mui/material'
 import MemberInfo from './MemberInfo'
 import Reservation from './Reservation'
-import WishlistTravel from './WishlistTravel'
+import LikedAttractions from './LikedAttractions'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -46,7 +46,7 @@ function MypageBody() {
   }
 
   return (
-    <Box className="flex w-full h-full my-[10rem] mx-[10rem]">
+    <Box className="flex w-full h-full">
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -66,7 +66,7 @@ function MypageBody() {
         <Reservation />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <WishlistTravel />
+        <LikedAttractions />
       </TabPanel>
     </Box>
   )

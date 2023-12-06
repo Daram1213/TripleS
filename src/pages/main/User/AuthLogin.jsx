@@ -12,6 +12,7 @@ import {
 import AuthFindPwd from './AuthFindPwd'
 import FetchGetUserInfo from '../../../fetch/fetchGetUserInfo'
 import showSwal from '../../../assets/util/showSwal'
+import { useStore } from '../../../components/store/store'
 
 function AuthLogin() {
   const [email, setEmail] = useState('')
@@ -50,6 +51,8 @@ function AuthLogin() {
     document.cookie = `${name}=${value}; expires=${expires}; path=/`
   }
 
+  const { likedAttractions, setLikedAttraction } = useStore()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const isValidInput =
@@ -64,6 +67,8 @@ function AuthLogin() {
           showSwal('반갑습니다 :)', 'success')
 
           const fetchGetIUserInfo = await FetchGetUserInfo()
+          setLikedAttraction(fetchGetIUserInfo.data.favorites.attractions)
+
           if (fetchGetIUserInfo) {
             navigate('/hotel')
           }

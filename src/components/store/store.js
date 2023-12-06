@@ -3,6 +3,15 @@ import { devtools, persist } from 'zustand/middleware'
 
 const store = (set) => ({
   likedAttractions: [],
+  // 로그인시 유저 정보 조회 후 setLikedAttraction(data.favoriteAttractions)
+  setLikedAttraction: (fetchedAttractions) =>
+    set(
+      () => ({
+        likedAttractions: [...fetchedAttractions],
+      }),
+      false,
+      'setLikedAttraction',
+    ),
   addLikedAttraction: (attraction) =>
     set(
       (state) => {
@@ -29,18 +38,6 @@ const store = (set) => ({
       false,
       'deleteLikedAttraction',
     ),
-  isAttractionLiked: false,
-  setIsAttractionLiked: (id) =>
-    set(
-      (state) => ({
-        isAttractionLiked: state.likedAttractions.some(
-          (attraction) => attraction.attractionId === id,
-        ),
-      }),
-      false,
-      'setAttractionLiked',
-    ),
 })
 
-// export const useStore = create(devtools(store), { name: 'store' })
 export const useStore = create(persist(devtools(store), { name: 'store' }))

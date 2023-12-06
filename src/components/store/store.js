@@ -23,8 +23,7 @@ const store = (set, get) => ({
       if (attractionExists) {
         return
       }
-
-      const response = await fetchAddLikes(attraction.attractionId)
+      const response = await fetchAddLikes(attraction)
 
       if (response) {
         set(
@@ -39,14 +38,14 @@ const store = (set, get) => ({
       console.error(error)
     }
   },
-  deleteLikedAttraction: async (attractionId) => {
+  deleteLikedAttraction: async (attraction) => {
     try {
-      const response = await fetchDeleteLikes(attractionId)
+      const response = await fetchDeleteLikes(attraction)
       if (response) {
         set(
           (state) => ({
             likedAttractions: state.likedAttractions.filter(
-              (attraction) => attraction.attractionId !== attractionId,
+              (attr) => attr.attractionId !== attraction.attractionId,
             ),
           }),
           false,

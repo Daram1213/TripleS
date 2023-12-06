@@ -70,7 +70,6 @@ function TourItem({ attraction, smallCard, likedPage }) {
             <Typography variant="body1" className="-mt-1">
               {city}
             </Typography>
-
             <Box className="-mt-1.5">
               <Typography
                 variant="body1"

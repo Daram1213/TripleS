@@ -94,7 +94,6 @@ export default function TourDetailHeader({ mainAttraction, city }) {
         >
           {mainAttraction.name}
         </Typography>
-        {/* 추후 버튼 클릭하면 로그인 체크하고 FaHeart보여주기 */}
         <Button>
           {isAttractionLiked ? (
             <FaHeart

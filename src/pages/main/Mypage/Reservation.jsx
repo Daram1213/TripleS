@@ -8,8 +8,8 @@ import {
   TableCell,
   Typography,
 } from '@mui/material'
-import Swal from 'sweetalert2'
 import { Button } from '@mui/base'
+import showSwal from '../../../assets/util/showSwal'
 import FetchReservationList from '../../../fetch/fetchReservationList'
 
 function Reservation() {
@@ -24,11 +24,7 @@ function Reservation() {
       setReservationData(result)
       setShowButton(false)
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: '오류 발생',
-        text: '회원 정보 업데이트 중 오류가 발생했습니다.',
-      })
+      showSwal('회원 정보 업데이트 중 오류가 발생했습니다.', 'error')
     }
   }
 

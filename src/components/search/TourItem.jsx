@@ -97,14 +97,7 @@ function TourItem({ attraction, smallCard, likedPage }) {
           </Box>
         </Box>
       </Link>
-      <Button
-        style={{
-          position: 'absolute',
-          top: '0',
-          right: '-0.5rem',
-          borderRadius: '50%',
-        }}
-      >
+      <Button>
         {isAttractionLiked ? (
           <FaHeart
             onClick={() => {

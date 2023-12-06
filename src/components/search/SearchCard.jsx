@@ -4,14 +4,8 @@ import { FiChevronRight } from 'react-icons/fi'
 import SideBar from './SideBar'
 import HotelItem from './HotelItem'
 import TourItem from './TourItem'
-import { useStore } from '../store/store'
 
 function SearchCard({ hotels, attractions, keyword }) {
-  const { isAttractionLiked, setIsAttractionLiked } = useStore()
-  const addLikedAttraction = useStore((store) => store.addLikedAttraction)
-  const deleteLikedAttraction = useStore((store) => store.deleteLikedAttraction)
-  const likedAttractions = useStore((store) => store.likedAttractions)
-
   return (
     <Box className="flex flex-col items-center gap-3 mt-5">
       <Typography

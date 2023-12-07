@@ -1,4 +1,7 @@
- <svg
+import React from 'react'
+
+const RightArrowIcon = () => (
+  <svg
     className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
@@ -13,3 +16,6 @@
       d="m1 9 4-4-4-4"
     />
   </svg>
+)
+
+export default RightArrowIcon

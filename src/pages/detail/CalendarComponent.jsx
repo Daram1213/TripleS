@@ -7,15 +7,21 @@ import { Grid, Box, Typography } from '@mui/material'
 import Swal from 'sweetalert2'
 import { debounce } from 'lodash'
 
-const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
+const CalendarComponent = ({
+  lodgingData,
+  setRooms,
+  setSelectedDates,
+  startDate,
+  endDate,
+  onStartDateChange,
+  onEndDateChange,
+}) => {
   const [currentMonth, setCurrentMonth] = useState(dayjs())
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
   const [selecting, setSelecting] = useState(true)
 
   useEffect(() => {
-    setStartDate(null)
-    setEndDate(null)
+    onStartDateChange(null)
+    onEndDateChange(null)
   }, [currentMonth])
 
   useEffect(() => {
@@ -27,12 +33,14 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
   const calendarValue = useMemo(() => {
     if (selecting) {
       return startDate ? dayjs(startDate) : null
+    } else {
+      return endDate ? dayjs(endDate) : null
     }
   }, [selecting, startDate, endDate])
 
   const resetCalendar = () => {
-    setStartDate(null)
-    setEndDate(null)
+    onStartDateChange(null)
+    onEndDateChange(null)
     setSelecting(true)
   }
 
@@ -41,11 +49,11 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
 
     if (selecting) {
       // 시작 날짜 선택
-      setStartDate(formattedDate)
+      onStartDateChange(formattedDate)
       setSelecting(false)
     } else {
       if (!startDate || dayjs(formattedDate).isAfter(dayjs(startDate))) {
-        setEndDate(formattedDate)
+        onEndDateChange(formattedDate)
         setSelecting(true)
       } else {
         Swal.fire({
@@ -77,17 +85,15 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
   }
 
   function calculateNights(startDate, endDate) {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
+    const start = dayjs(startDate)
+    const end = dayjs(endDate)
 
-    const timeDifference = end - start
-
-    const nights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24))
+    const nights = end.diff(start, 'day')
 
     return nights
   }
 
-  const nights = calculateNights(startDate, endDate)
+  const nights = lodgingData ? calculateNights(startDate, endDate) : 0
 
   return (
     <>
@@ -111,7 +117,7 @@ const CalendarComponent = ({ lodgingData, setRooms, setSelectedDates }) => {
               value={calendarValue}
               onChange={(newValue) => debouncedHandleDateChange(newValue)}
               onMonthChange={handleMonthChange}
-              className="rounded-lg shadow-lg"
+              className="shadow-lg"
             />
           </LocalizationProvider>
         </Box>

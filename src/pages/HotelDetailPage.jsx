@@ -37,8 +37,19 @@ function App() {
     endDate: null,
   })
 
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+
+  const handleStartDateChange = (newStartDate) => {
+    setStartDate(newStartDate)
+  }
+
+  const handleEndDateChange = (newEndDate) => {
+    setEndDate(newEndDate)
+  }
+
   return (
-    <div>
+    <Box>
       {lodging ? (
         <>
           <CommonHeader />
@@ -59,6 +70,10 @@ function App() {
                 lodgingData={lodging}
                 setRooms={setRooms}
                 setSelectedDates={setSelectedDates}
+                startDate={startDate}
+                endDate={endDate}
+                onStartDateChange={handleStartDateChange}
+                onEndDateChange={handleEndDateChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -67,6 +82,8 @@ function App() {
                 selectedRoom={selectedRoom}
                 selectedRoomType={selectedRoomType}
                 selectedDates={selectedDates}
+                startDate={startDate}
+                endDate={endDate}
               />
             </Grid>
           </Grid>
@@ -76,7 +93,7 @@ function App() {
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </Box>
   )
 }
 

@@ -17,13 +17,13 @@ import Swal from 'sweetalert2'
 
 const ReservationModal = ({
   lodgingData,
-  closeModal,
   selectedRoom,
   selectedRoomType,
-  selectedDates,
+  startDate,
+  endDate,
 }) => {
-  const checkInDate = dayjs(selectedDates?.startDate || new Date())
-  const checkOutDate = dayjs(selectedDates?.endDate || new Date())
+  const checkInDate = dayjs(startDate || new Date())
+  const checkOutDate = dayjs(endDate || new Date())
   const totalNights = checkOutDate.diff(checkInDate, 'day')
   const pricePerNight = selectedRoomType?.price || 0
   const totalPrice = pricePerNight * totalNights
@@ -56,7 +56,7 @@ const ReservationModal = ({
   }, [])
 
   const handleReservation = async () => {
-    if (!selectedRoom || !selectedDates.startDate || !selectedDates.endDate) {
+    if (!selectedRoom || !startDate || !endDate) {
       Swal.fire({
         title: '선택 필요',
         text: '객실과 일정을 먼저 선택하세요.',
@@ -79,8 +79,8 @@ const ReservationModal = ({
         lodging: lodgingData.lodging._id,
         room: selectedRoomType._id,
         status: false,
-        checkInDate: selectedDates.startDate,
-        checkOutDate: selectedDates.endDate,
+        checkInDate: startDate,
+        checkOutDate: endDate,
         adults: adults,
         children: children,
         request: specialRequest,
@@ -88,8 +88,6 @@ const ReservationModal = ({
 
       try {
         const reservationResult = await makeReservation(reservationData)
-
-        console.log(reservationResult)
 
         if (reservationResult) {
           setIsReserved(true)
@@ -109,16 +107,13 @@ const ReservationModal = ({
     }
   }
 
-  const selectedRoomData = selectedRoom || {
-    roomBooking: { checkInDate: new Date(), checkOutDate: new Date() },
-  }
   const selectedRoomTypeData = selectedRoomType || { price: 0, capacity: 1 }
 
   const [specialRequest, setSpecialRequest] = useState('')
 
   return (
     <Box
-      class="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md"
+      class="max-w-sm mx-auto overflow-hidden bg-white shadow-md"
       style={{ marginTop: '20px', marginBottom: '20px' }}
     >
       <Box class="p-5">
@@ -126,26 +121,19 @@ const ReservationModal = ({
           <Typography class="text-3xl font-bold text-gray-900">
             ₩{selectedRoomTypeData.price}
           </Typography>
+          <Typography class="text-xl font-semibold text-gray-800">
+            {selectedRoomTypeData.types}
+          </Typography>
         </Box>
         <Box>
           <Typography class="block text-sm text-gray-600">체크인</Typography>
           <Typography class="block text-lg text-gray-800">
-            {selectedRoomData.roomBooking
-              ? new Date(
-                  selectedRoomData.roomBooking.checkInDate,
-                ).toLocaleDateString('ko-KR')
-              : 'No Check-In Date'}
+            {startDate}
           </Typography>
         </Box>
         <Box>
           <Typography class="block text-sm text-gray-600">체크아웃</Typography>
-          <Typography class="block text-lg text-gray-800">
-            {selectedRoomData.roomBooking
-              ? new Date(
-                  selectedRoomData.roomBooking.checkOutDate,
-                ).toLocaleDateString('ko-KR')
-              : 'No Check-Out Date'}
-          </Typography>
+          <Typography class="block text-lg text-gray-800">{endDate}</Typography>
         </Box>
 
         <Box class="mt-4">
@@ -164,7 +152,6 @@ const ReservationModal = ({
             <option value={3}>3 어른</option>
             <option value={4}>4 어른</option>
             <option value={5}>5 어른</option>
-            {/* Add more options as needed */}
           </select>
         </Box>
 
@@ -184,7 +171,6 @@ const ReservationModal = ({
             <option value={3}>3 아이</option>
             <option value={4}>4 아이</option>
             <option value={5}>5 아이</option>
-            {/* Add more options as needed */}
           </select>
         </Box>
         <Box className="mt-4">

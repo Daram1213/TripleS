@@ -24,7 +24,7 @@ const AmenitiesComponent = ({ lodgingData }) => {
   }
 
   return (
-    <Box className="bg-white p-6 rounded-lg shadow-md mt-4 mb-4">
+    <Box className="bg-white p-6 shadow-md mt-4 mb-4">
       <Typography variant="h4" fontWeight="bold" mb={2}>
         숙소 편의시설
       </Typography>

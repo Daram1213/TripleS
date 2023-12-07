@@ -60,7 +60,7 @@ export default function TourDetailHeader({ mainAttraction, city }) {
 
   const handleLikedAttraction = () => {
     if (isAttractionLiked) {
-      deleteLikedAttraction(mainAttraction.attractionId)
+      deleteLikedAttraction(mainAttraction)
     } else {
       addLikedAttraction(mainAttraction)
     }
@@ -68,9 +68,7 @@ export default function TourDetailHeader({ mainAttraction, city }) {
 
   useEffect(() => {
     setIsAttractionLiked(
-      likedAttractions?.some(
-        (attr) => attr.attractionId === mainAttraction.attractionId,
-      ),
+      likedAttractions?.some((attr) => attr._id === mainAttraction._id),
     )
   }, [likedAttractions, mainAttraction])
 

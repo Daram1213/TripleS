@@ -21,7 +21,7 @@ const GroupItems = styled('ul')({
   padding: 0,
 })
 
-export default function RenderGroup() {
+export default function RenderGroup({ filterLocationId }) {
   const [locationList, setLocationList] = useState([])
 
   useEffect(() => {
@@ -39,7 +39,12 @@ export default function RenderGroup() {
 
   return (
     <Autocomplete
-      className="w-3/4 mt-3"
+      onChange={(_, value) => {
+        if (value) {
+          filterLocationId(value.locationId)
+        }
+      }}
+      className="mr-10 mt-3"
       id="grouped-demo"
       options={locationList}
       groupBy={(option) => option.country}

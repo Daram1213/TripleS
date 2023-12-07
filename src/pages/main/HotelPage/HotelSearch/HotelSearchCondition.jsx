@@ -11,12 +11,12 @@ import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 function HotelSearchCondition() {
-  const [price, setPrice] = useState([0, 300000])
+  const [priceRange, setPriceRange] = useState([0, 300000])
   const [sortOption, setSortOption] = useState(null)
   const location = useLocation()
 
   const handleChange = (newPrice) => {
-    setPrice(newPrice)
+    setPriceRange(newPrice)
   }
 
   const updateSortInUrl = (newSort) => {
@@ -53,16 +53,16 @@ function HotelSearchCondition() {
           1박 기준 요금
         </Typography>
         <Typography variant="h6" className="py-2">
-          {price[0].toLocaleString()}원 -
-          {price[1] === 300000
-            ? `${price[1].toLocaleString()}원+`
-            : `${price[1].toLocaleString()}원`}
+          {priceRange[0].toLocaleString()}원 -
+          {priceRange[1] === 300000
+            ? `${priceRange[1].toLocaleString()}원+`
+            : `${priceRange[1].toLocaleString()}원`}
         </Typography>
         <Slider
           min={0}
           max={300000}
-          value={price}
-          defaultValue={[setPrice]}
+          value={priceRange}
+          defaultValue={[setPriceRange]}
           onChange={handleChange}
           valueLabelDisplay="auto"
           valueLabelFormat={(value) =>

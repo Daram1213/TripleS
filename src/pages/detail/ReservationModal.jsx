@@ -188,7 +188,7 @@ const ReservationModal = ({
         </Box>
         <button
           onClick={handleReservation}
-          className="w-full px-4 py-3 mt-8 text-sm font-bold text-white uppercase bg-red-500 rounded"
+          className="w-full px-4 py-3 mt-8 text-sm font-bold text-white uppercase bg-blue-500 rounded"
         >
           예약하기
         </button>

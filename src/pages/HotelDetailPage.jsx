@@ -8,6 +8,7 @@ import Kakao from './detail/Kakao'
 import Grid from '@mui/material/Grid'
 import { getLodgingData } from '../fetch/fetchLodging'
 import CommonHeader from './main/CommonHeader'
+import { Box } from '@mui/material'
 
 function App() {
   const [lodging, setLodging] = useState(null)

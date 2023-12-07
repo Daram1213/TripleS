@@ -8,11 +8,10 @@ import MainPage from './pages/MainPage'
 import HotelPage from './pages/main/HotelPage/HotelPage'
 import HotelDetailPage from './pages/HotelDetailPage'
 import HotelSearchPage from './pages/main/HotelPage/HotelSearch/HotelSearchPage'
-import DetailPage from './pages/DetailPage'
 import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
-import TourDetail from './pages/tour/tourDetail'
+import MyPage from './pages/main/Mypage/Mypage'
 
 function App() {
   const theme = createTheme()

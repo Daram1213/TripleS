@@ -12,6 +12,8 @@ import SearchPage from './pages/search/SearchPage'
 import SearchHotelList from './pages/search/SearchHotelList'
 import SearchTourList from './pages/search/SearchTourList'
 import MyPage from './pages/main/Mypage/Mypage'
+import ReservationPage from './pages/reservation/ReservationPage'
+import ReservationDetails from './pages/reservation/ReservationDetails'
 
 function App() {
   const theme = createTheme()
@@ -48,6 +50,11 @@ function App() {
                 <Route
                   path="/hotelDetail/:lodgingId"
                   element={<HotelDetailPage />}
+                />
+                <Route path="/reservation" element={<ReservationPage />} />
+                <Route
+                  path="/reservations/:reservationId"
+                  element={<ReservationDetails />}
                 />
               </Route>
             </Routes>

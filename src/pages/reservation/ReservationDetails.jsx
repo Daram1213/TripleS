@@ -20,20 +20,22 @@ import EventIcon from '@mui/icons-material/Event'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '8px', // Adjusted margin
+    margin: '8px',
   },
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '8px', // Adjusted gap
+    gap: '16px',
     backgroundColor: '#f0f0f0',
-    margin: '16px 0', // Added margin
+    margin: '16px',
   },
   leftPane: {
     gridArea: '1 / 1 / span 1 / span 1',
+    marginBottom: theme.spacing(2),
   },
   rightPane: {
     gridArea: '1 / 2 / span 1 / span 1',
+    marginBottom: theme.spacing(2),
   },
   transparentCard: {
     backgroundColor: 'transparent',
@@ -44,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid #ddd',
     borderRadius: theme.spacing(1),
     boxShadow: theme.shadows[3],
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(2),
     marginTop: 0,
-    padding: 0,
+    padding: theme.spacing(2),
   },
   table: {
     '& tbody tr:nth-child(odd)': {
@@ -120,7 +122,6 @@ const ReservationDetails = () => {
   return (
     <div className={classes.pageContainer}>
       <div className={classes.container}>
-        {/* Left Pane */}
         <div className={classes.leftPane}>
           <Card className={`${classes.root} ${classes.card}`}>
             <CardContent className={classes.content}>
